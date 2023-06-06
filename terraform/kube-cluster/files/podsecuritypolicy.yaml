@@ -1,0 +1,10 @@
+cluster:
+  apiServer:
+    admissionControl:
+      - name: PodSecurity
+        configuration:
+          exemptions:
+            namespaces:
+              - monitoring
+              - qemu-guest-agent
+              - rook-ceph

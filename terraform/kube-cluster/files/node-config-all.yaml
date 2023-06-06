@@ -1,0 +1,25 @@
+machine:
+  network:
+    kubespan:
+      enabled: true
+  kubelet:
+    extraArgs:
+      rotate-server-certificates: true
+    extraMounts:
+      - destination: /var/local-path/storage
+        type: bind
+        source: /var/local-path/storage
+        options:
+          - bind
+          - rshared
+          - rw
+  install:
+    extraKernelArgs:
+      - talos.logging.kernel=udp://10.0.41.51:6050/
+  logging:
+    destinations:
+      - endpoint: "udp://10.0.41.51:6051/"
+        format: "json_lines"
+cluster:
+  discovery:
+    enabled: true

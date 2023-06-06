@@ -1,0 +1,9 @@
+---
+area/ansible:
+  - "ansible/**/*"
+area/github:
+  - ".github/**/*"
+area/kubernetes:
+  - "kubernetes/**/*"
+area/templates:
+  - "tmpl/**/*"

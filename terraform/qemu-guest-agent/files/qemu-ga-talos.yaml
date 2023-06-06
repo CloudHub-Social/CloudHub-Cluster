@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: qemu-ga-talos
+  namespace: qemu-guest-agent
+spec:
+  selector:
+    matchLabels:
+      name: qemu-ga-talos
+  template:
+    metadata:
+      labels:
+        name: qemu-ga-talos
+    spec:
+      volumes:
+      - name: virtio
+        hostPath:
+          path: /dev/virtio-ports
+          type: ''
+      - name: talosconfig
+        secret:
+           secretName: talosconfig
+           optional: false 
+      containers:
+      - name: qemu-ga-talos
+        image: ghcr.io/crisobal/qemu-guest-agent-talos:latest
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          privileged: true
+          allowPrivilegeEscalation: true
+        volumeMounts:
+        - name: virtio
+          mountPath: /dev/virtio-ports
+        - name: talosconfig
+          mountPath: /var/run/secrets/talos.dev
+          readOnly: true
+      restartPolicy: Always
+      hostNetwork: true
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+      tolerations:
+        - key: node-role.kubernetes.io/control-plane
+          effect: NoSchedule
+          operator: Exists
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
+        - key: CriticalAddonsOnly
+          operator: Exists
+        - key: node.kubernetes.io/not-ready
+          operator: Exists
+          effect: NoExecute
+          tolerationSeconds: 120
+        - key: node.kubernetes.io/unreachable
+          operator: Exists
+          effect: NoExecute
+          tolerationSeconds: 120
+        - key: node.kubernetes.io/memory-pressure
+          operator: Exists
+          effect: NoSchedule
