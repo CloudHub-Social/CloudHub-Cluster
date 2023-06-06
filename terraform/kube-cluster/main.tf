@@ -115,6 +115,6 @@ resource "null_resource" "config_output" {
     talos_cluster_kubeconfig.kubeconfig
   ]
   provisioner "local-exec" {
-    command = "terraform output -raw kubeconfig > ../../kubeconfig && terraform output -raw ../../talosconfig > talosconfig"
+    command = "terraform output -raw kubeconfig > ../../kubeconfig && terraform output -raw talosconfig > ../../talosconfig"
   }
 }
