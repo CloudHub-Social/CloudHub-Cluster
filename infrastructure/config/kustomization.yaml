@@ -3,6 +3,5 @@ kind: Kustomization
 resources:
   - cluster-secrets.yaml
   - cluster-settings.yaml
-  - cluster-configs.yaml
   - repositories
   - notifications
