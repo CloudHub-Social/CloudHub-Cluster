@@ -12,8 +12,6 @@ spec:
   secretRef:
     name: flux-system
   url: ssh://git@github.com/Just-Insane/CloudHub-Cluster.git
-<<<<<<< HEAD
-=======
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -60,4 +58,3 @@ spec:
         group: kustomize.toolkit.fluxcd.io
         kind: Kustomization
         labelSelector: substitution.flux.home.arpa/disabled notin (true)
->>>>>>> parent of 00a5efb (update repos)
