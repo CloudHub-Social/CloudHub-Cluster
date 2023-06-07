@@ -5,6 +5,8 @@ metadata:
   name: cluster-apps-authentik
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: cluster-apps-external-secrets
   path: ./apps/production/authentik/authentik/app
   prune: true
   sourceRef:

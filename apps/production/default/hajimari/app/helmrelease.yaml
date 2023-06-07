@@ -30,9 +30,9 @@ spec:
       title: Apps
       darkTheme: espresso
       alwaysTargetBlank: true
-      showGreeting: false
-      showAppGroups: false
-      showAppStatus: false
+      showGreeting: true
+      showAppGroups: true
+      showAppStatus: true
       showBookmarkGroups: false
       showGlobalBookmarks: false
       showAppUrls: false
@@ -41,6 +41,8 @@ spec:
         matchNames:
           - default
           - monitoring
+          - authentik
+      defaultSearchProvider: "DuckDuckGo"
     ingress:
       main:
         enabled: true
