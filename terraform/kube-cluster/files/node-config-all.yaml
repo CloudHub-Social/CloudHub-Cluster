@@ -23,3 +23,6 @@ machine:
 cluster:
   discovery:
     enabled: true
+  network:
+    cni:
+      name: none
