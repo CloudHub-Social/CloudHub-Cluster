@@ -115,7 +115,7 @@ resource "flux_bootstrap_git" "this" {
   path = "cluster/production"
 }
 
-resource "null_resource" "sosp_secret" {
+resource "null_resource" "sops_secret" {
   depends_on = [
     flux_bootstrap_git.this
   ]
