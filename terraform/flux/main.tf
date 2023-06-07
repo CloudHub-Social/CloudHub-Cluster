@@ -114,3 +114,12 @@ resource "flux_bootstrap_git" "this" {
 
   path = "cluster/production"
 }
+
+resource "null_resource" "sosp_secret" {
+  depends_on = [
+    flux_bootstrap_git.this
+  ]
+  provisioner "local-exec" {
+    command = "cat ~/.config/sops/age/age.agekey | kubectl create secret generic sops-age --namespace=flux-system --from-file=age.agekey=/dev/stdin"
+  }
+}
