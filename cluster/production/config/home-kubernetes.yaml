@@ -5,37 +5,35 @@ metadata:
   name: home-kubernetes
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 10m0s
+  timeout: 3m0s
   ref:
     branch: main
-  url: "ssh://git@github.com:22/Just-Insane/CloudHub-Cluster.git"
   secretRef:
     name: flux-system
-  ignore: |
-    # exclude all
-    /*
-    # include kubernetes directory
-    !/kubernetes
+  url: ssh://git@github.com/Just-Insane/homelab.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: cluster-apps
+  name: home-kubernetes-secrets
   namespace: flux-system
 spec:
-  interval: 30m
-  path: ./kubernetes/apps
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: home-kubernetes
   decryption:
     provider: sops
     secretRef:
       name: sops-age
+  prune: false
+  path: ./kubernetes
+  interval: 60m0s
+  timeout: 3m0s
+  sourceRef:
+    kind: GitRepository
+    name: home-kubernetes
   postBuild:
     substituteFrom:
       - kind: ConfigMap
         name: cluster-settings
+        optional: true
       - kind: Secret
         name: cluster-secrets
