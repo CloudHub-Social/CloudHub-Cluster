@@ -1,19 +1,19 @@
 output "machineconfig_controlplane" {
-  value     = talos_machine_configuration_controlplane.machineconfig_cp.machine_config
+  value     = data.talos_machine_configuration.machineconfig_cp
   sensitive = true
 }
 
 output "machineconfig_worker" {
-  value     = talos_machine_configuration_worker.machineconfig_worker.machine_config
+  value     = data.talos_machine_configuration.machineconfig_worker
   sensitive = true
 }
 
 output "talosconfig" {
-  value     = talos_client_configuration.talosconfig.talos_config
+  value     = talos_machine_secrets.machine_secrets.client_configuration
   sensitive = true
 }
 
 output "kubeconfig" {
-  value     = talos_cluster_kubeconfig.kubeconfig.kube_config
+  value     = data.talos_cluster_kubeconfig.kubeconfig.kubeconfig_raw
   sensitive = true
 }

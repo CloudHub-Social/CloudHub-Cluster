@@ -27,20 +27,9 @@ data "tfe_outputs" "kubeconfig" {
   workspace = "kube-cluster"
 }
 
-provider "kubernetes" {
-  host                   = yamldecode(data.tfe_outputs.kubeconfig.values.kubeconfig)["clusters"][0]["cluster"]["server"]
-  cluster_ca_certificate = base64decode(yamldecode(data.tfe_outputs.kubeconfig.values.kubeconfig)["clusters"][0]["cluster"]["certificate-authority-data"])
-  client_certificate     = base64decode(yamldecode(data.tfe_outputs.kubeconfig.values.kubeconfig)["users"][0]["user"]["client-certificate-data"])
-  client_key             = base64decode(yamldecode(data.tfe_outputs.kubeconfig.values.kubeconfig)["users"][0]["user"]["client-key-data"])
-}
+provider "kubernetes" {}
 
-provider "kubectl" {
-  host                   = yamldecode(data.tfe_outputs.kubeconfig.values.kubeconfig)["clusters"][0]["cluster"]["server"]
-  cluster_ca_certificate = base64decode(yamldecode(data.tfe_outputs.kubeconfig.values.kubeconfig)["clusters"][0]["cluster"]["certificate-authority-data"])
-  client_certificate     = base64decode(yamldecode(data.tfe_outputs.kubeconfig.values.kubeconfig)["users"][0]["user"]["client-certificate-data"])
-  client_key             = base64decode(yamldecode(data.tfe_outputs.kubeconfig.values.kubeconfig)["users"][0]["user"]["client-key-data"])
-  load_config_file       = false
-}
+provider "kubectl" {}
 
 ###
 # Qemu Guest Agent
