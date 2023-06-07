@@ -29,8 +29,8 @@ spec:
   uninstall:
     keepHistory: false
   dependsOn:
-    - name: local-path-provisioner
-      namespace: kube-system
+    - name: nfs-client-provisioner
+      namespace: nfs-provisioner
   values:
     cleanPrometheusOperatorObjectNames: true
     alertmanager:
@@ -131,7 +131,7 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: local-path
+              storageClassName: nfs-client
               resources:
                 requests:
                   storage: 10Gi
