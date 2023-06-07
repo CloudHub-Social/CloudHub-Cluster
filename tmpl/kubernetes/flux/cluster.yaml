@@ -27,7 +27,7 @@ spec:
   wait: false
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
+    name: flux-system
   decryption:
     provider: sops
     secretRef:
