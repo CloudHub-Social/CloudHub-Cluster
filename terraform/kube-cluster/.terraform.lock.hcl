@@ -58,24 +58,22 @@ provider "registry.terraform.io/hashicorp/null" {
 }
 
 provider "registry.terraform.io/siderolabs/talos" {
-  version     = "0.1.2"
+  version     = "0.2.0"
   constraints = ">= 0.1.0"
   hashes = [
-    "h1:yNpX1TK2xntW9sFUZfYAdsUsX6v5AKJ/0vxi1Lmflnw=",
-    "zh:0fa82a384b25a58b65523e0ea4768fa1212b1f5cfc0c9379d31162454fedcc9d",
-    "zh:2ec1982f267b47472dec1749940d7f071a55e2dc372f24743c495177df5653d8",
-    "zh:2fb6a64ff91c08ce9f47caf832cd586ca4d47e3fb99bff8475c29504057da90f",
-    "zh:37e7600e04c690610655cec4f5367484609e69553581d82b2263259ba25e0281",
-    "zh:55f629276c64e8f5acf9f3ff8c74acd02f76dbf3596e0ac81e4c97536a502dec",
-    "zh:8930e64845aaa54de8ab538beffd38554ae4050e76cf5de0ca8ca830cac7467e",
-    "zh:a46141e0bbce55b593f9f93de52f535bdd9952de4ef7237b7ab520f21e2b09c2",
-    "zh:c412412c88c753709c5191c22022d2424c439434d04d36255d552b30b6d8ff39",
-    "zh:cbb5e1b256546b20f8cd7aeb66aba1a5944377e3c5eba53ea6bfab931e026509",
-    "zh:d089bdca932b1c440ebb76a6121e0fe6591c597ef0ccdda3d1f0e9f29eb1395e",
-    "zh:d0ffb0a34940bf0da409bd7208286adb86bbb4c984bf6ccb863e628dd1de022e",
-    "zh:e0b1818e71f6b6a51921e29524c271b704980a457b632da531f57a0c0f2bc4e3",
-    "zh:e9bdff4705f0763c8a161a15f39c2cbdc458fd3a03a569ff3f8d0232cf074a5a",
-    "zh:f315965890e42d5d446670cd0d0dfdb417621938311f11b0fa2583adc3709660",
-    "zh:fdcca3053a1e75b07f05674fada95e9c74ca0da5c6b256961659e74d0a4cab47",
+    "h1:+U9gMyFAgTCNptgW1+55QOu7ZaPpEZMWprZVYgddgZQ=",
+    "h1:3poMY6NnlPlnL1HP0jdRwtmgNygOA5epiQz4OpVLjbQ=",
+    "h1:Bdz1cmiBYPe+2JKrhCVwh2ozEx1QShD93q5jVYECsLE=",
+    "h1:Bny4h57T4Mh25gV454qDCkr7JjEy+l4I0fI0qY1gR4Q=",
+    "h1:CGMEAtnx3NzCPXkfZyzYxJjm/OHbxy/J5ByrPVmoJaA=",
+    "h1:Llx+4RInMu2+ruiay6+2gJVD4ELuAkZFjq3gMG8nDUk=",
+    "h1:N+FcjpsDPPs772sotGtqY1Ri2lsC5QaIkARf587F2O4=",
+    "h1:N895p8EraAyAbGYYpFQGPSC6+6C8pAtC5QVlAjjTFtE=",
+    "h1:XgcPt8EpdaUJ210PmuhB/+Q1CJMHyuNv+22Ma3deV8k=",
+    "h1:eznJzC/McanWejwIDkwk8BQ2fIi/Vo6a/FbsZOUmch4=",
+    "h1:fAsfoTpIyvNyUoqR1nTkMnJokvYJ18RhokUFuv0LWN8=",
+    "h1:fYZ93k+vM2O6A9rQauKOJXEULfniaSm5Pl/bulC3BJA=",
+    "h1:lb4SkgjuIoVyou0owJid3DPsalJ3H7xTverhQo54eAQ=",
+    "h1:oZDm+AE08PIYHsJnihB1zDbwL/8wnX3YLKgELF14aIw=",
   ]
 }
