@@ -12,6 +12,11 @@ spec:
   secretRef:
     name: flux-system
   url: ssh://git@github.com/Just-Insane/CloudHub-Cluster.git
+  ignore: |
+    # exclude all
+    /*
+    # include kubernetes dir
+    /kubernetes
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -23,6 +28,12 @@ spec:
     provider: sops
     secretRef:
       name: sops-age
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-settings
+      - kind: Secret
+        name: cluster-secrets
   prune: false
   path: ./kubernetes
   interval: 10m0s
@@ -30,13 +41,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
-  postBuild:
-    substituteFrom:
-      - kind: ConfigMap
-        name: cluster-settings
-        optional: true
-      - kind: Secret
-        name: cluster-secrets
   patches:
     - patch: |-
         apiVersion: kustomize.toolkit.fluxcd.io/v1
