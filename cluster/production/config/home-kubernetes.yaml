@@ -25,7 +25,7 @@ spec:
       name: sops-age
   prune: false
   path: ./kubernetes
-  interval: 60m0s
+  interval: 10m0s
   timeout: 3m0s
   sourceRef:
     kind: GitRepository
