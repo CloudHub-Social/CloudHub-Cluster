@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-authentik
   namespace: flux-system
 spec:
-  path: ./kubernetes/apps/authentik/authentik/app
+  path: ./apps/production/authentik/authentik/app
   prune: true
   sourceRef:
     kind: GitRepository
