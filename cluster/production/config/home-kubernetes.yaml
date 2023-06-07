@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  timeout: 3m0s
+  timeout: 5m0s
   ref:
     branch: main
   secretRef:
@@ -26,7 +26,7 @@ spec:
   prune: false
   path: ./kubernetes
   interval: 10m0s
-  timeout: 3m0s
+  timeout: 5m0s
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
