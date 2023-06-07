@@ -10,7 +10,7 @@ spec:
     branch: main
   url: "ssh://git@github.com:22/Just-Insane/CloudHub-Cluster.git"
   secretRef:
-    name: github-deploy-key
+    name: flux-system
   ignore: |
     # exclude all
     /*
