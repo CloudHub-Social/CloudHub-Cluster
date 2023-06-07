@@ -6,7 +6,6 @@ metadata:
   name: flux-monitoring
   namespace: flux-system
 spec:
-  gitImplementation: go-git
   interval: 30m0s
   ref:
     branch: main
