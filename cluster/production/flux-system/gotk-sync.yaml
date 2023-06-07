@@ -12,11 +12,6 @@ spec:
   secretRef:
     name: flux-system
   url: ssh://git@github.com/Just-Insane/CloudHub-Cluster.git
-  # ignore: |
-  #   # exclude all
-  #   /*
-  #   # include flux-system dir
-  #   /cluster/production
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
