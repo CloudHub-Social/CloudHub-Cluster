@@ -12,3 +12,52 @@ spec:
   secretRef:
     name: flux-system
   url: ssh://git@github.com/Just-Insane/CloudHub-Cluster.git
+<<<<<<< HEAD
+=======
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: home-kubernetes-secrets
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  prune: false
+  path: ./kubernetes
+  interval: 10m0s
+  timeout: 5m0s
+  sourceRef:
+    kind: GitRepository
+    name: home-kubernetes
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-settings
+        optional: true
+      - kind: Secret
+        name: cluster-secrets
+  patches:
+    - patch: |-
+        apiVersion: kustomize.toolkit.fluxcd.io/v1
+        kind: Kustomization
+        metadata:
+          name: not-used
+        spec:
+          decryption:
+            provider: sops
+            secretRef:
+              name: sops-age
+          postBuild:
+            substituteFrom:
+              - kind: ConfigMap
+                name: cluster-settings
+              - kind: Secret
+                name: cluster-secrets
+      target:
+        group: kustomize.toolkit.fluxcd.io
+        kind: Kustomization
+        labelSelector: substitution.flux.home.arpa/disabled notin (true)
+>>>>>>> parent of 00a5efb (update repos)
