@@ -4,6 +4,6 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - ./configmap.yaml
-  - ./objectbucketclaim.yaml
-  - ./helmrelease.yaml
   - ./externalsecret.yaml
+  - ./helmrelease.yaml
+  - ./objectbucketclaim.yaml
