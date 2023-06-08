@@ -216,7 +216,7 @@ spec:
         enabled: true
     persistence:
       enabled: true
-      storageClassName: local-path
+      storageClassName: nfs-client
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
