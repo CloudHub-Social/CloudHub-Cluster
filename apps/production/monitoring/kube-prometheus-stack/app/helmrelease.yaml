@@ -118,10 +118,6 @@ spec:
           - hosts:
               - *host
       prometheusSpec:
-        containers:
-        - name: prometheus
-          securityContext:
-            fsGroup: 1004
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
@@ -132,7 +128,7 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: nfs-client
+              storageClassName: local-path
               resources:
                 requests:
                   storage: 10Gi
