@@ -18,7 +18,7 @@ machine:
       - talos.logging.kernel=udp://10.0.41.51:6050/
   logging:
     destinations:
-      - endpoint: "udp://10.0.41.51:6051/"
+      - endpoint: "udp://10.0.41.61:6051/"
         format: "json_lines"
 cluster:
   discovery:
