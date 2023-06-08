@@ -216,7 +216,7 @@ spec:
         enabled: true
     persistence:
       enabled: true
-      storageClassName: nfs-client
+      storageClassName: ceph-block
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
