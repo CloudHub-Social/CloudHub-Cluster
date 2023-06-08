@@ -9,7 +9,7 @@ output "machineconfig_worker" {
 }
 
 output "talosconfig" {
-  value     = talos_machine_secrets.machine_secrets.client_configuration
+  value     = data.talos_client_configuration.talosconfig.talos_config
   sensitive = true
 }
 

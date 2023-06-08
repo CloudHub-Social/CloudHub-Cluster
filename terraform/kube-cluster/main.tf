@@ -123,6 +123,6 @@ resource "null_resource" "config_output" {
     talos_machine_bootstrap.bootstrap
   ]
   provisioner "local-exec" {
-    command = "terraform output --raw kubeconfig > ../../kubeconfig && terraform output talosconfig > ../../talosconfig"
+    command = "terraform output --raw kubeconfig > ../../kubeconfig && terraform output --raw talosconfig > ../../talosconfig"
   }
 }
