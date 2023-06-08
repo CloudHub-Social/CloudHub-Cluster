@@ -555,6 +555,20 @@ Note: If a resource exists, running `kubectl -n <namespace> describe <resource> 
 
 Resolving problems that you have could take some tweaking of your YAML manifests in order to get things working, other times it could be a external factor like permissions on NFS. If you are unable to figure out your problem see the help section below.
 
+### Ceph Rebuild
+
+Review the steps in the [Rook docs](https://rook.io/docs/rook/v1.11/Getting-Started/ceph-teardown/)
+
+```
+kubectl -n rook-ceph patch cephcluster rook-ceph --type merge -p '{"spec":{"cleanupPolicy":{"confirmation":"yes-really-destroy-data"}}}'
+```
+
+```
+kubectl -n rook-ceph delete cephcluster rook-ceph
+```
+
+You may also have to clean up the disks/reboot the nodes. Though if the cluster hasn't come up yet, the above worked for cleaning up a stuck HelmRelease.
+
 ## 👉 Help
 
 - Make a post in this repository's GitHub [Discussions](https://github.com/onedr0p/flux-cluster-template/discussions).
