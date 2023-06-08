@@ -28,9 +28,6 @@ spec:
       retries: 10
   uninstall:
     keepHistory: false
-  dependsOn:
-    - name: nfs-client-provisioner
-      namespace: nfs-provisioner
   values:
     cleanPrometheusOperatorObjectNames: true
     alertmanager:
