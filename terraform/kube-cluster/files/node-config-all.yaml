@@ -15,7 +15,7 @@ machine:
           - rw
   install:
     extraKernelArgs:
-      - talos.logging.kernel=udp://10.0.41.51:6050/
+      - talos.logging.kernel=udp://10.0.41.61:6050/
   logging:
     destinations:
       - endpoint: "udp://10.0.41.61:6051/"
