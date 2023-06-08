@@ -9,5 +9,5 @@ resources:
   - monitoring
   - networking
   - nfs-provisioner
-  # - rook-ceph
+  - rook-ceph
   # - system-upgrade
