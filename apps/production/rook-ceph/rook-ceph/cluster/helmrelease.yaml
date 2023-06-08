@@ -26,6 +26,9 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    mon:
+      count: 3
+      allowMultiplePerNode: false
     monitoring:
       enabled: true
       createPrometheusRules: true
@@ -66,8 +69,9 @@ spec:
       storage:
         useAllNodes: true
         useAllDevices: true
-        config:
-          osdsPerDevice: "1"
+        onlyApplyOSDPlacement: false
+        # config:
+        #   osdsPerDevice: "1"
     cephBlockPools:
       - name: ceph-blockpool
         spec:
