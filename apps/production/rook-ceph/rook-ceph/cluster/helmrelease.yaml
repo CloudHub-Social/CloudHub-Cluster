@@ -70,8 +70,8 @@ spec:
         useAllNodes: true
         useAllDevices: true
         onlyApplyOSDPlacement: false
-        # config:
-        #   osdsPerDevice: "1"
+        config:
+          osdsPerDevice: "1"
     cephBlockPools:
       - name: ceph-blockpool
         spec:
