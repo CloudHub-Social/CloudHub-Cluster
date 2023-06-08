@@ -118,6 +118,10 @@ spec:
           - hosts:
               - *host
       prometheusSpec:
+        containers:
+        - name: prometheus
+          securityContext:
+            fsGroup: 1004
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
