@@ -22,3 +22,4 @@ spec:
     /pictrs/templates/10-namespace.yaml
     /postgres/templates/10-namespace.yaml
     /postgres/templates/20-secret.yaml
+    /pictrs/templates/30-secret.yaml
