@@ -2,11 +2,11 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: flux-monitoring
+  name: lemmy-help
   namespace: flux-system
 spec:
-  interval: 30m0s
+  interval: 1h
   ref:
-    branch: main
+    branch: master
   timeout: 1m0s
-  url: https://github.com/fluxcd/flux2
+  url: https://github.com/grouvie/lemmy_help

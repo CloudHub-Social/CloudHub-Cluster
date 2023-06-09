@@ -1,0 +1,64 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: lemmy-pictrs
+  namespace: lemmy
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: lemmy
+      version: 0.0.1
+      sourceRef:
+        kind: HelmRepository
+        name: lemmy-help
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 10
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 10
+  uninstall:
+    keepHistory: false
+  values:
+    namespace: lemmy
+    image:
+      repository: dessalines/lemmy:0.17.3
+    image_ui:
+      repository: dessalines/lemmy-ui:0.17.3
+    deployment:
+      replicaCount: 1
+      terminationGracePeriodSeconds: 10
+      env:
+        rust_backtrace: full
+    deployment_ui:
+      replicaCount: 1
+      terminationGracePeriodSeconds: 10
+      env:
+        lemmy_ui_lemmy_external_host: "lemmy.${SECRET_DOMAIN}"
+        lemmy_ui_lemmy_internal_host: lemmy-service.lemmy.svc.cluster.local:8536
+        lemmy_https: true
+        lemmy_ui_debug: false
+    service:
+      protocol: TCP
+      port: 8536
+    service_ui:
+      protocol: TCP
+      port: 1234
+    secret:
+      type: Opaque
+    pvc:
+      storage: 1Gi
+      storageClassName: nfs-client
+    ingress:
+      host: "lemmy.${SECRET_DOMAIN}"
+    tls:
+      # ssl-cert-production / ssl-cert-staging
+      secretName: letsencrypt-production
+      # letsencrypt-production / letsencrypt-staging
+      issuerName: letsencrypt-production

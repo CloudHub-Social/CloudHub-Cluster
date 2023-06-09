@@ -1,0 +1,8 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - namespace.yaml
+  - ./lemmy/ks.yaml
+  - ./pictrs/ks.yaml
+  - ./postgres/ks.yaml
