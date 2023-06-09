@@ -59,6 +59,6 @@ spec:
       host: "lemmy.${SECRET_DOMAIN}"
     tls:
       # ssl-cert-production / ssl-cert-staging
-      secretName: letsencrypt-production
+      secretName: ssl-cert-production
       # letsencrypt-production / letsencrypt-staging
       issuerName: letsencrypt-production
