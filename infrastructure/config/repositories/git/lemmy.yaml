@@ -18,4 +18,6 @@ spec:
     !/pictrs
     !/postgres
     # exclude namespace files
-    /*/*/10-namespace.yaml
+    /lemmy/**/10-namespace.yaml
+    /pictrs/**/10-namespace.yaml
+    /postgres/**/10-namespace.yaml
