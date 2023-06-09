@@ -41,7 +41,7 @@ spec:
       terminationGracePeriodSeconds: 10
       env:
         lemmy_ui_lemmy_external_host: "lemmy.${SECRET_DOMAIN}"
-        lemmy_ui_lemmy_internal_host: lemmy-service.lemmy.svc.cluster.local:8536
+        lemmy_ui_lemmy_internal_host: lm-lm-service.lemmy.svc.cluster.local:8536
         lemmy_https: true
         lemmy_ui_debug: false
     service:
