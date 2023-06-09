@@ -56,7 +56,7 @@ spec:
     rbac:
       create: true
       # impersonationResourceNames: ["admin", "wego-admin", "wego-readonly"]
-      impersonationResourceNames: ["admin", "wego-admin", "wego-readonly"]
+      impersonationResourceNames: ["admin", "aaawego-admin", "aaawego-readonly"]
       impersonationResources: ["users", "groups"]
     podAnnotations:
       secret.reloader.stakater.com/reload: weave-gitops-secret
