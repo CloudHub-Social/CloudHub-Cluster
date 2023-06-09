@@ -26,6 +26,9 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    envVars:
+      - name: WEAVE_GITOPS_FEATURE_OIDC_BUTTON_LABEL
+        value: "Login with Authentik"
     adminUser:
       create: true
       username: admin
