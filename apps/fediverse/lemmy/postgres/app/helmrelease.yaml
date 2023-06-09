@@ -26,7 +26,7 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    namespace: postgres
+    namespace: lemmy
     image_p:
       repository: postgres:14.5
     image_pa:

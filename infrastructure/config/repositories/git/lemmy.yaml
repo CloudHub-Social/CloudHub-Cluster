@@ -10,3 +10,12 @@ spec:
     branch: master
   timeout: 1m0s
   url: https://github.com/grouvie/lemmy_help
+  ignore: |
+    # exclude all
+    /*
+    # include chart dirs
+    !/lemmy
+    !/pictrs
+    !/postgres
+    # exclude namespace files
+    /*/*/10-namespace.yaml
