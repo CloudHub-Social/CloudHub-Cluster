@@ -8,3 +8,4 @@ cluster:
               - monitoring
               - qemu-guest-agent
               - rook-ceph
+              - lemmy
