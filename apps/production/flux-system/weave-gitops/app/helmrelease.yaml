@@ -29,6 +29,8 @@ spec:
     envVars:
       - name: WEAVE_GITOPS_FEATURE_OIDC_BUTTON_LABEL
         value: "Login with Authentik"
+      - name: WEAVE_GITOPS_AUTH_ENABLED
+        value: "true"
     adminUser:
       create: true
       username: admin
@@ -62,3 +64,4 @@ spec:
       name: weave-gitops-secret
       valuesKey: adminPassword
       targetPath: adminUser.passwordHash
+
