@@ -21,3 +21,4 @@ spec:
     /lemmy/templates/10-namespace.yaml
     /pictrs/templates/10-namespace.yaml
     /postgres/templates/10-namespace.yaml
+    /postgres/templates/20-secret.yaml
