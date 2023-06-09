@@ -54,7 +54,7 @@ spec:
     metrics:
       enabled: true
     rbac:
-      create: true
+      # create: true
       # impersonationResourceNames: ["admin", "wego-admin", "wego-readonly"]
       impersonationResourceNames: ["admin", "aaawego-admin", "aaawego-readonly"]
       impersonationResources: ["users", "groups"]
