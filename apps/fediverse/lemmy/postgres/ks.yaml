@@ -5,8 +5,8 @@ metadata:
   name: cluster-apps-fediverse-lemmy-postgres
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: nfs-client-provisioner
+  # dependsOn:
+  #   - name: nfs-client-provisioner
   path: ./apps/fediverse/lemmy/postgres/app
   prune: true
   sourceRef:

@@ -5,8 +5,8 @@ metadata:
   name: cluster-apps-fediverse-lemmy-pictrs
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: nfs-client-provisioner
+  # dependsOn:
+  #   - name: nfs-client-provisioner
   path: ./apps/fediverse/lemmy/pictrs/app
   prune: true
   sourceRef:
