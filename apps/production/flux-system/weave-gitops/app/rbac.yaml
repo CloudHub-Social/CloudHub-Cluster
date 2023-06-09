@@ -57,7 +57,7 @@ metadata:
   name: wego-cluster-admin
 subjects:
 - kind: Group
-  name: wego-admin
+  name: aaawego-admin
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
@@ -71,7 +71,7 @@ metadata:
   name: wego-readonly-role
 subjects:
 - kind: Group
-  name: wego-readonly
+  name: aaawego-readonly
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
