@@ -9,7 +9,7 @@ spec:
   ref:
     branch: master
   timeout: 1m0s
-  url: https://github.com/grouvie/lemmy_help
+  url: https://github.com/Just-Insane/lemmy_help
   ignore: |
     # exclude all
     /*
