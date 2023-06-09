@@ -29,8 +29,8 @@ spec:
     envVars:
       - name: WEAVE_GITOPS_FEATURE_OIDC_BUTTON_LABEL
         value: "Login with Authentik"
-      # - name: WEAVE_GITOPS_AUTH_ENABLED
-      #   value: "true"
+      - name: WEAVE_GITOPS_AUTH_ENABLED
+        value: "true"
     adminUser:
       create: true
       username: admin
@@ -55,7 +55,8 @@ spec:
       enabled: true
     rbac:
       create: true
-      # impersonationResourceNames: ["admin", "wego-admin", "wego-readonly"]
+      impersonationResourceNames: ["admin", "wego-admin", "wego-readonly"]
+      impersonationResources: ["groups"]
       # impersonationResourceNames: ["admin", "aaawego-admin", "aaawego-readonly"]
       # impersonationResources: ["users", "groups"]
     podAnnotations:

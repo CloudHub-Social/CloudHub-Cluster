@@ -1,46 +1,45 @@
----
-# Default Admin RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: admin-user-read-resources
-  namespace: flux-system
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: wego-admin-role
-subjects:
-- apiGroup: rbac.authorization.k8s.io
-  kind: User
-  name: wego-admin
-  namespace: flux-system
----
-# Default Admin Role
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: wego-admin-role
-  namespace: flux-system
-rules:
-- apiGroups: ["*"]
-  resources: ["*"]
-  verbs: [ "get", "list", "watch" ]
-- apiGroups: ["source.toolkit.fluxcd.io"]
-  resources: [ "buckets", "helmcharts", "gitrepositories", "helmrepositories", "ocirepositories" ]
-  verbs: [ "get", "list", "watch", "patch" ]
-- apiGroups: ["kustomize.toolkit.fluxcd.io"]
-  resources: [ "kustomizations" ]
-  verbs: [ "get", "list", "watch", "patch" ]
-- apiGroups: ["helm.toolkit.fluxcd.io"]
-  resources: [ "helmreleases" ]
-  verbs: [ "get", "list", "watch", "patch" ]
-- apiGroups: [ "notification.toolkit.fluxcd.io" ]
-  resources: [ "providers", "alerts" ]
-  verbs: [ "get", "list", "watch", "patch" ]
-- apiGroups: ["infra.contrib.fluxcd.io"]
-  resources: ["terraforms"]
-  verbs: [ "get", "list", "watch", "patch" ]
-
+# ---
+# # Default Admin RoleBinding
+# apiVersion: rbac.authorization.k8s.io/v1
+# kind: RoleBinding
+# metadata:
+#   name: admin-user-read-resources
+#   namespace: flux-system
+# roleRef:
+#   apiGroup: rbac.authorization.k8s.io
+#   kind: Role
+#   name: wego-admin-role
+# subjects:
+# - apiGroup: rbac.authorization.k8s.io
+#   kind: User
+#   name: wego-admin
+#   namespace: flux-system
+# ---
+# # Default Admin Role
+# apiVersion: rbac.authorization.k8s.io/v1
+# kind: Role
+# metadata:
+#   name: wego-admin-role
+#   namespace: flux-system
+# rules:
+# - apiGroups: ["*"]
+#   resources: ["*"]
+#   verbs: [ "get", "list", "watch" ]
+# - apiGroups: ["source.toolkit.fluxcd.io"]
+#   resources: [ "buckets", "helmcharts", "gitrepositories", "helmrepositories", "ocirepositories" ]
+#   verbs: [ "get", "list", "watch", "patch" ]
+# - apiGroups: ["kustomize.toolkit.fluxcd.io"]
+#   resources: [ "kustomizations" ]
+#   verbs: [ "get", "list", "watch", "patch" ]
+# - apiGroups: ["helm.toolkit.fluxcd.io"]
+#   resources: [ "helmreleases" ]
+#   verbs: [ "get", "list", "watch", "patch" ]
+# - apiGroups: [ "notification.toolkit.fluxcd.io" ]
+#   resources: [ "providers", "alerts" ]
+#   verbs: [ "get", "list", "watch", "patch" ]
+# - apiGroups: ["infra.contrib.fluxcd.io"]
+#   resources: ["terraforms"]
+#   verbs: [ "get", "list", "watch", "patch" ]
 ---
 # Admin cluster role
 apiVersion: rbac.authorization.k8s.io/v1
@@ -100,7 +99,7 @@ metadata:
   name: wego-cluster-admin
 subjects:
 - kind: Group
-  name: aaawego-admin
+  name: wego-admin
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
@@ -114,7 +113,7 @@ metadata:
   name: wego-readonly-role
 subjects:
 - kind: Group
-  name: aaawego-readonly
+  name: wego-readonly
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
