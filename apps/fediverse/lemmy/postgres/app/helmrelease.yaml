@@ -9,6 +9,7 @@ spec:
   chart:
     spec:
       chart: postgresql
+      reconcileStrategy: ChartVersion
       version: 12.5.6
       sourceRef:
         kind: HelmRepository
