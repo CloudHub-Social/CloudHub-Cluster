@@ -41,6 +41,12 @@ spec:
         enabled: true
         # storageClass: nfs-client
         existingClaim: "data-lemmy-postgresql-0-lemmy-database"
+      containerSecurityContext:
+        enabled: true
+        runAsUser: 1004
+      podSecurityContext:
+        enabled: true
+        fsGroup: 1004
     volumePermissions:
       enabled: true
       containerSecurityContext:
