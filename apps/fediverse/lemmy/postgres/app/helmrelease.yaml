@@ -28,6 +28,7 @@ spec:
   values:
     auth:
       username: lemmy
+      database: lemmy
       existingSecret: lm-pgrs-secret
       secretKeys:
         adminPasswordKey: postgresql-password
