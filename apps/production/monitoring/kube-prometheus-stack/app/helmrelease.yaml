@@ -164,7 +164,7 @@ spec:
             action: drop
     kubeControllerManager:
       enabled: true
-      endpoints: ["10.0.41.20", "10.0.41.21", "10.0.41.22"]
+      endpoints: ["kube-prometheus-stack-kube-controller-manager.kube-system:10257"]
       serviceMonitor:
         metricRelabelings:
           # Remove duplicate metrics
@@ -173,13 +173,15 @@ spec:
             action: keep
     kubeEtcd:
       enabled: true
-      endpoints: ["10.0.41.20", "10.0.41.21", "10.0.41.22"]
+      endpoints: ["kube-prometheus-stack-kube-etcd.kube-system:2381"]
     kubeProxy:
       enabled: false # Disabled because eBPF
       endpoints: ["10.0.41.20", "10.0.41.21", "10.0.41.22"]
+    coreDns:
+      enabled: true
     kubeScheduler:
       enabled: true
-      endpoints: ["10.0.41.20", "10.0.41.21", "10.0.41.22"]
+      endpoints: ["kube-prometheus-stack-kube-scheduler.kube-system:10259"]
       serviceMonitor:
         metricRelabelings:
           # Remove duplicate metrics
@@ -202,6 +204,10 @@ spec:
           - hosts:
               - *host
       prometheusSpec:
+        podMonitorSelectorNilUsesHelmValues: false
+        probeSelectorNilUsesHelmValues: false
+        ruleSelectorNilUsesHelmValues: false
+        serviceMonitorSelectorNilUsesHelmValues: false
         replicas: 3
         replicaExternalLabelName: __replica__
         scrapeInterval: 10s

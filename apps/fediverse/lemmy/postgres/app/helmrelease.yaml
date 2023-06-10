@@ -49,6 +49,9 @@ spec:
       podSecurityContext:
         enabled: true
         fsGroup: 1004
+      prometheus.io/scrape: "true"
+      prometheus.io/path: "/metrics/cluster"
+      prometheus.io/port: "9000"
     # volumePermissions:
     #   enabled: true
     #   containerSecurityContext:
