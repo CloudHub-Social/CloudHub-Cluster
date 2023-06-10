@@ -80,7 +80,7 @@ resource "talos_machine_configuration_apply" "cp_config_apply" {
       install_disk = each.value.install_disk
     }),
     file("${path.module}/files/cp-scheduling.yaml"),
-    file("${path.module}/files/cp-extraargs.yaml"),
+    # file("${path.module}/files/cp-extraargs.yaml"),
     file("${path.module}/files/cp-vip.yaml"),
     file("${path.module}/files/podsecuritypolicy.yaml"),
     file("${path.module}/files/node-config-all.yaml"),
