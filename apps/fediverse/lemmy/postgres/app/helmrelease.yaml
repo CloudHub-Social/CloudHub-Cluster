@@ -38,14 +38,15 @@ spec:
       enabled: true
       image:
         debug: true
-      persistence:
-        enabled: true
-        # storageClass: nfs-client
-        existingClaim: "data-lemmy-postgresql-0-lemmy-database"
-      volumePermissions:
-        enabled: true
-      containerSecurityContext:
-        runAsUser: 1004
+      primary:
+        persistence:
+          enabled: true
+          # storageClass: nfs-client
+          existingClaim: "data-lemmy-postgresql-0-lemmy-database"
+        volumePermissions:
+          enabled: true
+        containerSecurityContext:
+          runAsUser: 1004
     metrics:
       enabled: true
       prometheusRule:
