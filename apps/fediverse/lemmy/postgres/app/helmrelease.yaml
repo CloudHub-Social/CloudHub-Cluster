@@ -33,7 +33,7 @@ spec:
       existingSecret: lm-pgrs-secret
       secretKeys:
         adminPasswordKey: postgresql-password
-        userPasswordKey: postgressql-user-password
+        userPasswordKey: postgresql-user-password
     postgresql:
       enabled: true
       image:
