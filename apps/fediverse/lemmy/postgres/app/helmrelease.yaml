@@ -26,6 +26,12 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    auth:
+      username: lemmy
+      existingSecret: lm-pgrs-secret
+      secretKeys:
+        adminPasswordKey: postgresql-password
+        userPasswordKey: postgressql-user-password
     postgresql:
       enabled: true
       image:
