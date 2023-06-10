@@ -44,9 +44,6 @@ spec:
       containerSecurityContext:
         enabled: true
         runAsUser: 1004
-      podSecurityContext:
-        enabled: true
-        fsGroup: 1004
     volumePermissions:
       enabled: true
       containerSecurityContext:
