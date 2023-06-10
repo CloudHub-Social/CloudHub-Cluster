@@ -40,8 +40,8 @@ spec:
         debug: true
       persistence:
         enabled: true
-        storageClass: nfs-client
-        existingClaim: "data-authentik-postgresql-0-authentik-database"
+        # storageClass: nfs-client
+        existingClaim: "data-lemmy-postgresql-0-lemmy-database"
       volumePermissions:
         enabled: true
       containerSecurityContext:
