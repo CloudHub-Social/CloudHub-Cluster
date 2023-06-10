@@ -5,6 +5,5 @@ metadata:
   name: bitnami
   namespace: flux-system
 spec:
-  type: oci
   interval: 5m
-  url: https://charts.bitnami.com/bitnami
+  url: https://charts.bitnami.com/bitnami/
