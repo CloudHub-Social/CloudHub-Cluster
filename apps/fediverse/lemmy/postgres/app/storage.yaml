@@ -30,7 +30,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 8Gi
+      storage: 10Gi
   volumeName: pvc-lemmy-database
   storageClassName: nfs-client
   volumeMode: Filesystem

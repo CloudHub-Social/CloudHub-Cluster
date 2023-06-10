@@ -38,5 +38,5 @@ spec:
     secret:
       type: Opaque
     pvc:
-      storage: 20Gi
+      storage: 50Gi
       storageClassName: nfs-client
