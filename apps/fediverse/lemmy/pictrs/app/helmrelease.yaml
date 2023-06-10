@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: pictrs
-      version: 0.0.1
+      version: 0.0.2
       sourceRef:
         kind: GitRepository
         name: lemmy-help
