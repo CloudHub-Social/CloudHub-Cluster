@@ -27,26 +27,26 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    auth:
-      username: lemmy
-      database: lemmy
-      existingSecret: lm-pgrs-secret
-      secretKeys:
-        adminPasswordKey: postgresql-password
-        userPasswordKey: postgresql-user-password
     postgresql:
+      auth:
+        username: lemmy
+        database: lemmy
+        existingSecret: lm-pgrs-secret
+        secretKeys:
+          adminPasswordKey: postgresql-password
+          userPasswordKey: postgresql-user-password
       enabled: true
       image:
         debug: true
-      primary:
-        persistence:
-          enabled: true
-          # storageClass: nfs-client
-          existingClaim: "data-lemmy-postgresql-0-lemmy-database"
-        volumePermissions:
-          enabled: true
-        containerSecurityContext:
-          runAsUser: 1004
+    primary:
+      persistence:
+        enabled: true
+        # storageClass: nfs-client
+        existingClaim: "data-lemmy-postgresql-0-lemmy-database"
+      volumePermissions:
+        enabled: true
+      containerSecurityContext:
+        runAsUser: 1004
     metrics:
       enabled: true
       prometheusRule:
