@@ -19,6 +19,7 @@ spec:
     # !/postgres
     # exclude namespace files
     /lemmy/templates/10-namespace.yaml
+    /lemmy/templates/90-configmap.yaml
     /pictrs/templates/10-namespace.yaml
     # /postgres/templates/10-namespace.yaml
     # /postgres/templates/20-secret.yaml
