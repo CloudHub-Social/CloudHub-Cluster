@@ -4,18 +4,3 @@ creation_rules:
   - path_regex: ".*\\.yaml"
     encrypted_regex: ^(data|stringData)$
     age: age1ztgva2tc0wsdchee6a8kenhjtcgwzwy8uhlal60zd6wuxuwgvpzslkhnlg
-
-  - path_regex: kubernetes/.*\.sops\.ya?ml
-    encrypted_regex: "^(data|stringData)$"
-    key_groups:
-    age: age1ztgva2tc0wsdchee6a8kenhjtcgwzwy8uhlal60zd6wuxuwgvpzslkhnlg
-
-  - path_regex: infrastructure/.*\.*.ya?ml
-    encrypted_regex: "^(data|stringData)$"
-    key_groups:
-    age: age1ztgva2tc0wsdchee6a8kenhjtcgwzwy8uhlal60zd6wuxuwgvpzslkhnlg
-
-  - path_regex: apps/.*\.*.ya?ml
-    encrypted_regex: "^(data|stringData)$"
-    key_groups:
-    age: age1ztgva2tc0wsdchee6a8kenhjtcgwzwy8uhlal60zd6wuxuwgvpzslkhnlg
