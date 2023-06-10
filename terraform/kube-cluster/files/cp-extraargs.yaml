@@ -1,9 +1,12 @@
 cluster:
   controllerManager:
     extraArgs:
-      address: "0.0.0.0"
+      # address: "0.0.0.0"
       bind-address: "0.0.0.0"
   scheduler:
     extraArgs:
-      address: "0.0.0.0"
+      # address: "0.0.0.0"
       bind-address: "0.0.0.0"
+  proxy:
+    extraArgs:
+      metrics-bind-address: "0.0.0.0:10249"

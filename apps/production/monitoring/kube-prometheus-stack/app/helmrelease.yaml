@@ -175,7 +175,7 @@ spec:
       enabled: true
       # endpoints: ["kube-prometheus-stack-kube-etcd.kube-system:2381"]
     kubeProxy:
-      enabled: false # Disabled because eBPF
+      enabled: true # Disabled because eBPF
       # endpoints: ["10.0.41.20", "10.0.41.21", "10.0.41.22"]
     coreDns:
       enabled: true
