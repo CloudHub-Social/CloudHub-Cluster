@@ -16,10 +16,10 @@ spec:
     # include chart dirs
     !/lemmy
     !/pictrs
-    !/postgres
+    # !/postgres
     # exclude namespace files
     /lemmy/templates/10-namespace.yaml
     /pictrs/templates/10-namespace.yaml
-    /postgres/templates/10-namespace.yaml
-    /postgres/templates/20-secret.yaml
+    # /postgres/templates/10-namespace.yaml
+    # /postgres/templates/20-secret.yaml
     /pictrs/templates/30-secret.yaml

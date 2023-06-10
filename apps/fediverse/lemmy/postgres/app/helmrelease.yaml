@@ -9,10 +9,10 @@ spec:
   chart:
     spec:
       chart: postgres
-      version: 0.0.1
+      version: 12.5.6
       sourceRef:
-        kind: GitRepository
-        name: lemmy-help
+        kind: HelmRepository
+        name: bitnami
         namespace: flux-system
   maxHistory: 2
   install:
@@ -26,38 +26,22 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    namespace: lemmy
-    image_p:
-      repository: postgres:14.5
-    image_pa:
-      repository: dpage/pgadmin4
-    deployment_p:
-      replicaCount: 1
-      terminationGracePeriodSeconds: 10
-    deployment_pa:
-      replicaCount: 1
-      containerPort: 5050
-    service_p:
-      protocol: TCP
-      port: 5432
-      targetPort: 5432
-    service_pa:
-      protocol: TCP
-      port: 5050
-      targetPort: 5050
-    secret:
-      type: Opaque
-    ingress:
+    postgresql:
       enabled: true
-      # Used to create an Ingress record.
-      host: "pgadmin.${SECRET_DOMAIN}"
-      port: 5050
-    tls:
-      # ssl-cert-production / ssl-cert-staging
-      secretName: letsencrypt-production
-      # letsencrypt-production / letsencrypt-staging
-      issuerName: letsencrypt-production
-    pvc:
-      storage: 16Gi
-      storage_pa: 1Gi
-      storageClassName: nfs-client
+      image:
+        debug: true
+      persistence:
+        enabled: true
+        storageClass: nfs-client
+        existingClaim: "data-authentik-postgresql-0-authentik-database"
+      volumePermissions:
+        enabled: true
+      containerSecurityContext:
+        runAsUser: 1004
+    metrics:
+      enabled: true
+      prometheusRule:
+        enabled: true
+      serviceMonitor:
+        create: true
+

@@ -5,3 +5,4 @@ namespace: lemmy
 resources:
   - ./helmrelease.yaml
   - ./postgres-secret.yaml
+  - ./storage.yaml
