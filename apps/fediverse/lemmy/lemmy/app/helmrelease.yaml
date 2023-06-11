@@ -343,6 +343,6 @@ spec:
       hosts:
         - "lemmy.${SECRET_DOMAIN}"
       tls:
-      #  - secretName: chart-example-tls
+       - secretName: letsencrypt-production
          hosts:
            - "lemmy.${SECRET_DOMAIN}"
