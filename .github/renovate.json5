@@ -9,11 +9,11 @@
     ":enablePreCommit",
     ":automergeDigest",
     ":automergeBranch",
-    "github>onedr0p/flux-cluster-template//.github/renovate/autoMerge.json5",
-    "github>onedr0p/flux-cluster-template//.github/renovate/commitMessage.json5",
-    "github>onedr0p/flux-cluster-template//.github/renovate/groups.json5",
-    "github>onedr0p/flux-cluster-template//.github/renovate/labels.json5",
-    "github>onedr0p/flux-cluster-template//.github/renovate/semanticCommits.json5",
+    "github>Just-Insane/CloudHub-Cluster//.github/renovate/autoMerge.json5",
+    "github>Just-Insane/CloudHub-Cluster//.github/renovate/commitMessage.json5",
+    "github>Just-Insane/CloudHub-Cluster//.github/renovate/groups.json5",
+    "github>Just-Insane/CloudHub-Cluster//.github/renovate/labels.json5",
+    "github>Just-Insane/CloudHub-Cluster//.github/renovate/semanticCommits.json5",
     "helpers:pinGitHubActionDigests"
   ],
   "dependencyDashboard": true,
@@ -29,15 +29,28 @@
     "enabled": true
   },
   "flux": {
-    "fileMatch": ["kubernetes/.+\\.ya?ml$"]
+    "fileMatch": [
+      "kubernetes/.+\\.ya?ml$",
+      "apps/.*\\.ya?ml$",
+      "infrastructure/.*\\.ya?ml$",
+      "cluster/.*\\.ya?ml$"
+    ]
   },
   "helm-values": {
-    "fileMatch": ["kubernetes/.+\\.ya?ml$"]
+    "fileMatch": [
+      "kubernetes/.+\\.ya?ml$",
+      "apps/.*\\.ya?ml$",
+      "infrastructure/.*\\.ya?ml$",
+      "cluster/.*\\.ya?ml$"
+    ]
   },
   "kubernetes": {
     "fileMatch": [
       "ansible/.+\\.ya?ml.j2$",
-      "kubernetes/.+\\.ya?ml$"
+      "kubernetes/.+\\.ya?ml$",
+      "apps/.*\\.ya?ml$",
+      "infrastructure/.*\\.ya?ml$",
+      "cluster/.*\\.ya?ml$"
     ]
   },
   "regexManagers": [
@@ -45,7 +58,10 @@
       "description": "Process various other dependencies",
       "fileMatch": [
         "ansible/.+\\.ya?ml$",
-        "kubernetes/.+\\.ya?ml$"
+        "kubernetes/.+\\.ya?ml$",
+        "apps/.*\\.ya?ml$",
+        "infrastructure/.*\\.ya?ml$",
+        "cluster/.*\\.ya?ml$"
       ],
       "matchStrings": [
         "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( registryUrl=(?<registryUrl>\\S+))?\n.*?\"(?<currentValue>.*)\"\n"
