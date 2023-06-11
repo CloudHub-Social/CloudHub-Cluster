@@ -96,7 +96,7 @@ spec:
         # tag:
 
       env:
-        RUST_BACKTRACE: 1
+        RUST_BACKTRACE: "full"
 
       envFrom:
         # - secretRef:
@@ -109,13 +109,13 @@ spec:
       podSecurityContext: {}
         # fsGroup: 2000
 
-      securityContext:
-        capabilities:
-          drop:
-          - ALL
-        readOnlyRootFilesystem: true
-        runAsNonRoot: true
-        runAsUser: 1000
+      securityContext: {}
+        # capabilities:
+        #   drop:
+        #   - ALL
+        # readOnlyRootFilesystem: true
+        # runAsNonRoot: true
+        # runAsUser: 1000
 
       service:
         type: ClusterIP
@@ -235,13 +235,13 @@ spec:
       podSecurityContext:
         fsGroup: 1004
 
-      securityContext:
-        capabilities:
-          drop:
-          - ALL
-        readOnlyRootFilesystem: true
-        runAsNonRoot: true
-        runAsUser: 1004
+      securityContext: {}
+        # capabilities:
+        #   drop:
+        #   - ALL
+        # readOnlyRootFilesystem: true
+        # runAsNonRoot: true
+        # runAsUser: 1004
 
       service:
         type: ClusterIP
@@ -275,13 +275,13 @@ spec:
       podSecurityContext: {}
         # fsGroup: 2000
 
-      securityContext:
-        capabilities:
-          drop:
-          - ALL
-        readOnlyRootFilesystem: true
-        runAsNonRoot: true
-        runAsUser: 1000
+      securityContext: {}
+        # capabilities:
+        #   drop:
+        #   - ALL
+        # readOnlyRootFilesystem: true
+        # runAsNonRoot: true
+        # runAsUser: 1000
 
       service:
         type: ClusterIP
@@ -304,15 +304,14 @@ spec:
     postgresql:
       enabled: true
       # host:
-
+      image:
+        debug: true
       auth:
         username: lemmy
         database: lemmy
         # password:
-
       service:
         port: 5432
-
       persistence:
         enabled: true
         storageClass: nfs-client
@@ -321,7 +320,6 @@ spec:
         enabled: true
       containerSecurityContext:
         runAsUser: 1004
-
       metrics:
         enabled: true
         serviceMonitor:
@@ -330,7 +328,6 @@ spec:
         prometheusRule:
           enabled: true
           namespace: *namespace
-
 
     ingress:
       enabled: true
