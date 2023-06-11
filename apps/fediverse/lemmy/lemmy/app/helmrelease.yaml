@@ -323,6 +323,14 @@ spec:
       containerSecurityContext:
         runAsUser: 1004
 
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+        prometheusRule:
+          enabled: true
+
+
     ingress:
       enabled: true
       className: "nginx"
