@@ -7,17 +7,4 @@ metadata:
 spec:
   interval: 5m0s
   url: https://gitlab.com/ananace/charts
----
-apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: HelmChart
-metadata:
-  name: lemmy
-  namespace: flux-system
-spec:
-  interval: 5m0s
-  chart: ./charts/lemmy
-  reconcileStrategy: ChartVersion
-  sourceRef:
-    kind: GitRepository
-    name: lemmy
-  version: '0.1.*'
+

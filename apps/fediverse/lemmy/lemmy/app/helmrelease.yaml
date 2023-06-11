@@ -8,11 +8,11 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: lemmy
+      chart: ./charts/lemmy
       version: 0.1.0
       sourceRef:
-        kind: HelmChart
-        name: lemmy-help
+        kind: GitRepository
+        name: lemmy
         namespace: flux-system
   maxHistory: 2
   install:
