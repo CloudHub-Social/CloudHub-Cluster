@@ -42,6 +42,8 @@ spec:
           - default
           - monitoring
           - authentik
+          - lemmy
+          - rook-ceph
       defaultSearchProvider: "DuckDuckGo"
     ingress:
       main:

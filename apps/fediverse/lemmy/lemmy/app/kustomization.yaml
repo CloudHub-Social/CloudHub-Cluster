@@ -4,5 +4,5 @@ kind: Kustomization
 namespace: lemmy
 resources:
   - ./helmrelease.yaml
-  - ./configmap.yaml
   - ./lemmy-secret.yaml
+  - ./persistentvolumeclaim.yaml
