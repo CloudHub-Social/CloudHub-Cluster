@@ -7,8 +7,9 @@ metadata:
 spec:
   prune: true
   sourceRef:
-    kind: HelmRepository
+    kind: GitRepository
     name: lemmy
   interval: 30m
   retryInterval: 1m
   timeout: 5m
+  path: "./charts/lemmy"
