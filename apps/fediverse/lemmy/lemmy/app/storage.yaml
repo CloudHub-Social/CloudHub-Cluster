@@ -57,7 +57,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: data-postgres-storage-0
+  name: data-lemmy-postgresql-0
   namespace: lemmy
   finalizers:
     - kubernetes.io/pvc-protection
