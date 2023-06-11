@@ -4,5 +4,3 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - ./lemmy/ks.yaml
-  - ./pictrs/ks.yaml
-  - ./postgres/ks.yaml

@@ -5,14 +5,10 @@ metadata:
   name: cluster-apps-fediverse-lemmy-lemmy
   namespace: flux-system
 spec:
-  dependsOn:
-    # - name: nfs-client-provisioner
-    - name: cluster-apps-fediverse-lemmy-postgres
-  path: ./apps/fediverse/lemmy/lemmy/app
   prune: true
   sourceRef:
-    kind: GitRepository
-    name: flux-system
+    kind: HelmRepository
+    name: lemmy
   interval: 30m
   retryInterval: 1m
   timeout: 5m

@@ -9,9 +9,9 @@ spec:
   chart:
     spec:
       chart: lemmy
-      version: 0.0.12
+      version: 0.1.0
       sourceRef:
-        kind: GitRepository
+        kind: HelmChart
         name: lemmy-help
         namespace: flux-system
   maxHistory: 2
@@ -27,40 +27,313 @@ spec:
     timeout: 10m
   uninstall:
     keepHistory: false
+  valuesFrom:
+    - targetPath: smtp.smtp_password
+      kind: Secret
+      name: lm-lm-secret
+      valuesKey: smtp_password
+    - targetPath: admin.password
+      kind: Secret
+      name: lm-lm-secret
+      valuesKey: admin_password
+    - targetPath: pictrs.apiKey
+      kind: Secret
+      name: lm-lm-secret
+      valuesKey: pictrs_api_key
+    - targetPath: postgresql.auth.password
+      kind: Secret
+      name: lm-lm-secret
+      valuesKey: postgresql_password
+    - targetPath: config.siteName
+      kind: Secret
+      name: lm-lm-secret
+      valuesKey: site_name
   values:
-    namespace: lemmy
     image:
-      repository: dessalines/lemmy:0.17.3
-    image_ui:
-      repository: dessalines/lemmy-ui:0.17.3
-    deployment:
-      replicaCount: 1
-      terminationGracePeriodSeconds: 10
+      repository: dessalines/lemmy
+      pullPolicy: IfNotPresent
+      # Overrides the image tag whose default is the chart appVersion.
+      #tag: latest
+
+    ## The domain of the Lemmy instance
+    serverName: "lemmy.${SECRET_DOMAIN}"
+
+    smtp:
+      server: smtp.sendgrid.net
+      username: apikey
+      # password:
+      from: "lemmy-noreply@${SECRET_DOMAIN}"
+      tls: starttls
+
+    admin:
+      username: jax-admin
+      ## Will be generated on first install if left empty
+      # password:
+      email: "jax-admin@${SECRET_DOMAIN}"
+
+    config:
+      # siteName: Lemmy on Kubernetes
+      ## Requires valid certificates, but is also required for federation support
+      tls: true
+
+    imagePullSecrets: []
+    nameOverride: ""
+    fullnameOverride: ""
+
+    serviceAccount:
+      # Specifies whether a service account should be created
+      create: true
+      # Annotations to add to the service account
+      annotations: {}
+      # The name of the service account to use.
+      # If not set and create is true, a name is generated using the fullname template
+      name: ""
+
+    backend:
+      image:
+        _keep: true
+        # repository: dessalines/lemmy
+        # pullPolicy: IfNotPresent
+        # tag:
+
       env:
-        rust_backtrace: full
-    deployment_ui:
+        RUST_BACKTRACE: 1
+
+      envFrom:
+        # - secretRef:
+        #    name: my-extra-secrets
+
       replicaCount: 1
-      terminationGracePeriodSeconds: 10
+
+      podAnnotations: {}
+
+      podSecurityContext: {}
+        # fsGroup: 2000
+
+      securityContext:
+        capabilities:
+          drop:
+          - ALL
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 1000
+
+      service:
+        type: ClusterIP
+        port: 80
+
+      resources:
+        limits:
+          cpu: 250m
+          memory: 256Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+
+      nodeSelector: {}
+
+      tolerations: []
+
+      affinity: {}
+
+    frontend:
+      image:
+        repository: dessalines/lemmy-ui
+        #pullPolicy: IfNotPresent
+        #tag:
+
+      replicaCount: 1
+
       env:
-        lemmy_ui_lemmy_external_host: "lemmy.${SECRET_DOMAIN}"
-        lemmy_ui_lemmy_internal_host: lm-lm-service.lemmy.svc.cluster.local:8536
-        lemmy_https: true
-        lemmy_ui_debug: false
-    service:
-      protocol: TCP
-      port: 8536
-    service_ui:
-      protocol: TCP
-      port: 1234
-    secret:
-      type: Opaque
-    pvc:
-      storage: 1Gi
-      storageClassName: nfs-client
+        LEMMY_UI_DEBUG: true
+
+      envFrom:
+        # - secretRef:
+        #    name: my-extra-secrets
+
+      podAnnotations: {}
+
+      podSecurityContext: {}
+        # fsGroup: 2000
+
+      securityContext:
+        capabilities:
+          drop:
+          - ALL
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 1000
+
+      service:
+        type: ClusterIP
+        port: 80
+
+      resources:
+        limits:
+          cpu: 250m
+          memory: 256Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+
+      nodeSelector: {}
+
+      tolerations: []
+
+      affinity: {}
+
+    pictrs:
+      replicaCount: 1
+
+      ## Generated on first install if left empty
+      # apiKey:
+
+      storage:
+        ## Storage method for media, can be filesystem or object_storage
+        method: filesystem
+
+        objectStorage:
+          ## For self-hosted S3
+          # endpoint: https://minio.example.com
+          usePathStyle: false
+
+          # bucketName: lemmy-pictrs
+          # region:
+          # accessKey:
+          # secretKey:
+          # sessionToken:
+
+          # existingSecret: pictrs-secret
+          # existingSecretAccessKey: access-key
+          # existingSecretSecretKey: secret-key
+
+      env:
+        PICTRS__MEDIA__VIDEO_CODEC: vp9
+        PICTRS__MEDIA__GIF__MAX_WIDTH: 256
+        PICTRS__MEDIA__GIF__MAX_HEIGHT: 256
+        PICTRS__MEDIA__GIF__MAX_AREA: 65536
+        PICTRS__MEDIA__GIF__MAX_FRAME_COUNT: 400
+
+      envFrom:
+        # - secretRef:
+        #    name: my-extra-secrets
+
+      image:
+        repository: asonix/pictrs
+        pullPolicy: IfNotPresent
+        tag: 0.4.0-beta.19
+
+      ## Used by both the sled database and also media itself if using the filesystem storage method
+      persistence:
+        enabled: true
+        accessMode: ReadWriteOnce
+        size: 16Gi
+        existingClaim: "lemmy-lemmy-pictrs"
+        storageClass: nfs-client
+
+      podAnnotations: {}
+
+      podSecurityContext:
+        fsGroup: 1004
+
+      securityContext:
+        capabilities:
+          drop:
+          - ALL
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 1004
+
+      service:
+        type: ClusterIP
+        port: 80
+
+      resources:
+        limits:
+          cpu: 250m
+          memory: 256Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+
+      nodeSelector: {}
+
+      tolerations: []
+
+      affinity: {}
+
+    proxy:
+      enabled: true
+      replicaCount: 1
+
+      image:
+        repository: nginx
+        pullPolicy: Always
+        tag: 1-alpine
+
+      podAnnotations: {}
+
+      podSecurityContext: {}
+        # fsGroup: 2000
+
+      securityContext:
+        capabilities:
+          drop:
+          - ALL
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 1000
+
+      service:
+        type: ClusterIP
+        port: 80
+
+      resources:
+        limits:
+          cpu: 250m
+          memory: 256Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+
+      nodeSelector: {}
+
+      tolerations: []
+
+      affinity: {}
+
+    postgresql:
+      enabled: true
+      # host:
+
+      auth:
+        username: lemmy
+        database: lemmy
+        # password:
+
+      service:
+        port: 5432
+
+      persistence:
+        enabled: true
+        storageClass: nfs-client
+        exsitingClaim: "data-lemmy-postgresql-0-lemmy-database"
+      volumePermissions:
+        enabled: true
+      containerSecurityContext:
+        runAsUser: 1004
+
     ingress:
-      host: "lemmy.${SECRET_DOMAIN}"
-    tls:
-      # ssl-cert-production / ssl-cert-staging
-      secretName: ssl-cert-production
-      # letsencrypt-production / letsencrypt-staging
-      issuerName: letsencrypt-production
+      enabled: true
+      className: "nginx"
+      annotations:
+        # kubernetes.io/ingress.class: nginx
+        external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+        hajimari.io/icon: simple-icons:lemmy
+        # kubernetes.io/tls-acme: "true"
+      hosts:
+        - &host "lemmy.${SECRET_DOMAIN}"
+      tls:
+      #  - secretName: chart-example-tls
+         hosts:
+           - *host

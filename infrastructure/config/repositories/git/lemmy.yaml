@@ -1,26 +1,9 @@
 ---
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: GitRepository
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
 metadata:
-  name: lemmy-help
+  name: lemmy
   namespace: flux-system
 spec:
-  interval: 1h
-  ref:
-    branch: master
-  timeout: 1m0s
-  url: https://github.com/Just-Insane/lemmy_help
-  ignore: |
-    # exclude all
-    /*
-    # include chart dirs
-    !/lemmy
-    !/pictrs
-    # !/postgres
-    # exclude namespace files
-    /lemmy/templates/10-namespace.yaml
-    /lemmy/templates/90-configmap.yaml
-    /pictrs/templates/10-namespace.yaml
-    # /postgres/templates/10-namespace.yaml
-    # /postgres/templates/20-secret.yaml
-    /pictrs/templates/30-secret.yaml
+  interval: 5m0s
+  url: https://gitlab.com/ananace/charts
