@@ -8,7 +8,7 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: lemmy
+      chart: ./charts/lemmy
       version: 0.1.0
       sourceRef:
         kind: GitRepository
