@@ -1,0 +1,36 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-lemmy-lemmy-pictrs
+  finalizers:
+    - kubernetes.io/pv-protection
+spec:
+  capacity:
+    storage: 50Gi
+  nfs:
+    server: 10.0.20.50
+    path: >-
+      /mnt/Storage/CloudHub-NFS/lemmy-data-lemmy-lemmy-0-pictrs-storage
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs-client
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-lemmy-lemmy-0-pictrs-storage
+  namespace: lemmy
+  finalizers:
+    - kubernetes.io/pvc-protection
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+  volumeName: pv-lemmy-lemmy-pictrs
+  storageClassName: nfs-client
+  volumeMode: Filesystem

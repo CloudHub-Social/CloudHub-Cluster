@@ -5,4 +5,4 @@ namespace: lemmy
 resources:
   - ./helmrelease.yaml
   - ./lemmy-secret.yaml
-  - ./persistentvolumeclaim.yaml
+  - ./storage.yaml
