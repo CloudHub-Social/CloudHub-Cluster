@@ -315,7 +315,7 @@ spec:
       persistence:
         enabled: true
         storageClass: nfs-client
-        exsitingClaim: "lemmy-data-postgres-storage-0"
+        exsitingClaim: "data-lemmy-postgresql-0"
       volumePermissions:
         enabled: true
       containerSecurityContext:
