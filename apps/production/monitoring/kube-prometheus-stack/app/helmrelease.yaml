@@ -211,10 +211,10 @@ spec:
         replicas: 3
         replicaExternalLabelName: __replica__
         scrapeInterval: 10s
+        serviceMonitorNamespaceSelector: {}
+        serviceMonitorSelector: {}
         podMonitorNamespaceSelector: {}
-        podMonitorSelector:
-          matchLabels:
-            app.kubernetes.io/component: monitoring
+        podMonitorSelector: {}
         walCompression: true
         retention: 2d
         retentionSize: 15GB
