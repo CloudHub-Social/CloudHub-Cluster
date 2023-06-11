@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: cilium
-  namespace: kube-system
+  namespace: &namespace kube-system
 spec:
   interval: 15m
   chart:
@@ -94,4 +94,5 @@ spec:
       enabled: true
       serviceMonitor:
         enabled: true
+        namespace: *namespace
     rollOutCiliumPods: true

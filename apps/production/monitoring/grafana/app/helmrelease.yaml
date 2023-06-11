@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: grafana
-  namespace: monitoring
+  namespace: &namespace monitoring
 spec:
   interval: 30m
   chart:
@@ -208,6 +208,7 @@ spec:
       - vonage-status-panel
     serviceMonitor:
       enabled: true
+      namespace: *namespace
     ingress:
       enabled: true
       ingressClassName: nginx

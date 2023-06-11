@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: authentik
-  namespace: authentik
+  namespace: &namespace authentik
 spec:
   interval: 15m
   chart:
@@ -73,6 +73,14 @@ spec:
         enabled: true
       containerSecurityContext:
         runAsUser: 1004
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+          namespace: *namespace
+        prometheusRule:
+          enabled: true
+          namespace: *namespace
 
     redis:
       enabled: true
