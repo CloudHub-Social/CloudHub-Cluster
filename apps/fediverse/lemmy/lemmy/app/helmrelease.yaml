@@ -24,7 +24,6 @@ spec:
     cleanupOnFail: true
     remediation:
       retries: 10
-    timeout: 10m
   uninstall:
     keepHistory: false
   valuesFrom:
