@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv-lemmy-lemmy-pictrs
+  name: pv-lemmy-data-pictrs-storage-0
   finalizers:
     - kubernetes.io/pv-protection
 spec:
@@ -11,7 +11,7 @@ spec:
   nfs:
     server: 10.0.20.50
     path: >-
-      /mnt/Storage/CloudHub-NFS/lemmy-data-lemmy-lemmy-0-pictrs-storage
+      /mnt/Storage/CloudHub-NFS/lemmy-data-pictrs-storage-0
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
@@ -21,7 +21,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: data-lemmy-lemmy-0-pictrs-storage
+  name: lemmy-data-pictrs-storage-0
   namespace: lemmy
   finalizers:
     - kubernetes.io/pvc-protection
@@ -31,14 +31,14 @@ spec:
   resources:
     requests:
       storage: 50Gi
-  volumeName: pv-lemmy-lemmy-pictrs
+  volumeName: pv-lemmy-data-pictrs-storage-0
   storageClassName: nfs-client
   volumeMode: Filesystem
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv-lemmy-lemmy-postgres
+  name: pv-lemmy-data-postgres-storage-0
   finalizers:
     - kubernetes.io/pv-protection
 spec:
@@ -47,7 +47,7 @@ spec:
   nfs:
     server: 10.0.20.50
     path: >-
-      /mnt/Storage/CloudHub-NFS/lemmy-data-lemmy-lemmy-0-postgres-storage
+      /mnt/Storage/CloudHub-NFS/lemmy-data-postgres-storage-0
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
@@ -57,7 +57,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: data-lemmy-lemmy-0-postgres-storage
+  name: lemmy-data-postgres-storage-0
   namespace: lemmy
   finalizers:
     - kubernetes.io/pvc-protection
@@ -67,6 +67,6 @@ spec:
   resources:
     requests:
       storage: 50Gi
-  volumeName: pv-lemmy-lemmy-postgres
+  volumeName: pv-lemmy-data-postgres-storage-0
   storageClassName: nfs-client
   volumeMode: Filesystem
