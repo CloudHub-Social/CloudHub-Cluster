@@ -340,8 +340,8 @@ spec:
         hajimari.io/icon: simple-icons:lemmy
         # kubernetes.io/tls-acme: "true"
       hosts:
-        - &host "lemmy.${SECRET_DOMAIN}"
+        - "lemmy.${SECRET_DOMAIN}"
       tls:
       #  - secretName: chart-example-tls
          hosts:
-           - *host
+           - "lemmy.${SECRET_DOMAIN}"
