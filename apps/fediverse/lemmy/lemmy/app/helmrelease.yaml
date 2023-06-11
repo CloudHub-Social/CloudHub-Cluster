@@ -227,7 +227,7 @@ spec:
         enabled: true
         accessMode: ReadWriteOnce
         size: 16Gi
-        existingClaim: "data-lemmy-lemmy-0-pictrs-storage"
+        existingClaim: "lemmy-data-pictrs-storage-0"
         storageClass: nfs-client
 
       podAnnotations: {}
@@ -315,7 +315,7 @@ spec:
       persistence:
         enabled: true
         storageClass: nfs-client
-        exsitingClaim: "data-lemmy-lemmy-0-postgres-storage"
+        exsitingClaim: "lemmy-data-postgres-storage-0"
       volumePermissions:
         enabled: true
       containerSecurityContext:
