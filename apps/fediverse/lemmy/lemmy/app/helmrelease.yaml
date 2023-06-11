@@ -106,16 +106,16 @@ spec:
 
       podAnnotations: {}
 
-      podSecurityContext: {}
-        # fsGroup: 2000
+      podSecurityContext:
+        fsGroup: 1004
 
-      securityContext: {}
+      securityContext:
         # capabilities:
         #   drop:
         #   - ALL
         # readOnlyRootFilesystem: true
         # runAsNonRoot: true
-        # runAsUser: 1000
+        runAsUser: 1004
 
       service:
         type: ClusterIP
@@ -152,16 +152,16 @@ spec:
 
       podAnnotations: {}
 
-      podSecurityContext: {}
-        # fsGroup: 2000
+      podSecurityContext:
+        fsGroup: 1004
 
       securityContext:
-        capabilities:
-          drop:
-          - ALL
-        readOnlyRootFilesystem: true
-        runAsNonRoot: true
-        runAsUser: 1000
+        # capabilities:
+        #   drop:
+        #   - ALL
+        # readOnlyRootFilesystem: true
+        # runAsNonRoot: true
+        runAsUser: 1004
 
       service:
         type: ClusterIP
@@ -235,13 +235,13 @@ spec:
       podSecurityContext:
         fsGroup: 1004
 
-      securityContext: {}
+      securityContext:
         # capabilities:
         #   drop:
         #   - ALL
         # readOnlyRootFilesystem: true
         # runAsNonRoot: true
-        # runAsUser: 1004
+        runAsUser: 1004
 
       service:
         type: ClusterIP
