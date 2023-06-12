@@ -302,7 +302,7 @@ spec:
       affinity: {}
 
     postgresql:
-      enabled: false
+      enabled: true
       # host:
       image:
         debug: true
