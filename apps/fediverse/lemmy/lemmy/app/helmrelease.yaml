@@ -29,23 +29,23 @@ spec:
   valuesFrom:
     - targetPath: smtp.smtp_password
       kind: Secret
-      name: lm-lm-secret
+      name: lemmy-secret
       valuesKey: smtp_password
     - targetPath: admin.password
       kind: Secret
-      name: lm-lm-secret
+      name: lemmy-secret
       valuesKey: admin_password
     - targetPath: pictrs.apiKey
       kind: Secret
-      name: lm-lm-secret
+      name: lemmy-secret
       valuesKey: pictrs_api_key
     - targetPath: postgresql.auth.password
       kind: Secret
-      name: lm-lm-secret
+      name: lemmy-secret
       valuesKey: postgresql_password
     - targetPath: config.siteName
       kind: Secret
-      name: lm-lm-secret
+      name: lemmy-secret
       valuesKey: site_name
   values:
     image:
