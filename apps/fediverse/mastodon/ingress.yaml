@@ -17,6 +17,7 @@ apiVersion: v1
 kind: Endpoints
 metadata:
   name: mastodon
+  namespace: mastodon
 subsets:
 - addresses:
   - ip: 137.184.168.240
