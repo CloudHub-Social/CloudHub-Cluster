@@ -7,9 +7,3 @@ metadata:
 spec:
   interval: 5m0s
   url: https://gitlab.com/ananace/charts
-  ignore: |
-    # exclude all
-    /*
-    # include kubernetes directory
-    !/charts/lemmy
-    /charts/lemmy/templates/pvc.yaml
