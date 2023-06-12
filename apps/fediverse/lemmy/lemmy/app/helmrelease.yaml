@@ -103,7 +103,7 @@ spec:
         # - secretRef:
         #    name: my-extra-secrets
 
-      replicaCount: 1
+      replicaCount: 2
 
       podAnnotations: {}
 
@@ -142,7 +142,7 @@ spec:
         #pullPolicy: IfNotPresent
         #tag:
 
-      replicaCount: 1
+      replicaCount: 2
 
       env:
         LEMMY_UI_DEBUG: false
@@ -184,7 +184,7 @@ spec:
       affinity: {}
 
     pictrs:
-      replicaCount: 1
+      replicaCount: 2
 
       ## Generated on first install if left empty
       # apiKey:
@@ -265,7 +265,7 @@ spec:
 
     proxy:
       enabled: true
-      replicaCount: 1
+      replicaCount: 2
 
       image:
         repository: nginx
