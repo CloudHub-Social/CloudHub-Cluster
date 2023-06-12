@@ -1,49 +1,30 @@
----
 apiVersion: v1
 kind: Service
 metadata:
-  name: mastodon
+  name: external-service-mastodon
   namespace: mastodon
 spec:
-  ports:
-  - name: https
-    port: 443
-    protocol: TCP
-    targetPort: 443
-  clusterIP: None
-  type: ClusterIP
----
-apiVersion: v1
-kind: Endpoints
-metadata:
-  name: mastodon
-  namespace: mastodon
-subsets:
-- addresses:
-  - ip: 137.184.168.240
-  ports:
-  - name: https
-    port: 443
-    protocol: TCP
+  type: ExternalName
+  externalName: "${SECRET_DOMAIN}" # eg example.example.com
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: mastodon
+  name: external-service-mastodon
   namespace: mastodon
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS" #important
 spec:
-  ingressClassName: nginx
   rules:
-  - host: "${SECRET_DOMAIN}"
+  - host: "${SECRET_DOMAIN}" # eg external-service.yourdomain.com
     http:
-      paths:
       - path: /
         pathType: Prefix
         backend:
           service:
             name: mastodon
             port:
-              number: 443
+              number: 443 # eg 4589
   tls:
-    - hosts:
-      - "${SECRET_DOMAIN}"
+  - hosts:
+    - "${SECRET_DOMAIN}"
