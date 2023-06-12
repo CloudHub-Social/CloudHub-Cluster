@@ -16,7 +16,7 @@ spec:
 apiVersion: v1
 kind: Endpoints
 metadata:
-  name: mastodon
+  name:  external-service-mastodon
   namespace: mastodon
 subsets:
 - addresses:
@@ -42,7 +42,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: mastodon
+            name: external-service-mastodon
             port:
               number: 443
   tls:
