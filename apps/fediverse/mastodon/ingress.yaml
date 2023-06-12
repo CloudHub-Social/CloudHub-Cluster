@@ -44,3 +44,6 @@ spec:
             name: mastodon
             port:
               number: 443
+  tls:
+    - hosts:
+      - "${SECRET_DOMAIN}"
