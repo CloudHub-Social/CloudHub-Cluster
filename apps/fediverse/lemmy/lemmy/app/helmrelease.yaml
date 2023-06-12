@@ -122,13 +122,13 @@ spec:
         type: ClusterIP
         port: 80
 
-      resources:
-        limits:
-          cpu: 2000m
-          memory: 2Gi
-        requests:
-          cpu: 1000m
-          memory: 1Gi
+      # resources:
+      #   limits:
+      #     cpu: 2000m
+      #     memory: 2Gi
+      #   requests:
+      #     cpu: 1000m
+      #     memory: 1Gi
 
       nodeSelector: {}
 
@@ -142,11 +142,11 @@ spec:
         #pullPolicy: IfNotPresent
         #tag:
 
-      replicaCount: 2
+      replicaCount: 1
 
       env:
         LEMMY_UI_DEBUG: false
-        RUST_BACKTRACE: "full"
+        RUST_BACKTRACE: "1"
 
       envFrom:
         # - secretRef:
@@ -169,13 +169,13 @@ spec:
         type: ClusterIP
         port: 80
 
-      resources:
-        limits:
-          cpu: 500m
-          memory: 500Mi
-        requests:
-          cpu: 250m
-          memory: 250Mi
+      # resources:
+      #   limits:
+      #     cpu: 500m
+      #     memory: 500Mi
+      #   requests:
+      #     cpu: 250m
+      #     memory: 250Mi
 
       nodeSelector: {}
 
@@ -249,13 +249,13 @@ spec:
         type: ClusterIP
         port: 80
 
-      resources:
-        limits:
-          cpu: 500m
-          memory: 500Mi
-        requests:
-          cpu: 250m
-          memory: 250Mi
+      # resources:
+      #   limits:
+      #     cpu: 500m
+      #     memory: 500Mi
+      #   requests:
+      #     cpu: 250m
+      #     memory: 250Mi
 
       nodeSelector: {}
 
@@ -265,7 +265,7 @@ spec:
 
     proxy:
       enabled: true
-      replicaCount: 2
+      replicaCount: 1
 
       image:
         repository: nginx
@@ -289,13 +289,13 @@ spec:
         type: ClusterIP
         port: 80
 
-      resources:
-        limits:
-          cpu: 250m
-          memory: 250Mi
-        requests:
-          cpu: 128m
-          memory: 128Mi
+      # resources:
+      #   limits:
+      #     cpu: 500m
+      #     memory: 500Mi
+      #   requests:
+      #     cpu: 250m
+      #     memory: 250Mi
 
       nodeSelector: {}
 
