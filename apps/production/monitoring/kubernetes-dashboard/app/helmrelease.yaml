@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: kubernetes-dashboard
-  namespace: &namespace monitoring
+  namespace: monitoring
 spec:
   interval: 15m
   chart:
@@ -49,4 +49,3 @@ spec:
       enabled: true
     serviceMonitor:
       enabled: true
-      namespace: *namespace
