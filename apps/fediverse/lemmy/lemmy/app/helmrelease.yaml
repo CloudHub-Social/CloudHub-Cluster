@@ -103,7 +103,7 @@ spec:
         # - secretRef:
         #    name: my-extra-secrets
 
-      replicaCount: 2
+      replicaCount: 1
 
       podAnnotations: {}
 
@@ -146,7 +146,7 @@ spec:
 
       env:
         LEMMY_UI_DEBUG: false
-        RUST_BACKTRACE: "1"
+        RUST_BACKTRACE: "full"
 
       envFrom:
         # - secretRef:
@@ -184,7 +184,7 @@ spec:
       affinity: {}
 
     pictrs:
-      replicaCount: 2
+      replicaCount: 1
 
       ## Generated on first install if left empty
       # apiKey:
