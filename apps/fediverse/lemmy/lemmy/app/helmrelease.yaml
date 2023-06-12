@@ -320,6 +320,15 @@ spec:
         enabled: true
       containerSecurityContext:
         runAsUser: 1004
+      primary:
+        persistence:
+          enabled: true
+          storageClass: nfs-client
+          exsitingClaim: "lemmy-data-postgres-storage-0"
+        volumePermissions:
+          enabled: true
+        containerSecurityContext:
+          runAsUser: 1004
       metrics:
         enabled: true
         serviceMonitor:
