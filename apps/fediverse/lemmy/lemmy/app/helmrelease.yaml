@@ -302,7 +302,7 @@ spec:
       affinity: {}
 
     postgresql:
-      enabled: true
+      enabled: false
       # host:
       image:
         debug: true
@@ -312,19 +312,11 @@ spec:
         # password:
       service:
         port: 5432
-      persistence:
-        enabled: true
-        storageClass: nfs-client
-        exsitingClaim: "lemmy-data-postgres-storage-0"
-      volumePermissions:
-        enabled: true
-      containerSecurityContext:
-        runAsUser: 1004
       primary:
         persistence:
           enabled: true
           storageClass: nfs-client
-          exsitingClaim: "lemmy-data-postgres-storage-0"
+          existingClaim: "lemmy-data-postgres-storage-0"
         volumePermissions:
           enabled: true
         containerSecurityContext:
