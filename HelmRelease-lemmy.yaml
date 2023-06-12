@@ -1,0 +1,265 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  creationTimestamp: "2023-06-12T01:54:09Z"
+  finalizers:
+  - finalizers.fluxcd.io
+  generation: 1
+  labels:
+    kustomize.toolkit.fluxcd.io/name: cluster-fediverse-lemmy
+    kustomize.toolkit.fluxcd.io/namespace: flux-system
+  name: lemmy
+  namespace: lemmy
+  resourceVersion: "592465"
+  uid: 897a5070-329a-4c0f-83bf-a709764f2387
+spec:
+  chart:
+    spec:
+      chart: ./charts/lemmy
+      # reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: GitRepository
+        name: lemmy
+        namespace: flux-system
+      version: 0.1.0
+  install:
+    createNamespace: true
+    remediation:
+      retries: 10
+    timeout: 10m
+  interval: 15m
+  maxHistory: 2
+  uninstall:
+    keepHistory: false
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 10
+  values:
+    admin:
+      email: jax-admin@cloudhub.social
+      username: jax-admin
+    backend:
+      affinity: {}
+      env:
+        RUST_BACKTRACE: full
+      envFrom: null
+      image:
+        _keep: true
+      nodeSelector: {}
+      podAnnotations: {}
+      podSecurityContext:
+        fsGroup: 1004
+      replicaCount: 1
+      resources:
+        limits:
+          cpu: 250m
+          memory: 256Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      securityContext:
+        runAsUser: 1004
+      service:
+        port: 80
+        type: ClusterIP
+      tolerations: []
+    config:
+      tls: true
+    frontend:
+      affinity: {}
+      env:
+        LEMMY_UI_DEBUG: true
+      envFrom: null
+      image:
+        repository: dessalines/lemmy-ui
+      nodeSelector: {}
+      podAnnotations: {}
+      podSecurityContext:
+        fsGroup: 1004
+      replicaCount: 1
+      resources:
+        limits:
+          cpu: 250m
+          memory: 256Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      securityContext:
+        runAsUser: 1004
+      service:
+        port: 80
+        type: ClusterIP
+      tolerations: []
+    fullnameOverride: ""
+    image:
+      pullPolicy: IfNotPresent
+      repository: dessalines/lemmy
+    imagePullSecrets: []
+    ingress:
+      annotations:
+        external-dns.alpha.kubernetes.io/target: ingress.cloudhub.social
+        hajimari.io/icon: simple-icons:lemmy
+      className: nginx
+      enabled: true
+      hosts:
+      - lemmy.cloudhub.social
+      tls:
+      - hosts:
+        - lemmy.cloudhub.social
+        secretName: letsencrypt-production
+    nameOverride: ""
+    pictrs:
+      affinity: {}
+      env:
+        PICTRS__MEDIA__GIF__MAX_AREA: 65536
+        PICTRS__MEDIA__GIF__MAX_FRAME_COUNT: 400
+        PICTRS__MEDIA__GIF__MAX_HEIGHT: 256
+        PICTRS__MEDIA__GIF__MAX_WIDTH: 256
+        PICTRS__MEDIA__VIDEO_CODEC: vp9
+      envFrom: null
+      image:
+        pullPolicy: IfNotPresent
+        repository: asonix/pictrs
+        tag: 0.4.0-beta.19
+      nodeSelector: {}
+      persistence:
+        accessMode: ReadWriteOnce
+        enabled: true
+        existingClaim: lemmy-data-pictrs-storage-0
+        size: 16Gi
+        storageClass: nfs-client
+      podAnnotations: {}
+      podSecurityContext:
+        fsGroup: 1004
+      replicaCount: 1
+      resources:
+        limits:
+          cpu: 250m
+          memory: 256Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      securityContext:
+        runAsUser: 1004
+      service:
+        port: 80
+        type: ClusterIP
+      storage:
+        method: filesystem
+        objectStorage:
+          usePathStyle: false
+      tolerations: []
+    postgresql:
+      auth:
+        database: lemmy
+        username: lemmy
+      enabled: false
+      image:
+        debug: true
+      metrics:
+        enabled: true
+        prometheusRule:
+          enabled: true
+        serviceMonitor:
+          enabled: true
+      primary:
+        containerSecurityContext:
+          runAsUser: 1004
+        persistence:
+          enabled: true
+          existingClaim: lemmy-data-postgres-storage-0
+          storageClass: nfs-client
+        volumePermissions:
+          enabled: true
+      service:
+        port: 5432
+    proxy:
+      affinity: {}
+      enabled: true
+      image:
+        pullPolicy: Always
+        repository: nginx
+        tag: 1-alpine
+      nodeSelector: {}
+      podAnnotations: {}
+      podSecurityContext: {}
+      replicaCount: 1
+      resources:
+        limits:
+          cpu: 250m
+          memory: 256Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      securityContext: {}
+      service:
+        port: 80
+        type: ClusterIP
+      tolerations: []
+    serverName: lemmy.cloudhub.social
+    serviceAccount:
+      annotations: {}
+      create: true
+      name: ""
+    smtp:
+      from: lemmy-noreply@cloudhub.social
+      server: smtp.sendgrid.net
+      tls: starttls
+      username: apikey
+  valuesFrom:
+  - kind: Secret
+    name: lemmy-secret
+    targetPath: smtp.smtp_password
+    valuesKey: smtp_password
+  - kind: Secret
+    name: lemmy-secret
+    targetPath: admin.password
+    valuesKey: admin_password
+  - kind: Secret
+    name: lemmy-secret
+    targetPath: pictrs.apiKey
+    valuesKey: pictrs_api_key
+  - kind: Secret
+    name: lemmy-secret
+    targetPath: postgresql.auth.password
+    valuesKey: postgresql_password
+  - kind: Secret
+    name: lemmy-secret
+    targetPath: config.siteName
+    valuesKey: site_name
+status:
+  conditions:
+  - lastTransitionTime: "2023-06-12T01:54:19Z"
+    message: |+
+      Helm uninstall failed: uninstall: Release not loaded: lemmy: release: not found
+
+      Last Helm logs:
+
+    reason: UninstallFailed
+    status: "False"
+    type: Ready
+  - lastTransitionTime: "2023-06-12T01:54:19Z"
+    message: |+
+      Helm install failed: execution error at (lemmy/templates/secret-configuration.yaml:24:14): A valid postgresql.host is required
+
+      Last Helm logs:
+
+    reason: InstallFailed
+    status: "False"
+    type: Released
+  - lastTransitionTime: "2023-06-12T01:54:19Z"
+    message: |+
+      Helm uninstall failed: uninstall: Release not loaded: lemmy: release: not found
+
+      Last Helm logs:
+
+    reason: UninstallFailed
+    status: "False"
+    type: Remediated
+  failures: 9
+  helmChart: flux-system/lemmy-lemmy
+  installFailures: 1
+  lastAttemptedRevision: 0.1.0
+  lastAttemptedValuesChecksum: c9cbe27f61f577db53c6df40defc049b4cb7c08f
+  observedGeneration: 1
