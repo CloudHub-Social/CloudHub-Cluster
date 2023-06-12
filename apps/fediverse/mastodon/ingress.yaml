@@ -5,7 +5,7 @@ metadata:
   namespace: mastodon
 spec:
   type: ExternalName
-  externalName: "${SECRET_DOMAIN}" # eg example.example.com
+  externalName: "${SECRET_DOMAIN}"
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -13,18 +13,19 @@ metadata:
   name: external-service-mastodon
   namespace: mastodon
   annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS" #important
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   rules:
-  - host: "${SECRET_DOMAIN}" # eg external-service.yourdomain.com
+  - host: "${SECRET_DOMAIN}"
     http:
+      paths:
       - path: /
         pathType: Prefix
         backend:
           service:
             name: mastodon
             port:
-              number: 443 # eg 4589
+              number: 443
   tls:
   - hosts:
     - "${SECRET_DOMAIN}"
