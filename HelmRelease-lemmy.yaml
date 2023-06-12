@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  creationTimestamp: "2023-06-12T01:54:09Z"
+  creationTimestamp: "2023-06-12T12:00:32Z"
   finalizers:
   - finalizers.fluxcd.io
   generation: 1
@@ -10,13 +10,13 @@ metadata:
     kustomize.toolkit.fluxcd.io/namespace: flux-system
   name: lemmy
   namespace: lemmy
-  resourceVersion: "592465"
-  uid: 897a5070-329a-4c0f-83bf-a709764f2387
+  resourceVersion: "762575"
+  uid: a44baacb-61d3-4689-9c70-9cc7d764ae6f
 spec:
   chart:
     spec:
       chart: ./charts/lemmy
-      # reconcileStrategy: ChartVersion
+      reconcileStrategy: ChartVersion
       sourceRef:
         kind: GitRepository
         name: lemmy
@@ -25,7 +25,9 @@ spec:
   install:
     createNamespace: true
     remediation:
+      strategy: uninstall
       retries: 10
+      remediatelastFailure: true
     timeout: 10m
   interval: 15m
   maxHistory: 2
@@ -43,6 +45,7 @@ spec:
       affinity: {}
       env:
         RUST_BACKTRACE: full
+        RUST_LOG: warn,lemmy_server=info,lemmy_api=info,lemmy_api_common=info,lemmy_api_crud=info,lemmy_apub=info,lemmy_db_schema=info,lemmy_db_views=info,lemmy_db_views_actor=info,lemmy_db_views_moderator=info,lemmy_routes=info,lemmy_utils=info,lemmy_websocket=info
       envFrom: null
       image:
         _keep: true
@@ -51,13 +54,6 @@ spec:
       podSecurityContext:
         fsGroup: 1004
       replicaCount: 1
-      resources:
-        limits:
-          cpu: 250m
-          memory: 256Mi
-        requests:
-          cpu: 100m
-          memory: 128Mi
       securityContext:
         runAsUser: 1004
       service:
@@ -69,7 +65,8 @@ spec:
     frontend:
       affinity: {}
       env:
-        LEMMY_UI_DEBUG: true
+        LEMMY_UI_DEBUG: false
+        RUST_BACKTRACE: "1"
       envFrom: null
       image:
         repository: dessalines/lemmy-ui
@@ -78,13 +75,6 @@ spec:
       podSecurityContext:
         fsGroup: 1004
       replicaCount: 1
-      resources:
-        limits:
-          cpu: 250m
-          memory: 256Mi
-        requests:
-          cpu: 100m
-          memory: 128Mi
       securityContext:
         runAsUser: 1004
       service:
@@ -133,13 +123,6 @@ spec:
       podSecurityContext:
         fsGroup: 1004
       replicaCount: 1
-      resources:
-        limits:
-          cpu: 250m
-          memory: 256Mi
-        requests:
-          cpu: 100m
-          memory: 128Mi
       securityContext:
         runAsUser: 1004
       service:
@@ -154,7 +137,7 @@ spec:
       auth:
         database: lemmy
         username: lemmy
-      enabled: false
+      enabled: true
       image:
         debug: true
       metrics:
@@ -185,13 +168,6 @@ spec:
       podAnnotations: {}
       podSecurityContext: {}
       replicaCount: 1
-      resources:
-        limits:
-          cpu: 250m
-          memory: 256Mi
-        requests:
-          cpu: 100m
-          memory: 128Mi
       securityContext: {}
       service:
         port: 80
@@ -230,36 +206,19 @@ spec:
     valuesKey: site_name
 status:
   conditions:
-  - lastTransitionTime: "2023-06-12T01:54:19Z"
-    message: |+
-      Helm uninstall failed: uninstall: Release not loaded: lemmy: release: not found
-
-      Last Helm logs:
-
-    reason: UninstallFailed
-    status: "False"
+  - lastTransitionTime: "2023-06-12T12:01:16Z"
+    message: Release reconciliation succeeded
+    reason: ReconciliationSucceeded
+    status: "True"
     type: Ready
-  - lastTransitionTime: "2023-06-12T01:54:19Z"
-    message: |+
-      Helm install failed: execution error at (lemmy/templates/secret-configuration.yaml:24:14): A valid postgresql.host is required
-
-      Last Helm logs:
-
-    reason: InstallFailed
-    status: "False"
+  - lastTransitionTime: "2023-06-12T12:01:16Z"
+    message: Helm install succeeded
+    reason: InstallSucceeded
+    status: "True"
     type: Released
-  - lastTransitionTime: "2023-06-12T01:54:19Z"
-    message: |+
-      Helm uninstall failed: uninstall: Release not loaded: lemmy: release: not found
-
-      Last Helm logs:
-
-    reason: UninstallFailed
-    status: "False"
-    type: Remediated
-  failures: 9
   helmChart: flux-system/lemmy-lemmy
-  installFailures: 1
+  lastAppliedRevision: 0.1.0
   lastAttemptedRevision: 0.1.0
-  lastAttemptedValuesChecksum: c9cbe27f61f577db53c6df40defc049b4cb7c08f
+  lastAttemptedValuesChecksum: ad747212e638bd4cf51112fae75cd8918299ee90
+  lastReleaseRevision: 1
   observedGeneration: 1
