@@ -34,7 +34,8 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - http:
+  - host: "${SECRET_DOMAIN}"
+    http:
       paths:
       - path: /
         pathType: Prefix
