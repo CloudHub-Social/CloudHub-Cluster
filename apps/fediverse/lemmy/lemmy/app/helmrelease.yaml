@@ -124,11 +124,11 @@ spec:
 
       resources:
         limits:
+          cpu: 2000m
+          memory: 2Gi
+        requests:
           cpu: 1000m
           memory: 1Gi
-        requests:
-          cpu: 500m
-          memory: 500Mi
 
       nodeSelector: {}
 
@@ -171,11 +171,11 @@ spec:
 
       resources:
         limits:
+          cpu: 2000m
+          memory: 2Gi
+        requests:
           cpu: 1000m
           memory: 1Gi
-        requests:
-          cpu: 500m
-          memory: 500Mi
 
       nodeSelector: {}
 
@@ -251,11 +251,11 @@ spec:
 
       resources:
         limits:
+          cpu: 2000m
+          memory: 2Gi
+        requests:
           cpu: 1000m
           memory: 1Gi
-        requests:
-          cpu: 500m
-          memory: 500Mi
 
       nodeSelector: {}
 
@@ -291,11 +291,11 @@ spec:
 
       resources:
         limits:
+          cpu: 2000m
+          memory: 2Gi
+        requests:
           cpu: 1000m
           memory: 1Gi
-        requests:
-          cpu: 500m
-          memory: 500Mi
 
       nodeSelector: {}
 
