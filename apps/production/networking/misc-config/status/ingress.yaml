@@ -20,25 +20,9 @@ metadata:
     # nginx.ingress.kubernetes.io/upstream-vhost: "stats.uptimerobot.com"
     nginx.ingress.kubernetes.io/server-snippets: |
         location / {
-            proxy_redirect off;
-            proxy_hide_header "Cache-Control";
-            add_header Cache-Control "no-store, no-cache, must-revalidate, post-check=0, pre-check=0";
-            add_header Last-Modified $sent_http_Expires;
-            proxy_set_header Host stats.uptimerobot.com;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          resolver 1.1.1.1;
+          proxy_pass https://stats.uptimerobot.com;
 
-            # proxy_set_header Host "stats.uptimerobot.com";
-            # proxy_set_header Accept-Encoding "";
-            # proxy_pass_request_headers      on;
-            # proxy_pass https://stats.uptimerobot.com/;
-            # proxy_ssl_name stats.uptimerobot.com;
-            # proxy_ssl_server_name on;
-
-            # # sub_filter_once off;
-            # # sub_filter_types text/html;
-            # # sub_filter "stats.uptimerobot.com" "$host";
-            # # sub_filter "https://stats.uptimerobot.com/" "https://$host";
         }
 spec:
   rules:
