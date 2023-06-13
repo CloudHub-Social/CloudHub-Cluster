@@ -6,9 +6,7 @@ metadata:
   namespace: networking
 spec:
   type: ExternalName
-  externalName: "stats.uptimerobot.com"
-  ports:
-  - port: 443
+  externalName: stats.uptimerobot.com
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -17,10 +15,8 @@ metadata:
   namespace: networking
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    nginx.ingress.kubernetes.io/publishedservice: "true"
     external-dns.alpha.kubernetes.io/target: "status.${SECRET_DOMAIN}"
-    external-dns.alpha.kubernetes.io/hostname: "stats.uptimerobot.com"
-    hajimari.io/icon: simple-icons:list-status
+    external-dns.alpha.kubernetes.io/hostname: stats.uptimerobot.com
 spec:
   rules:
   - host: "status.${SECRET_DOMAIN}"
