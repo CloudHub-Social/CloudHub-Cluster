@@ -4,8 +4,6 @@ kind: Service
 metadata:
   name: external-service-status
   namespace: networking
-  # annotations:
-  #   coredns.io/hostname: "status.${SECRET_DOMAIN}"
 spec:
   type: ExternalName
   externalName: stats.uptimerobot.com
