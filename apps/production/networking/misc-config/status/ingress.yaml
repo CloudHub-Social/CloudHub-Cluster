@@ -4,8 +4,6 @@ kind: Service
 metadata:
   name: external-service-status
   namespace: networking
-  # annotations:
-  #   coredns.io/hostname: "status.${SECRET_DOMAIN}"
 spec:
   type: ExternalName
   externalName: stats.uptimerobot.com
@@ -18,14 +16,6 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     nginx.ingress.kubernetes.io/upstream-vhost: "stats.uptimerobot.com"
-    nginx.ingress.kubernetes.io/server-snippets: |
-        location / {
-          resolver 1.1.1.1;
-          proxy_pass https://stats.uptimerobot.com;
-          proxy_set_header Host stats.uptimerobot.com;
-          proxy_ssl_name stats.uptimerobot.com;
-          proxy_ssl_server_name on;
-        }
 spec:
   rules:
   - host: "status.${SECRET_DOMAIN}"
