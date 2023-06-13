@@ -7,28 +7,28 @@ metadata:
 spec:
   type: ExternalName
   externalName: stats.uptimerobot.com
-# ---
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: external-service-status
-#   namespace: networking
-#   annotations:
-#     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-#     external-dns.alpha.kubernetes.io/target: "status.${SECRET_DOMAIN}"
-
-# spec:
-#   rules:
-#   - host: "status.${SECRET_DOMAIN}"
-#     http:
-#       paths:
-#       - path: /
-#         pathType: Prefix
-#         backend:
-#           service:
-#             name: external-service-status
-#             port:
-#               number: 443
-#   tls:
-#   - hosts:
-#     - "status.${SECRET_DOMAIN}"
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: external-service-status
+  namespace: networking
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    # external-dns.alpha.kubernetes.io/target: "status.${SECRET_DOMAIN}"
+    # external-dns.alpha.kubernetes.io/hostname: ""
+spec:
+  rules:
+  - host: "status.${SECRET_DOMAIN}"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: external-service-status
+            port:
+              number: 443
+  tls:
+  - hosts:
+    - "status.${SECRET_DOMAIN}"
