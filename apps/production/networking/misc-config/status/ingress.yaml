@@ -24,6 +24,7 @@ metadata:
             proxy_set_header Accept-Encoding "";
             proxy_pass_request_headers      on;
             proxy_pass https://stats.uptimerobot.com/;
+            proxy_ssl_name stats.uptimerobot.com;
             proxy_ssl_server_name on;
 
             # sub_filter_once off;
