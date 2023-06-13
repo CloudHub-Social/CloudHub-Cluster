@@ -22,7 +22,9 @@ metadata:
         location / {
           resolver 1.1.1.1;
           proxy_pass https://stats.uptimerobot.com;
-
+          proxy_set_header Host $host;
+          proxy_ssl_name stats.uptimerobot.com;
+          proxy_ssl_server_name on;
         }
 spec:
   rules:
