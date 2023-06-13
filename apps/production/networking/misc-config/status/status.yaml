@@ -5,27 +5,10 @@ metadata:
   name: external-service-status
   namespace: networking
 spec:
+  type: ExternalName
+  externalName: "stats.uptimerobot.com"
   ports:
-  - name: https
-    port: 443
-    targetPort: 443
----
-apiVersion: discovery.k8s.io/v1
-kind: EndpointSlice
-metadata:
-  name: external-service-status
-  namespace: networking
-  labels:
-    kubernetes.io/service-name: external-service-status
-addressType: IPv4
-ports:
-  - name: ''
-    appProtocol: http
-    protocol: TCP
-    port: 443
-endpoints:
-  - addresses:
-      - "stats.uptimerobot.com"
+  - port: 443
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
