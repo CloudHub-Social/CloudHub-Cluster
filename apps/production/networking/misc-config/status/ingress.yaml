@@ -17,7 +17,7 @@ metadata:
   namespace: networking
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    # nginx.ingress.kubernetes.io/upstream-vhost: "stats.uptimerobot.com"
+    nginx.ingress.kubernetes.io/upstream-vhost: "stats.uptimerobot.com"
     nginx.ingress.kubernetes.io/server-snippets: |
         location / {
           resolver 1.1.1.1;
