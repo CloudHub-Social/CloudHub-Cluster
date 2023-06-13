@@ -19,7 +19,7 @@ metadata:
     hajimari.io/icon: simple-icons:list-status
 spec:
   rules:
-  - host: "${SECRET_DOMAIN}"
+  - host: "status.${SECRET_DOMAIN}"
     http:
       paths:
       - path: /
@@ -31,4 +31,4 @@ spec:
               number: 443
   tls:
   - hosts:
-    - "${SECRET_DOMAIN}"
+    - "status.${SECRET_DOMAIN}"
