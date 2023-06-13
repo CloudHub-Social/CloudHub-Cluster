@@ -18,10 +18,9 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     nginx.ingress.kubernetes.io/upstream-vhost: "stats.uptimerobot.com"
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      more_clear_input_headers "Host" "X-Forwarded-Host";
-      more_set_input_headers 'Host: status.${SECRET_DOMAIN}';
-      proxy_set_header Host status.${SECRET_DOMAIN};
+    nginx.ingress.kubernetes.io/server-snippet: |
+        proxy_ssl_name status.${SECRET_DOMAIN};
+        proxy_ssl_server_name on;
     # external-dns.alpha.kubernetes.io/target: "status.${SECRET_DOMAIN}"
     # external-dns.alpha.kubernetes.io/hostname: ""
 spec:
