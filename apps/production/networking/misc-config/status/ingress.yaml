@@ -4,8 +4,6 @@ kind: Service
 metadata:
   name: external-service-status
   namespace: networking
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: "stats.uptimerobot.com"
 spec:
   type: ExternalName
   externalName: stats.uptimerobot.com
