@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-misc-config
   namespace: flux-system
 spec:
-  path: ./apps/production/networking/misc-config/app
+  path: ./apps/production/networking/misc-config/status
   prune: true
   sourceRef:
     kind: GitRepository
