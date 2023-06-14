@@ -14,11 +14,11 @@ metadata:
   name: external-service-status-ingress
   namespace: networking
   annotations:
-    # nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    nginx.ingress.kubernetes.io/upstream-vhost: "stats.uptimerobot.com"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    # nginx.ingress.kubernetes.io/upstream-vhost: "stats.uptimerobot.com"
     nginx.ingress.kubernetes.io/server-snippets: |
         set $monitorId k8480TY6yL;
-        server_name status.${SECRET_DOMAIN};
+        # server_name status.${SECRET_DOMAIN};
         location / {
                 proxy_set_header Host "stats.uptimerobot.com";
                 proxy_set_header Accept-Encoding "";
