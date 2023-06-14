@@ -59,7 +59,7 @@ spec:
     serverName: "lemmy.${SECRET_DOMAIN}"
 
     smtp:
-      server: smtp.sendgrid.net
+      server: "smtp.sendgrid.net:587"
       username: apikey
       # password:
       from: "lemmy-noreply@${SECRET_DOMAIN}"
