@@ -28,7 +28,7 @@ spec:
   uninstall:
     keepHistory: false
   valuesFrom:
-    - targetPath: smtp.smtp_password
+    - targetPath: smtp.password
       kind: Secret
       name: lemmy-secret
       valuesKey: smtp_password
