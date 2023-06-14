@@ -19,6 +19,8 @@ metadata:
     nginx.ingress.kubernetes.io/server-snippets: |
         location / {
           proxy_set_header Host "stats.uptimerobot.com";
+          X-Forwarded-Host: "stats.uptimerobot.com";
+          X-Forwarded-Proto: https;
           proxy_set_header Accept-Encoding "";
           proxy_pass_request_headers on;
           proxy_pass https://stats.uptimerobot.com/;
