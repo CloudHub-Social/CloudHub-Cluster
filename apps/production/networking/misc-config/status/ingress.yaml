@@ -17,7 +17,7 @@ metadata:
     nginx.ingress.kubernetes.io/server-snippets: |
         location / {
             #proxy requests đến Uptimerobot
-            proxy_pass https://stats.uptimerobot.com/3QDQxs68B/;
+            proxy_pass https://stats.uptimerobot.com/k8480TY6yL/;
             #Gửi server_name khi handshake SSL, nếu off thì sẽ bị lỗi SSL
             proxy_ssl_server_name on;
             #Set header này thì response trả về từ Uptimerobot không bị nén, từ đó mình có thể replace ở bước dưới
@@ -25,12 +25,12 @@ metadata:
             #Uptimerobot dùng header này với giá trị 'upgrade-insecure-requests' để trình duyệt luôn load các css/js với HTTPS. Ẩn header này để có thể truy cập vào status.nddcoder.com mà không cần HTTPS
             proxy_hide_header Content-Security-Policy;
             #Replace 1 số link trong response để website load tài nguyên, các nút trên giao diện hoạt động chính xác
-            sub_filter https://stats.uptimerobot.com/ojM8Acwzq /;
+            sub_filter https://stats.uptimerobot.com/k8480TY6yL /;
             sub_filter https://stats.uptimerobot.com/ /;
             #Xóa GTM để Uptimerobot không tracking được mình 😀
-            sub_filter '<script async src="https://www.googletagmanager.com/gtag/js?id=UA-1748433-46"></script>' '';
-            sub_filter </head>
-                    '</head><style>#main-footer{display:none;}</style>';
+            # sub_filter '<script async src="https://www.googletagmanager.com/gtag/js?id=UA-1748433-46"></script>' '';
+            # sub_filter </head>
+            #         '</head><style>#main-footer{display:none;}</style>';
             #Replace all
             sub_filter_once off;
         }
