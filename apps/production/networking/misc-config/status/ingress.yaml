@@ -16,7 +16,7 @@ metadata:
   name: external-service-status-ingress
   namespace: networking
   annotations:
-    nginx.ingress.kubernetes.io/temporal-redirect: https://stats.uptimerobot.com/k8480TY6yL
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     ingress.kubernetes.io/preserve-host: "false"
     ingress.kubernetes.io/secure-backends: "true"
     nginx.ingress.kubernetes.io/upstream-vhost: "stats.uptimerobot.com"
