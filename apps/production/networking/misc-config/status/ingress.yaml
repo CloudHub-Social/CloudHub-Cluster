@@ -18,9 +18,9 @@ metadata:
   annotations:
     ingress.kubernetes.io/preserve-host: "false"
     ingress.kubernetes.io/secure-backends: "true"
-    nginx.ingress.kubernetes.io/upstream-vhost: "stats.uptimerobot.com"
+    nginx.ingress.kubernetes.io/upstream-vhost: "status.${SECRET_DOMAIN}" #"stats.uptimerobot.com"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    nginx.ingress.kubernetes.io/component-snippet: |
+    nginx.ingress.kubernetes.io/server-snippet: |
       proxy_ssl_name stats.uptimerobot.com;
       proxy_ssl_server_name on;
       # proxy_set_header Host $http_host;
@@ -29,14 +29,6 @@ metadata:
       # proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
       # proxy_set_header X-NginX-Proxy true;
       # proxy_set_header Referer "status.${SECRET_DOMAIN}";
-
-        # location / {
-        #     # proxy_set_header Host "stats.uptimerobot.com";
-        #     proxy_set_header Accept-Encoding "";
-        #     proxy_pass_request_headers      on;
-        #     proxy_pass https://stats.uptimerobot.com/;
-        #     proxy_ssl_server_name on;
-        # }
 spec:
   rules:
   - host: "status.${SECRET_DOMAIN}"
