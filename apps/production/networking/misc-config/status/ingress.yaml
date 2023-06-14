@@ -14,27 +14,37 @@ metadata:
   name: external-service-status-ingress
   namespace: networking
   annotations:
-    # nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    # nginx.ingress.kubernetes.io/upstream-vhost: "stats.uptimerobot.com"
     nginx.ingress.kubernetes.io/server-snippets: |
-        set $monitorId k8480TY6yL;
-        # server_name status.${SECRET_DOMAIN};
         location / {
-                proxy_set_header Host "stats.uptimerobot.com";
-                proxy_set_header Accept-Encoding "";
-                proxy_pass_request_headers      on;
-                proxy_pass https://stats.uptimerobot.com/;
-                proxy_ssl_server_name on;
+            #proxy requests đến Uptimerobot
+            proxy_pass https://stats.uptimerobot.com/3QDQxs68B/;
+            #Gửi server_name khi handshake SSL, nếu off thì sẽ bị lỗi SSL
+            proxy_ssl_server_name on;
+            #Set header này thì response trả về từ Uptimerobot không bị nén, từ đó mình có thể replace ở bước dưới
+            proxy_set_header Accept-Encoding "";
+            #Uptimerobot dùng header này với giá trị 'upgrade-insecure-requests' để trình duyệt luôn load các css/js với HTTPS. Ẩn header này để có thể truy cập vào status.nddcoder.com mà không cần HTTPS
+            proxy_hide_header Content-Security-Policy;
+            #Replace 1 số link trong response để website load tài nguyên, các nút trên giao diện hoạt động chính xác
+            sub_filter https://stats.uptimerobot.com/ojM8Acwzq /;
+            sub_filter https://stats.uptimerobot.com/ /;
+            #Xóa GTM để Uptimerobot không tracking được mình 😀
+            sub_filter '<script async src="https://www.googletagmanager.com/gtag/js?id=UA-1748433-46"></script>' '';
+            sub_filter </head>
+                    '</head><style>#main-footer{display:none;}</style>';
+            #Replace all
+            sub_filter_once off;
+        }
 
-                rewrite ^\/([0-9]+) /$monitorId/$1 break;
-                rewrite ^\/$ /$monitorId break;
+        #Proxy assets requests
+        location /assets {
+            proxy_pass https://stats.uptimerobot.com/assets;
+            proxy_ssl_server_name on;
+        }
 
-                sub_filter_once off;
-                sub_filter_types text/html;
-                sub_filter </head>
-                        '</head><style>#main-footer{display:none;}</style>';
-                sub_filter "stats.uptimerobot.com" "$host";
-                sub_filter "https://stats.uptimerobot.com/$monitorId" "https://$host";
+        #Proxy api requests
+        location /api {
+            proxy_pass https://stats.uptimerobot.com/api;
+            proxy_ssl_server_name on;
         }
 spec:
   rules:
