@@ -63,7 +63,7 @@ spec:
       username: apikey
       # password:
       from: "lemmy-noreply@${SECRET_DOMAIN}"
-      tls: none
+      tls: tls
 
     admin:
       username: jax-admin
