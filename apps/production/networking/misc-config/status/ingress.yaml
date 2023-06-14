@@ -15,10 +15,10 @@ metadata:
   namespace: networking
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    # nginx.ingress.kubernetes.io/upstream-vhost: "stats.uptimerobot.com"
+    nginx.ingress.kubernetes.io/upstream-vhost: "stats.uptimerobot.com"
     nginx.ingress.kubernetes.io/server-snippets: |
         location / {
-          proxy_set_header Host "status.${SECRET_DOMAIN}";
+          proxy_set_header Host "stats.uptimerobot.com";
           proxy_set_header Accept-Encoding "";
           proxy_pass_request_headers on;
           proxy_pass https://stats.uptimerobot.com/;
