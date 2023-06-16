@@ -8,4 +8,6 @@ spec:
   interval: 30m0s
   ref:
     branch: main
-  url: https://github.com/mastodon/chart
+  # Use a chart that fixes upstream issues with duplicate keys
+  #url: https://github.com/mastodon/chart
+  url: https://github.com/cerebrate/mastodon-chart
