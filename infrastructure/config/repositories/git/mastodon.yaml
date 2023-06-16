@@ -5,5 +5,7 @@ metadata:
   name: mastodon
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 30m0s
+  ref:
+    branch: main
   url: https://github.com/mastodon/chart
