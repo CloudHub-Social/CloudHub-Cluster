@@ -123,3 +123,7 @@ spec:
         end_session_endpoint: "https://auth.${SECRET_DOMAIN}/application/o/mastodon/end-session/"
       oauth_global:
         omniauth_only: true
+    podSecurityContext:
+      runAsUser: 1004
+      runAsGroup: 1004
+      fsGroup: 1004
