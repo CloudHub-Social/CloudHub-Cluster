@@ -85,6 +85,8 @@ spec:
           hosts:
             - "${SECRET_DOMAIN}"
     elasticsearch:
+      sysctlImage:
+        enabled: false
       master:
         podSecurityContext:
           enabled: true
