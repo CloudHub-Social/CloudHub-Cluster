@@ -4,3 +4,4 @@ resources:
   - flux-monitoring.yaml
   - lemmy.yaml
   - local-path-provisioner.yaml
+  - mastodon.yaml
