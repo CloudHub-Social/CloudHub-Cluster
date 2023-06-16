@@ -85,55 +85,7 @@ spec:
           hosts:
             - "${SECRET_DOMAIN}"
     elasticsearch:
-      sysctlImage:
-        enabled: false
-      master:
-        podSecurityContext:
-          enabled: true
-          fsGroup: 1004
-        containerSecurityContext:
-          enabled: true
-          runAsUser: 1004
-          runAsNonRoot: true
-      data:
-        podSecurityContext:
-          enabled: true
-          fsGroup: 1004
-        containerSecurityContext:
-          enabled: true
-          runAsUser: 1004
-          runAsNonRoot: true
-      ingest:
-        podSecurityContext:
-          enabled: true
-          fsGroup: 1004
-        containerSecurityContext:
-          enabled: true
-          runAsUser: 1004
-          runAsNonRoot: true
-      coordinating:
-        podSecurityContext:
-          enabled: true
-          fsGroup: 1004
-        containerSecurityContext:
-          enabled: true
-          runAsUser: 1004
-          runAsNonRoot: true
-      metrics:
-        enabled: true
-        serviceMonitor:
-          enabled: true
-          namespace: monitoring
-        prometheusRule:
-          enabled: true
-          namespace: monitoring
-        podSecurityContext:
-          enabled: true
-          fsGroup: 1004
-        containerSecurityContext:
-          enabled: true
-          runAsUser: 1004
-          runAsNonRoot: true
+      enabled: false
     postgresql:
       auth:
         existingSecret: "mastodon-secret-postgres"
