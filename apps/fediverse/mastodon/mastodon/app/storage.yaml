@@ -1,0 +1,108 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mastodon-assets
+  finalizers:
+    - kubernetes.io/pv-protection
+spec:
+  capacity:
+    storage: 50Gi
+  nfs:
+    server: 10.0.20.50
+    path: >-
+      /mnt/Storage/CloudHub-NFS/mastodon-data-assets-0
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs-client
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mastodon-assets
+  namespace: mastodon
+  finalizers:
+    - kubernetes.io/pvc-protection
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+  volumeName: mastodon-assets
+  storageClassName: nfs-client
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mastodon-system
+  finalizers:
+    - kubernetes.io/pv-protection
+spec:
+  capacity:
+    storage: 100Gi
+  nfs:
+    server: 10.0.20.50
+    path: >-
+      /mnt/Storage/CloudHub-NFS/mastodon-data-system-0
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs-client
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mastodon-system
+  namespace: mastodon
+  finalizers:
+    - kubernetes.io/pvc-protection
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+  volumeName: mastodon-system
+  storageClassName: nfs-client
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mastodon-postgres
+  finalizers:
+    - kubernetes.io/pv-protection
+spec:
+  capacity:
+    storage: 100Gi
+  nfs:
+    server: 10.0.20.50
+    path: >-
+      /mnt/Storage/CloudHub-NFS/mastodon-postgres-0
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs-client
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mastodon-postgres
+  namespace: mastodon
+  finalizers:
+    - kubernetes.io/pvc-protection
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+  volumeName: mastodon-postgres
+  storageClassName: nfs-client
+  volumeMode: Filesystem

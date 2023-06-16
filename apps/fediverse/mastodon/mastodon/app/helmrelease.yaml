@@ -1,0 +1,124 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: mastodon
+  namespace: mastodon
+spec:
+  interval: 15m
+  chart:
+    spec:
+      version: 4.0.0
+      sourceRef:
+        kind: GitRepository
+        name: mastodon
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    timeout: 10m
+    remediation:
+      retries: 10
+  upgrade:
+    cleanupOnFail: true
+    timeout: 10m
+    remediation:
+      retries: 10
+  uninstall:
+    keepHistory: false
+  valuesFrom:
+    - targetPath: externalAuth.oidc.client_id
+      kind: Secret
+      name: mastodon-secret
+      valuesKey: client_id
+    - targetPath: externalAuth.oidc.client_secret
+      kind: Secret
+      name: mastodon-secret
+      valuesKey: client_secret
+  values:
+    mastodon:
+      createAdmin:
+        enabled: true
+        username: jax_admin
+        email: "jax-admin@${SECRET_DOMAIN}"
+      local_domain: "${SECRET_DOMAIN}"
+      persistence:
+        assets:
+          storageClassName: nfs-client
+          existingClaim: "mastodon-assets"
+          resources:
+            requests:
+              storage: 50Gi
+        system:
+          storageClassName: nfs-client
+          existingClaim: "mastodon-system"
+          resources:
+            requests:
+              storage: 100Gi
+      s3:
+        enabled: true
+        existingSecret: "mastodon-secret"
+        bucket: "mastodon-cloudhub-social"
+        endpoint: "https://nyc3.digitaloceanspaces.com"
+        hostname: "nyc3.digitaloceanspaces.com"
+        region: "nyc3"
+      secrets:
+        existingSecret: "mastodon-secret"
+      smtp:
+        domain: "${SECRET_DOMAIN}"
+        from_address: "Mastodon <notifications@${SECRET_DOMAIN}>"
+        openssl_verify_mode: "none"
+        server: "smtp.sendgrid.net"
+        existingSecret: "mastodon-secret-smtp"
+    ingress:
+      annotations:
+        external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+        hajimari.io/icon: simple-icons:mastodon
+      ingressClassName: nginx
+      hosts:
+        - host: "${SECRET_DOMAIN}"
+          paths:
+            - path: '/'
+      tls:
+        - secretName: letsencrypt-production
+          hosts:
+            - "${SECRET_DOMAIN}"
+    postgresql:
+      auth:
+        existingSecret: "mastodon-secret-postgres"
+      primary:
+        persistence:
+          enabled: true
+          storageClass: nfs-client
+          existingClaim: "mastodon-postgres"
+        volumePermissions:
+          enabled: true
+        containerSecurityContext:
+          runAsUser: 1004
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+        prometheusRule:
+          enabled: true
+    redis:
+      auth:
+        existingSecret: "mastodon-secret-redis"
+    externalAuth:
+      oidc:
+        enabled: true
+        display_name: "Authentik"
+        issuer: "https://auth.${SECRET_DOMAIN}/application/o/mastodon/"
+        discovery: true
+        scope: "openid,profile,email"
+        uid_field: "sub"
+        redirect_uri: "https://${SECRET_DOMAIN}/auth/auth/openid_connect/callback"
+        assume_email_is_verified: true
+        idp_logout_redirect_uri: "https://auth.${SECRET_DOMAIN}/application/o/mastodon/end-session/"
+        jwks_uri: "https://auth.${SECRET_DOMAIN}/application/o/mastodon/jwks/"
+        auth_endpoint: "https://auth.${SECRET_DOMAIN}/application/o/authorize/"
+        token_endpoint: "https://auth.${SECRET_DOMAIN}/application/o/token/"
+        user_info_endpoint: "https://auth.${SECRET_DOMAIN}/application/o/userinfo/"
+        end_session_endpoint: "https://auth.${SECRET_DOMAIN}/application/o/mastodon/end-session/"
+      oauth_global:
+        omniauth_only: true
