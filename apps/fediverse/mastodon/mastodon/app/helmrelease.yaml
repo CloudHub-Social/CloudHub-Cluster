@@ -39,9 +39,8 @@ spec:
   values:
     mastodon:
       createAdmin:
-        enabled: true
-        username: jax_admin
-        email: "jax-admin@${SECRET_DOMAIN}"
+        # Admin already created as part of DB migration (if not migrating from a previous install, set to true and set an email and password).
+        enabled: false
       local_domain: "${SECRET_DOMAIN}"
       persistence:
         assets:
