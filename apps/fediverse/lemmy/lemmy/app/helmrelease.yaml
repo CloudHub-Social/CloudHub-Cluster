@@ -147,7 +147,7 @@ spec:
 
       env:
         LEMMY_UI_DEBUG: false
-        RUST_BACKTRACE: "full"
+        RUST_BACKTRACE: "1"
 
       envFrom:
         # - secretRef:
@@ -215,7 +215,7 @@ spec:
         PICTRS__MEDIA__GIF__MAX_HEIGHT: 256
         PICTRS__MEDIA__GIF__MAX_AREA: 65536
         PICTRS__MEDIA__GIF__MAX_FRAME_COUNT: 400
-        RUST_BACKTRACE: "full"
+        RUST_BACKTRACE: "1"
 
       envFrom:
         # - secretRef:
