@@ -8,8 +8,7 @@ spec:
   interval: 15m
   chart:
     spec:
-      # chart: ./
-      chart: mastodon
+      chart: ./
       version: 4.0.1
       sourceRef:
         kind: GitRepository
