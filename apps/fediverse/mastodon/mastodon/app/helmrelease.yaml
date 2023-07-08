@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: ./
-      version: 4.0.0
+      version: 4.0.1
       sourceRef:
         kind: GitRepository
         name: mastodon
@@ -37,6 +37,9 @@ spec:
       name: mastodon-secret
       valuesKey: client_secret
   values:
+    image:
+      tag: latest
+      pullPolicy: Always
     mastodon:
       createAdmin:
         # Admin already created as part of DB migration (if not migrating from a previous install, set to true and set an email and password).
