@@ -51,9 +51,9 @@ spec:
   values:
     image:
       repository: dessalines/lemmy
-      pullPolicy: IfNotPresent
+      pullPolicy: Always
       # Overrides the image tag whose default is the chart appVersion.
-      #tag: latest
+      tag: latest
 
     ## The domain of the Lemmy instance
     serverName: "lemmy.${SECRET_DOMAIN}"
@@ -140,8 +140,8 @@ spec:
     frontend:
       image:
         repository: dessalines/lemmy-ui
-        #pullPolicy: IfNotPresent
-        #tag:
+        pullPolicy: Always
+        tag: 0.18.2-rc.1
 
       replicaCount: 1
 
