@@ -40,17 +40,21 @@ spec:
     metrics-server:
       enabled: false
     ingress:
-      enabled: true
-      className: nginx
+      hosts:
+      - "kubernetes.${SECRET_DOMAIN}"
+      ingressClassName: nginx
+      pathType: ImplementationSpecific
+      secretName: kubernetes-dashboard-tls
+      issuer:
+        name: letsencrypt-production
+        scope: cluster
+      labels: {}
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
         hajimari.io/icon: mdi:kubernetes
-      hosts:
-        - &host "kubernetes.${SECRET_DOMAIN}"
-      tls:
-        - hosts:
-            - *host
-          secretName: kubernetes-dashboard-tls
+      paths:
+        web: /
+        api: /api
     metricsScraper:
       enabled: true
     serviceMonitor:
