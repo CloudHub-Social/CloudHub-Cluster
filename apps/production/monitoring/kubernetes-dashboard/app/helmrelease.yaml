@@ -39,24 +39,22 @@ spec:
       enabled: false
     metrics-server:
       enabled: false
-    ingress:
-      hosts:
+    app:
+      ingress:
+        hosts:
         - "kubernetes.${SECRET_DOMAIN}"
-      ingressClassName: nginx
-      pathType: ImplementationSpecific
-      secretName: kubernetes-dashboard-certs
-      issuer:
-        name: letsencrypt-production
-        scope: cluster
-      labels: {}
-      annotations:
-        nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
-        hajimari.io/icon: mdi:kubernetes
-        hajimari.io/enable: "true"
-      paths:
-        web: /
-        api: /api
+        ingressClassName: nginx
+        pathType: ImplementationSpecific
+        secretName: kubernetes-dashboard-certs
+        issuer:
+          name: letsencrypt-production
+          scope: cluster
+        annotations:
+          nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+          hajimari.io/icon: mdi:kubernetes
+          hajimari.io/enable: "true"
     metricsScraper:
       enabled: true
-    serviceMonitor:
-      enabled: true
+    extras:
+      serviceMonitor:
+        enabled: true
