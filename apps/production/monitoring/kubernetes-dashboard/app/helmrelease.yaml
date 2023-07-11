@@ -37,6 +37,8 @@ spec:
       enabled: false
     nginx:
       enabled: false
+    metrics-server:
+      enabled: false
     ingress:
       enabled: true
       # className: nginx
