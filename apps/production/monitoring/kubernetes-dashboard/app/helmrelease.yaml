@@ -41,7 +41,7 @@ spec:
       enabled: false
     ingress:
       hosts:
-      - "kubernetes.${SECRET_DOMAIN}"
+        - "kubernetes.${SECRET_DOMAIN}"
       ingressClassName: nginx
       pathType: ImplementationSpecific
       secretName: kubernetes-dashboard-certs
