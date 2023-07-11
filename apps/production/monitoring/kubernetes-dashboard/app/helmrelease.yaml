@@ -33,6 +33,10 @@ spec:
       - --disable-settings-authorizer
       - --enable-insecure-login
       - --token-ttl=43200
+    cert-manager:
+      enabled: false
+    nginx:
+      enabled: false
     ingress:
       enabled: true
       # className: nginx
