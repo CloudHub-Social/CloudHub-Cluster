@@ -5,6 +5,9 @@ machine:
   kubelet:
     extraArgs:
       rotate-server-certificates: true
+      # https://github.com/siderolabs/talos/issues/7216
+      feature-gates:
+        "NewVolumeManagerReconstruction=false"
     extraMounts:
       - destination: /var/local-path/storage
         type: bind
