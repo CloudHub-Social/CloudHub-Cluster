@@ -123,13 +123,13 @@ spec:
         type: ClusterIP
         port: 80
 
-      # resources:
-      #   limits:
-      #     cpu: 2000m
-      #     memory: 2Gi
-      #   requests:
-      #     cpu: 1000m
-      #     memory: 1Gi
+      resources:
+        limits:
+          cpu: 500m
+          memory: 500Mi
+        requests:
+          cpu: 200m
+          memory: 200Mi
 
       nodeSelector: {}
 
@@ -143,7 +143,7 @@ spec:
         pullPolicy: IfNotPresent
         tag: 0.18.2-rc.1
 
-      replicaCount: 2
+      replicaCount: 1
 
       env:
         LEMMY_UI_DEBUG: false
@@ -170,13 +170,13 @@ spec:
         type: ClusterIP
         port: 80
 
-      # resources:
-      #   limits:
-      #     cpu: 500m
-      #     memory: 500Mi
-      #   requests:
-      #     cpu: 250m
-      #     memory: 250Mi
+      resources:
+        limits:
+          cpu: 250m
+          memory: 250Mi
+        requests:
+          cpu: 100m
+          memory: 100Mi
 
       nodeSelector: {}
 
@@ -251,13 +251,13 @@ spec:
         type: ClusterIP
         port: 80
 
-      # resources:
-      #   limits:
-      #     cpu: 500m
-      #     memory: 500Mi
-      #   requests:
-      #     cpu: 250m
-      #     memory: 250Mi
+      resources:
+        limits:
+          cpu: 100m
+          memory: 250Mi
+        requests:
+          cpu: 50m
+          memory: 150Mi
 
       nodeSelector: {}
 
@@ -267,7 +267,7 @@ spec:
 
     proxy:
       enabled: true
-      replicaCount: 2
+      replicaCount: 1
 
       image:
         repository: nginx
@@ -291,13 +291,13 @@ spec:
         type: ClusterIP
         port: 80
 
-      # resources:
-      #   limits:
-      #     cpu: 500m
-      #     memory: 500Mi
-      #   requests:
-      #     cpu: 250m
-      #     memory: 250Mi
+      resources:
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        requests:
+          cpu: 50m
+          memory: 50Mi
 
       nodeSelector: {}
 
@@ -325,6 +325,13 @@ spec:
           enabled: true
         containerSecurityContext:
           runAsUser: 1004
+        resources:
+          limits:
+            cpu: 1200m
+            memory: 4Gi
+          requests:
+            cpu: 600m
+            memory: 2Gi
       metrics:
         enabled: true
         serviceMonitor:
