@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: ./charts/lemmy
-      version: 0.4.0
+      version: 0.4.3
       sourceRef:
         kind: GitRepository
         name: lemmy
@@ -17,12 +17,12 @@ spec:
   maxHistory: 2
   install:
     createNamespace: true
-    timeout: 10m
+    timeout: 20m
     remediation:
       retries: 10
   upgrade:
     cleanupOnFail: true
-    timeout: 10m
+    timeout: 30m
     remediation:
       retries: 10
   uninstall:
