@@ -106,6 +106,27 @@ spec:
 
       replicaCount: 1
 
+      livenessProbe:
+        httpGet:
+          path: /
+          port: http
+        initialDelaySeconds: 120
+        periodSeconds: 3
+
+      readinessProbe:
+        httpGet:
+          path: /
+          port: http
+        initialDelaySeconds: 120
+        periodSeconds: 3
+
+      startupProbe:
+        httpGet:
+          path: /
+          port: http
+        initialDelaySeconds: 300
+        periodSeconds: 3
+
       podAnnotations: {}
 
       podSecurityContext:
@@ -144,6 +165,20 @@ spec:
         tag: 0.18.3-rc.1
 
       replicaCount: 1
+
+      livenessProbe:
+        httpGet:
+          path: /
+          port: http
+        initialDelaySeconds: 120
+        periodSeconds: 3
+
+      readinessProbe:
+        httpGet:
+          path: /
+          port: http
+        initialDelaySeconds: 120
+        periodSeconds: 3
 
       env:
         LEMMY_UI_DEBUG: false
@@ -273,6 +308,20 @@ spec:
         repository: nginx
         pullPolicy: Always
         tag: 1-alpine
+
+      livenessProbe:
+        httpGet:
+          path: /
+          port: http
+        initialDelaySeconds: 120
+        periodSeconds: 3
+
+      readinessProbe:
+        httpGet:
+          path: /
+          port: http
+        initialDelaySeconds: 120
+        periodSeconds: 3
 
       podAnnotations: {}
 
