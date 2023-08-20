@@ -100,6 +100,10 @@ spec:
           enabled: true
         containerSecurityContext:
           runAsUser: 1004
+        livenessProbe:
+          initialDelaySeconds: 60
+        readinessProbe:
+          initialDelaySeconds: 60
       metrics:
         enabled: true
         serviceMonitor:
