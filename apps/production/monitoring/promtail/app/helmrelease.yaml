@@ -25,9 +25,9 @@ spec:
       retries: 10
   uninstall:
     keepHistory: false
-  dependsOn:
-    - name: rook-ceph-cluster
-      namespace: rook-ceph
+  # dependsOn:
+  #   - name: rook-ceph-cluster
+  #     namespace: rook-ceph
   values:
     serviceMonitor:
       enabled: true

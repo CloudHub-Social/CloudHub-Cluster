@@ -25,9 +25,9 @@ spec:
       retries: 10
   uninstall:
     keepHistory: false
-  dependsOn:
-    - name: rook-ceph-cluster
-      namespace: rook-ceph
+  # dependsOn:
+  #   - name: rook-ceph-cluster
+  #     namespace: rook-ceph
   values:
   #    extraInitContainers:
 #      - name: init-db
@@ -144,21 +144,21 @@ spec:
           gnetId: 763
           revision: 4
           datasource: Prometheus
-        # Ref: https://grafana.com/grafana/dashboards/5342-ceph-pools/
-        ceph-pools:
-          gnetId: 5342
-          revision: 9
-          datasource: Prometheus
-        # Ref: https://grafana.com/grafana/dashboards/5336-ceph-osd-single/
-        ceph-osd:
-          gnetId: 5336
-          revision: 9
-          datasource: Prometheus
-        # Ref: https://grafana.com/grafana/dashboards/2842-ceph-cluster/
-        ceph-cluster:
-          gnetId: 2842
-          revision: 16
-          datasource: Prometheus
+        # # Ref: https://grafana.com/grafana/dashboards/5342-ceph-pools/
+        # ceph-pools:
+        #   gnetId: 5342
+        #   revision: 9
+        #   datasource: Prometheus
+        # # Ref: https://grafana.com/grafana/dashboards/5336-ceph-osd-single/
+        # ceph-osd:
+        #   gnetId: 5336
+        #   revision: 9
+        #   datasource: Prometheus
+        # # Ref: https://grafana.com/grafana/dashboards/2842-ceph-cluster/
+        # ceph-cluster:
+        #   gnetId: 2842
+        #   revision: 16
+        #   datasource: Prometheus
         cert-manager:
           url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/cert-manager/dashboards/cert-manager.json
           datasource: Prometheus
@@ -228,7 +228,7 @@ spec:
         enabled: true
     persistence:
       enabled: true
-      storageClassName: ceph-block
+      storageClassName: nfs-client
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
