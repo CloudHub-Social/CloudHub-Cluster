@@ -113,6 +113,14 @@ spec:
     redis:
       auth:
         existingSecret: "mastodon-secret-redis"
+      master:
+        persistence:
+          enabled: true
+          storageClass: nfs-client
+      replica:
+        persistence:
+          enabled: true
+          storageClass: nfs-client
     externalAuth:
       oidc:
         enabled: true
