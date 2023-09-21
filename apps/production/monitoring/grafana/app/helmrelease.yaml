@@ -36,6 +36,9 @@ spec:
 #        envFrom:
 #          - secretRef:
 #              name: grafana-secret
+    initChownData:
+      securityContext:
+        runAsUser: 1004
     replicas: 1
     rbac:
       pspEnabled: false
