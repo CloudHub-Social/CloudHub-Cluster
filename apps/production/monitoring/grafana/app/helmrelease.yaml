@@ -229,6 +229,8 @@ spec:
     persistence:
       enabled: true
       storageClassName: nfs-client
+    securityContext:
+      runAsUser: 1004
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname

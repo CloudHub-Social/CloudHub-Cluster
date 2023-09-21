@@ -97,6 +97,8 @@ spec:
                 store: memberlist
         analytics:
           reporting_enabled: false
+      podSecurityContext:
+        runAsUser: 1004
     gateway:
       replicas: 3
       # TODO: https://github.com/grafana/loki/pull/8187
@@ -116,6 +118,8 @@ spec:
         tls:
           - hosts:
               - *host
+      podSecurityContext:
+        runAsUser: 1004
     read:
       replicas: 3
       persistence:
@@ -134,6 +138,7 @@ spec:
       replicas: 3
       persistence:
         storageClass: nfs-client
+
       extraVolumeMounts:
         - name: rules
           mountPath: /rules/fake
