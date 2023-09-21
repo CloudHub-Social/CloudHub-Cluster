@@ -49,6 +49,18 @@ spec:
       tls:
         - hosts:
             - *host
+    livenessProbe:
+      httpGet:
+        path: /
+        port: http
+      initialDelaySeconds: 30
+      periodSeconds: 3
+    readinessProbe:
+      httpGet:
+        path: /
+        port: http
+      initialDelaySeconds: 30
+      periodSeconds: 3
     networkPolicy:
       create: false
     metrics:
