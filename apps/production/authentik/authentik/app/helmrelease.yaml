@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: authentik
-      version: 2023.6.3
+      version: 2023.8.3
       sourceRef:
         kind: HelmRepository
         name: authentik
@@ -62,8 +62,8 @@ spec:
             - *host
 
     postgresql:
-      # diagnosticMode:
-      #   enabled: true
+      diagnosticMode:
+        enabled: true
       enabled: true
       image:
         debug: true
