@@ -62,6 +62,8 @@ spec:
             - *host
 
     postgresql:
+      diagnosticMode:
+        enabled: true
       enabled: true
       image:
         debug: true
