@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: ./charts/lemmy
-      version: 0.4.3
+      version: 0.4.5
       sourceRef:
         kind: GitRepository
         name: lemmy
@@ -162,7 +162,8 @@ spec:
       image:
         repository: dessalines/lemmy-ui
         pullPolicy: IfNotPresent
-        tag: 0.18.3-rc.1
+        # tag: latest
+        # tag: 0.18.3-rc.1
 
       replicaCount: 1
 
