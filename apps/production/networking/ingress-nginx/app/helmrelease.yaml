@@ -27,6 +27,7 @@ spec:
     keepHistory: false
   values:
     controller:
+      allowSnippetAnnotations: true
       extraEnvs:
         - name: TZ
           value: "${TIMEZONE}"
@@ -50,7 +51,6 @@ spec:
         keep-alive-requests: 10000
         proxy-body-size: "100M"
         ssl-protocols: "TLSv1.3 TLSv1.2"
-        allow-snippet-annotations: true
       metrics:
         enabled: true
         serviceMonitor:
