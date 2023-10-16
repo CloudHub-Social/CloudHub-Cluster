@@ -46,23 +46,23 @@ spec:
           ingestion_burst_size_mb: 32
           shard_streams:
             enabled: true
-        schema_config:
-          configs:
-            - from: "2021-08-01"
-              store: boltdb-shipper
-              object_store: s3
-              schema: v11
-              index:
-                prefix: loki_index_
-                period: 24h
+        # schema_config:
+        #   configs:
+        #     - from: "2021-08-01"
+        #       store: boltdb-shipper
+        #       object_store: s3
+        #       schema: v11
+        #       index:
+        #         prefix: loki_index_
+        #         period: 24h
         common:
           path_prefix: /var/loki
           replication_factor: 3
-          storage:
-            s3:
-              s3: null
-              insecure: true
-              s3forcepathstyle: true
+          # storage:
+          #   s3:
+          #     s3: null
+          #     insecure: true
+          #     s3forcepathstyle: true
           ring:
             kvstore:
               store: memberlist
@@ -84,7 +84,7 @@ spec:
               store: memberlist
         compactor:
           working_directory: /var/loki/boltdb-shipper-compactor
-          shared_store: s3
+          # shared_store: s3
           compaction_interval: 10m
           retention_enabled: true
           retention_delete_delay: 2h
