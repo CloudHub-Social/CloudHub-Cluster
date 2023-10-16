@@ -29,16 +29,17 @@ spec:
   #   - name: rook-ceph-cluster
   #     namespace: rook-ceph
   values:
-  #    extraInitContainers:
-#      - name: init-db
-#        image: ghcr.io/onedr0p/postgres-initdb:14.7
-#        imagePullPolicy: IfNotPresent
-#        envFrom:
-#          - secretRef:
-#              name: grafana-secret
+    #    extraInitContainers:
+    #      - name: init-db
+    #        image: ghcr.io/onedr0p/postgres-initdb:14.7
+    #        imagePullPolicy: IfNotPresent
+    #        envFrom:
+    #          - secretRef:
+    #              name: grafana-secret
     initChownData:
-      securityContext:
-        runAsUser: 1004
+      enabled: false
+      # securityContext:
+      #   runAsUser: 1004
     replicas: 1
     rbac:
       pspEnabled: false
