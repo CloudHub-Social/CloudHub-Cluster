@@ -1,6 +1,10 @@
 ---
 name: "Draft Release"
 
+permissions:
+  contents: write
+  pull-requests: read
+
 on:
   workflow_dispatch:
   push:
