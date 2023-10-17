@@ -38,7 +38,8 @@ spec:
       valuesKey: client_secret
   values:
     image:
-      tag: latest
+      repository: ghcr.io/mastodon/mastodon
+      tag: v4.2.1
       pullPolicy: Always
     mastodon:
       createAdmin:
@@ -81,7 +82,7 @@ spec:
       hosts:
         - host: "${SECRET_DOMAIN}"
           paths:
-            - path: '/'
+            - path: "/"
       tls:
         - secretName: letsencrypt-production
           hosts:
