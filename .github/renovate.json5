@@ -30,9 +30,6 @@
   "pre-commit": {
     "enabled": true
   },
-  "major": {
-    "dependancyDashboardApproval": true
-  },
   "packageRules": [
     {
       "matchSourceUrlPrefixes": [
