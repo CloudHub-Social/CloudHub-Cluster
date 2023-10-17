@@ -92,9 +92,9 @@ spec:
     backend:
       image:
         _keep: true
-        # repository: dessalines/lemmy
-        # pullPolicy: IfNotPresent
-        # tag:
+        repository: dessalines/lemmy
+        pullPolicy: IfNotPresent
+        tag: 0.18.5
 
       env:
         RUST_BACKTRACE: "full"
@@ -162,8 +162,7 @@ spec:
       image:
         repository: dessalines/lemmy-ui
         pullPolicy: IfNotPresent
-        # tag: latest
-        # tag: 0.18.3-rc.1
+        tag: 0.18.5
 
       replicaCount: 1
 
@@ -298,10 +297,12 @@ spec:
 
       podAnnotations: {}
 
-      podSecurityContext: {}
+      podSecurityContext:
+        {}
         # fsGroup: 2000
 
-      securityContext: {}
+      securityContext:
+        {}
         # capabilities:
         #   drop:
         #   - ALL
@@ -376,6 +377,6 @@ spec:
       hosts:
         - "lemmy.${SECRET_DOMAIN}"
       tls:
-       - secretName: letsencrypt-production
-         hosts:
-           - "lemmy.${SECRET_DOMAIN}"
+        - secretName: letsencrypt-production
+          hosts:
+            - "lemmy.${SECRET_DOMAIN}"
