@@ -13,6 +13,11 @@ Welcome to my highly opinionated template for deploying a single Kubernetes ([k3
 - [What's next](https://github.com/onedr0p/flux-cluster-template#-whats-next)
 - [Thanks](https://github.com/onedr0p/flux-cluster-template#-thanks)
 
+### Status
+
+- [Status Page](https://cloudhub-social.github.io/Status/)
+- [Status Page Github](https://github.com/CloudHub-Social/Status)
+
 ## 👋 Introduction
 
 The following components will be installed in your [k3s](https://k3s.io/) cluster by default. Most are only included to get a minimum viable cluster up and running.
