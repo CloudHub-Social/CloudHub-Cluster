@@ -10,4 +10,4 @@ spec:
   endpoints:
     - dnsName: "status.${SECRET_DOMAIN}"
       recordType: CNAME
-      targets: ["cloudhub-social.github.io"]
+      targets: ["cloudhub-social.github.io/Status"]
