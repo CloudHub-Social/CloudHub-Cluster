@@ -10,4 +10,4 @@ spec:
   endpoints:
     - dnsName: "status.${SECRET_DOMAIN}"
       recordType: CNAME
-      targets: ["stats.uptimerobot.com"]
+      targets: ["cloudhub-social.github.io"]

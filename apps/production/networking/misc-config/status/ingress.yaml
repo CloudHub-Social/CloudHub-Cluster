@@ -6,7 +6,7 @@ metadata:
   namespace: networking
 spec:
   type: ExternalName
-  externalName: stats.uptimerobot.com
+  externalName: cloudhub-social.github.io
   ports:
     - port: 443
 ---
@@ -21,20 +21,20 @@ metadata:
     nginx.ingress.kubernetes.io/upstream-vhost: "status.${SECRET_DOMAIN}"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     nginx.ingress.kubernetes.io/server-snippet: |
-      proxy_ssl_name stats.uptimerobot.com;
+      proxy_ssl_name cloudhub-social.github.io;
       proxy_ssl_server_name on;
 spec:
   rules:
-  - host: "status.${SECRET_DOMAIN}"
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: external-service-status
-            port:
-              number: 443
+    - host: "status.${SECRET_DOMAIN}"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: external-service-status
+                port:
+                  number: 443
   tls:
-  - hosts:
-    - "status.${SECRET_DOMAIN}"
+    - hosts:
+        - "status.${SECRET_DOMAIN}"
