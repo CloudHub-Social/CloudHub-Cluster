@@ -360,6 +360,9 @@ spec:
         #     cpu: 600m
         #     memory: 2Gi
       metrics:
+        containerSecurityContext:
+          enabled: true
+          runAsUser: 1004
         enabled: true
         serviceMonitor:
           enabled: true
