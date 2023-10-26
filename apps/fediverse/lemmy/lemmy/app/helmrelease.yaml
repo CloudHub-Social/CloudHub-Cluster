@@ -344,6 +344,9 @@ spec:
       service:
         port: 5432
       primary:
+        extraEnvVars:
+          - name: POSTGRES_MAX_CONNECTIONS
+            value: "500"
         persistence:
           enabled: true
           storageClass: nfs-client
