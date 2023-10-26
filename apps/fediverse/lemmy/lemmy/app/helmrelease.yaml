@@ -44,6 +44,10 @@ spec:
       kind: Secret
       name: lemmy-secret
       valuesKey: postgresql_password
+    - targetPath: psotgresql.auth.postgresPasword
+      kind: Secret
+      name: lemmy-secret
+      valuesKey: postgres_postgres_user_password
     - targetPath: config.siteName
       kind: Secret
       name: lemmy-secret
