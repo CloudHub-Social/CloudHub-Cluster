@@ -171,7 +171,7 @@ spec:
       replicaCount: 1
 
       env:
-        LEMMY_UI_DEBUG: false
+        LEMMY_UI_DEBUG: true
         RUST_BACKTRACE: "1"
 
       envFrom:
