@@ -173,7 +173,7 @@ spec:
       env:
         LEMMY_UI_DEBUG: true
         # RUST_BACKTRACE: "1"
-        RUST_BACKTRACE: "Full"
+        RUST_BACKTRACE: "full"
 
       envFrom:
         # - secretRef:
