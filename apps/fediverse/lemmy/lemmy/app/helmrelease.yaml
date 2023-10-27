@@ -192,7 +192,7 @@ spec:
         periodSeconds: 3
 
       env:
-        LEMMY_UI_DEBUG: true
+        LEMMY_UI_DEBUG: false
         # RUST_BACKTRACE: "1"
         RUST_BACKTRACE: "full"
 
