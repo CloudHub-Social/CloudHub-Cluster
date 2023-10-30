@@ -188,7 +188,7 @@ spec:
         httpGet:
           path: /
           port: http
-        initialDelaySeconds: 240
+        initialDelaySeconds: 120
         periodSeconds: 3
 
       env:
