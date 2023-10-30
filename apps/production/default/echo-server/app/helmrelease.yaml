@@ -39,6 +39,7 @@ spec:
           image:
             repository: docker.io/jmalloc/echo-server
             tag: 0.3.5
+            pullPolicy: IfNotPresent
 
           probes:
             liveness: &probes
@@ -70,7 +71,7 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: nginx
+        className: "ingress-nginx"
         annotations:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           hajimari.io/icon: video-input-antenna
@@ -79,6 +80,8 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+                service: main
+                port: http
         tls:
           - hosts:
               - *host
