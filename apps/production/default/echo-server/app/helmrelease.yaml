@@ -34,33 +34,33 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
 
-      containers:
-        main:
-          image:
-            repository: docker.io/jmalloc/echo-server
-            tag: 0.3.5
-            pullPolicy: IfNotPresent
+        containers:
+          main:
+            image:
+              repository: docker.io/jmalloc/echo-server
+              tag: 0.3.5
+              pullPolicy: IfNotPresent
 
-          probes:
-            liveness: &probes
-              enabled: true
-              custom: true
-              spec:
-                httpGet:
-                  path: /health
-                  port: 8080
-                initialDelaySeconds: 0
-                periodSeconds: 10
-                timeoutSeconds: 1
-                failureThreshold: 3
-            readiness: *probes
-            startup: *probes
-          resources:
-            requests:
-              cpu: 5m
-              memory: 10Mi
-            limits:
-              memory: 50Mi
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: 8080
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup: *probes
+            resources:
+              requests:
+                cpu: 5m
+                memory: 10Mi
+              limits:
+                memory: 50Mi
 
     service:
       main:
