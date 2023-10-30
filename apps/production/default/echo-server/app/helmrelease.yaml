@@ -28,7 +28,11 @@ spec:
   values:
     controllers:
       main:
+        replicas: 1
         strategy: RollingUpdate
+
+        annotations:
+          reloader.stakater.com/auto: "true"
 
       containers:
         main:
@@ -62,6 +66,7 @@ spec:
         ports:
           http:
             port: 8080
+
     ingress:
       main:
         enabled: true
