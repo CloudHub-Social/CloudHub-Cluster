@@ -194,6 +194,7 @@ spec:
       env:
         LEMMY_UI_DEBUG: false
         # RUST_BACKTRACE: "1"
+        RUST_LOG: "verbose"
         RUST_BACKTRACE: "full"
 
       envFrom:
