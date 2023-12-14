@@ -11,7 +11,7 @@ spec:
   secretRef:
     name: github-token-secret
 ---
-apiVersion: notification.toolkit.fluxcd.io/v1beta2
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
 metadata:
   name: github
