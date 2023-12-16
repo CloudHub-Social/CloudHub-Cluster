@@ -113,7 +113,7 @@ spec:
       replicaCount: 1
 
       strategy:
-        type: RullingUpdate
+        type: RollingUpdate
 
       livenessProbe:
         httpGet:
