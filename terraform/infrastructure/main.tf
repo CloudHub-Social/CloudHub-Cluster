@@ -52,6 +52,7 @@ resource "proxmox_vm_qemu" "talos-control-plane" {
   cpu     = "host"
   memory  = 16384
   scsihw  = "virtio-scsi-pci"
+  qemu_os = "other"
   #bootdisk = "scsi0"
   onboot = true
   disk {
@@ -111,6 +112,7 @@ resource "proxmox_vm_qemu" "talos-worker" {
   cpu     = "host"
   memory  = 16384
   scsihw  = "virtio-scsi-pci"
+  qemu_os = "other"
   #bootdisk = "scsi0"
   onboot = true
   disk {
@@ -122,14 +124,14 @@ resource "proxmox_vm_qemu" "talos-worker" {
     discard = "on"
   }
 
-  disk {
-    slot    = 1
-    size    = "75G"
-    type    = "scsi"
-    storage = "local-lvm"
-    discard = "on"
-    ssd     = 1
-  }
+  # disk {
+  #   slot    = 1
+  #   size    = "75G"
+  #   type    = "scsi"
+  #   storage = "local-lvm"
+  #   discard = "on"
+  #   ssd     = 1
+  # }
 
   # if you want two NICs, just copy this whole network section and duplicate it
   network {
