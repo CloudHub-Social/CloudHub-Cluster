@@ -31,7 +31,7 @@ spec:
         replicas: 2
         strategy: RollingUpdate
         annotations:
-          # reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: "true"
         initContainers:
           init-geoip:
             image:
@@ -63,7 +63,7 @@ spec:
         type: LoadBalancer
         annotations:
           coredns.io/hostname: "vector.${SECRET_DOMAIN}"
-          externalIPs: ["10.0.41.61"]
+          externalIPs: "10.0.41.61"
         ports:
           http:
             port: 8686
