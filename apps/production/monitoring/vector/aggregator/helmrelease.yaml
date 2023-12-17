@@ -61,8 +61,7 @@ spec:
     service:
       main:
         type: LoadBalancer
-        annotations:
-          externalIPs: 10.0.41.61
+        loadBalancerIP: 10.0.41.61
         ports:
           http:
             port: 8686
