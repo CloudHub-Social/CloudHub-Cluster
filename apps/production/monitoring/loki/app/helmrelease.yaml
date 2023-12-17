@@ -48,15 +48,15 @@ spec:
           ingestion_burst_size_mb: 32
           shard_streams:
             enabled: true
-        # schema_config:
-        #   configs:
-        #     - from: "2021-08-01"
-        #       store: boltdb-shipper
-        #       object_store: s3
-        #       schema: v11
-        #       index:
-        #         prefix: loki_index_
-        #         period: 24h
+        schema_config:
+          configs:
+            - from: "2022-01-11"
+              store: boltdb-shipper
+              object_store: s3
+              schema: v12
+              index:
+                prefix: loki_index_
+                period: 24h
         common:
           path_prefix: /var/loki
           replication_factor: 3
