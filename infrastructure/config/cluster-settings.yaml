@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 data:
   TIMEZONE: "America/Toronto"
-  METALLB_LB_RANGE: "10.0.41.50-10.0.41.60"
+  METALLB_LB_RANGE: "10.0.41.50-10.0.41.80"
   METALLB_K8S_GATEWAY_ADDR: "10.0.41.50"
   METALLB_INGRESS_ADDR: "10.0.41.51"
   KUBE_VIP_ADDR: "10.0.41.40"
