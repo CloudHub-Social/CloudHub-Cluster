@@ -157,15 +157,15 @@ spec:
         annotations:
           grafana_folder: Loki
       serviceMonitor:
-        enabled: false
+        enabled: true
         additionalLabels:
           app.kubernetes.io/part-of: kube-prometheus-stack
         metricsInstance:
-          enabled: false
+          enabled: true
       selfMonitoring:
-        enabled: false
+        enabled: true
         grafanaAgent:
-          installOperator: false
+          installOperator: true
       lokiCanary:
         enabled: false
       rules:
