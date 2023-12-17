@@ -153,16 +153,19 @@ spec:
         - name: scratch
           emptyDir: {}
     monitoring:
+      dashboards:
+        annotations:
+          grafana_folder: Loki
       serviceMonitor:
-        enabled: true
+        enabled: false
         additionalLabels:
           app.kubernetes.io/part-of: kube-prometheus-stack
         metricsInstance:
-          enabled: true
+          enabled: false
       selfMonitoring:
-        enabled: true
+        enabled: false
         grafanaAgent:
-          installOperator: true
+          installOperator: false
       lokiCanary:
         enabled: false
       rules:
