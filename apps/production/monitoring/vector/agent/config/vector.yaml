@@ -2,9 +2,9 @@
 data_dir: /vector-data-dir
 
 sources:
-#   journald_source:
-#     type: journald
-#     journal_directory: /var/log/journal
+  journald_source:
+    type: journald
+    journal_directory: /var/log/journal
 
   kubernetes_source:
     type: kubernetes_logs
@@ -16,12 +16,12 @@ sources:
       pod_name: pod_name
 
 sinks:
-  # journald:
-  #   type: vector
-  #   compression: true
-  #   version: "2"
-  #   address: vector-aggregator.monitoring.svc.cluster.local:6000
-  #   inputs: ["journald_source"]
+  journald:
+    type: vector
+    compression: true
+    version: "2"
+    address: vector-aggregator.monitoring.svc.cluster.local:6000
+    inputs: ["journald_source"]
 
   kubernetes:
     type: vector
