@@ -17,12 +17,12 @@ spec:
   maxHistory: 2
   install:
     createNamespace: true
-    timeout: 20m
+    timeout: 30m
     remediation:
       retries: 10
   upgrade:
     cleanupOnFail: true
-    timeout: 30m
+    timeout: 1h
     remediation:
       retries: 10
   uninstall:
@@ -133,7 +133,7 @@ spec:
         httpGet:
           path: /
           port: http
-        initialDelaySeconds: 120
+        initialDelaySeconds: 600
         periodSeconds: 3
 
       podAnnotations: {}
