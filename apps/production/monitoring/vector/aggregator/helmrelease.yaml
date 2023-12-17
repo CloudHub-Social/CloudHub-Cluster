@@ -71,8 +71,10 @@ spec:
             port: 6010
           taloskernel:
             port: 6050
+            protocol: UDP
           talosservice:
             port: 6051
+            protocol: UDP
 
     ingress:
       main:
