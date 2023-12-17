@@ -148,21 +148,31 @@ spec:
           gnetId: 763
           revision: 4
           datasource: Prometheus
-        # # Ref: https://grafana.com/grafana/dashboards/5342-ceph-pools/
-        # ceph-pools:
-        #   gnetId: 5342
-        #   revision: 9
-        #   datasource: Prometheus
-        # # Ref: https://grafana.com/grafana/dashboards/5336-ceph-osd-single/
-        # ceph-osd:
-        #   gnetId: 5336
-        #   revision: 9
-        #   datasource: Prometheus
-        # # Ref: https://grafana.com/grafana/dashboards/2842-ceph-cluster/
-        # ceph-cluster:
-        #   gnetId: 2842
-        #   revision: 16
-        #   datasource: Prometheus
+        # Ref: https://grafana.com/grafana/dashboards/5342-ceph-pools/
+        ceph-pools:
+          gnetId: 5342
+          revision: 9
+          datasource: Prometheus
+        # Ref: https://grafana.com/grafana/dashboards/5336-ceph-osd-single/
+        ceph-osd:
+          gnetId: 5336
+          revision: 9
+          datasource: Prometheus
+        # Ref: https://grafana.com/grafana/dashboards/2842-ceph-cluster/
+        ceph-cluster:
+          gnetId: 2842
+          revision: 16
+          datasource: Prometheus
+        # https://grafana.com/grafana/dashboards/455-postgres-overview/
+        postgres-overview:
+          gnetId: 455
+          revision: 2
+          datasource: Prometheus
+        # https://grafana.com/grafana/dashboards/9628-postgresql-database/
+        postgres-database:
+          gnetId: 9628
+          revision: 7
+          datasource: Prometheus
         cert-manager:
           url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/cert-manager/dashboards/cert-manager.json
           datasource: Prometheus
