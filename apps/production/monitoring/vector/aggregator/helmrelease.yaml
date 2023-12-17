@@ -62,8 +62,7 @@ spec:
       main:
         type: LoadBalancer
         annotations:
-          coredns.io/hostname: "vector.${SECRET_DOMAIN}"
-          externalIPs: "10.0.41.61"
+          externalIPs: 10.0.41.61
         ports:
           http:
             port: 8686
@@ -75,6 +74,25 @@ spec:
             port: 6050
           talosservice:
             port: 6051
+
+    ingress:
+      main:
+        enabled: true
+        className: "ingress-nginx"
+        annotations:
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+        hosts:
+          - host: &host "vector.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  name: main
+                  port: http
+        tls:
+          - hosts:
+              - *host
+
     persistence:
       config:
         enabled: true
