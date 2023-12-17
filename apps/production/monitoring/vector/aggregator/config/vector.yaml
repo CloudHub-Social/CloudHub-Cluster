@@ -14,10 +14,10 @@ enrichment_tables:
 #
 
 sources:
-  journald_source:
-    type: vector
-    version: "2"
-    address: 0.0.0.0:6000
+  # journald_source:
+  #   type: vector
+  #   version: "2"
+  #   address: 0.0.0.0:6000
 
   kubernetes_source:
     type: vector
@@ -108,17 +108,17 @@ transforms:
 #
 
 sinks:
-  journald:
-    inputs: ["journald_source"]
-    type: loki
-    endpoint: http://loki-gateway.monitoring.svc.cluster.local
-    encoding:
-      codec: json
-    out_of_order_action: accept
-    remove_label_fields: true
-    remove_timestamp: true
-    labels:
-      hostname: '{{ host }}'
+  # journald:
+  #   inputs: ["journald_source"]
+  #   type: loki
+  #   endpoint: http://loki-gateway.monitoring.svc.cluster.local
+  #   encoding:
+  #     codec: json
+  #   out_of_order_action: accept
+  #   remove_label_fields: true
+  #   remove_timestamp: true
+  #   labels:
+  #     hostname: '{{ host }}'
 
   kubernetes:
     inputs: ["kubernetes_remap"]
@@ -130,9 +130,9 @@ sinks:
     remove_label_fields: true
     remove_timestamp: true
     labels:
-      app: '{{ custom_app_name }}'
-      namespace: '{{ kubernetes.pod_namespace }}'
-      node: '{{ kubernetes.pod_node_name }}'
+      app: "{{ custom_app_name }}"
+      namespace: "{{ kubernetes.pod_namespace }}"
+      node: "{{ kubernetes.pod_node_name }}"
 
   talos_kernel:
     type: loki
@@ -148,8 +148,8 @@ sinks:
       max_bytes: 1048576
     out_of_order_action: rewrite_timestamp
     labels:
-      hostname: '{{ __host }}'
-      facility: '{{ facility }}'
+      hostname: "{{ __host }}"
+      facility: "{{ facility }}"
 
   talos_service:
     type: loki
@@ -165,7 +165,7 @@ sinks:
       max_bytes: 400000
     out_of_order_action: rewrite_timestamp
     labels:
-      hostname: '{{ __host }}'
+      hostname: "{{ __host }}"
       service: '{{ "talos-service" }}'
 
   # vyos:
