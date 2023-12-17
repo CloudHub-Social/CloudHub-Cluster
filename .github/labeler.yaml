@@ -1,9 +1,13 @@
 ---
 area/ansible:
-  - "ansible/**/*"
+  - changed-files:
+    - any-glob-to-any-file: ansible/**/*
 area/github:
-  - ".github/**/*"
+  - changed-files:
+    - any-glob-to-any-file: .github/**/*
 area/kubernetes:
-  - "kubernetes/**/*"
+  - changed-files:
+    - any-glob-to-any-file: kubernetes/**/*
 area/templates:
-  - "tmpl/**/*"
+  - changed-files:
+    - any-glob-to-any-file: tmpl/**/*
