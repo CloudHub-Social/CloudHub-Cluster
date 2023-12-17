@@ -6,4 +6,4 @@ resources:
   # - ./configmap.yaml
   - ./externalsecret.yaml
   - ./helmrelease.yaml
-  # - ./objectbucketclaim.yaml
+  - ./objectbucketclaim.yaml
