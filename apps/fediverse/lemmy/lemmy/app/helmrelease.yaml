@@ -408,7 +408,7 @@ spec:
       primary:
         extraEnvVars:
           - name: POSTGRES_MAX_CONNECTIONS
-            value: "500"
+            value: "1000"
         persistence:
           enabled: true
           storageClass: nfs-client
