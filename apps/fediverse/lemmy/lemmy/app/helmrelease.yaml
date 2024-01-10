@@ -100,7 +100,7 @@ spec:
         _keep: true
         repository: dessalines/lemmy
         pullPolicy: IfNotPresent
-        tag: 0.19.1
+        tag: 0.19.2
 
       env:
         RUST_BACKTRACE: "full"
