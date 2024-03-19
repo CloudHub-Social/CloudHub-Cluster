@@ -26,7 +26,7 @@ spec:
   uninstall:
     keepHistory: false
   valuesFrom:
-    - targetPath: postgresql.postgresqlPassword
+    - targetPath: postgresql.auth.password
       kind: Secret
       name: authentik-secret
       valuesKey: AUTHENTIK_POSTGRESQL__PASSWORD
@@ -46,20 +46,25 @@ spec:
         use_tls: true
         username: apikey
 
-    ingress:
-      enabled: true
-      ingressClassName: nginx
-      annotations:
-        external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
-        hajimari.io/icon: simple-icons:lock
-      hosts:
-        - host: &host "auth.${SECRET_DOMAIN}"
-          paths:
-            - path: /
-              pathType: Prefix
+    server:
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          hajimari.io/icon: simple-icons:lock
+        hosts:
+          - host: &host "auth.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
       tls:
         - hosts:
             - *host
+
+      metrics:
+        serviceMonitor:
+          enabled: true
 
     postgresql:
       # diagnosticMode:
@@ -67,10 +72,11 @@ spec:
       enabled: true
       image:
         debug: true
-      persistence:
-        enabled: true
-        storageClass: nfs-client
-        existingClaim: "data-authentik-postgresql-0-authentik-database"
+      primary:
+        persistence:
+          enabled: true
+          storageClass: nfs-client
+          existingClaim: "data-authentik-postgresql-0-authentik-database"
       volumePermissions:
         enabled: true
       containerSecurityContext:
@@ -85,6 +91,4 @@ spec:
 
     prometheus:
       rules:
-        create: true
-      serviceMonitor:
-        create: true
+        enabled: true
