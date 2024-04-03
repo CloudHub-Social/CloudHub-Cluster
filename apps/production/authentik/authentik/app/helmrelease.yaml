@@ -59,13 +59,10 @@ spec:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           hajimari.io/icon: simple-icons:lock
         hosts:
-          - host: &host "auth.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: prefix
-      tls:
-        - hosts:
-            - *host
+          - &host "auth.${SECRET_DOMAIN}"
+        tls:
+          - hosts:
+              - *host
 
       metrics:
         serviceMonitor:
