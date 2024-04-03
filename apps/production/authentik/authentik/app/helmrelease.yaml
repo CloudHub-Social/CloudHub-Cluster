@@ -83,8 +83,6 @@ spec:
           runAsUser: 1004
       volumePermissions:
         enabled: true
-        containerSecurityContext:
-          runAsUser: 1004
 
     redis:
       enabled: true
