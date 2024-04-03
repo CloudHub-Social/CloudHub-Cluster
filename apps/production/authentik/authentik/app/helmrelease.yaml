@@ -85,8 +85,8 @@ spec:
         containerSecurityContext:
           runAsUser: 1004
           runAsGroup: 1004
-      volumePermissions:
-        enabled: true
+      # volumePermissions:
+      #   enabled: true
 
     redis:
       enabled: true
