@@ -81,6 +81,8 @@ spec:
           existingClaim: "data-authentik-postgresql-0-authentik-database"
         containerSecurityContext:
           runAsUser: 1004
+        podSecurityContext:
+          fsGroup: 1004
       volumePermissions:
         enabled: true
 
