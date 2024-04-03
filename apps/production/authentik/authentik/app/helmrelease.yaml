@@ -64,9 +64,6 @@ spec:
           - hosts:
               - *host
 
-      containerSecurityContext:
-        runAsUser: 1004
-
       metrics:
         serviceMonitor:
           enabled: true
@@ -82,12 +79,8 @@ spec:
           enabled: true
           storageClass: nfs-client
           existingClaim: "data-authentik-postgresql-0-authentik-database"
-        containerSecurityContext:
-          runAsUser: 1004
       volumePermissions:
         enabled: true
-        containerSecurityContext:
-          runAsUser: 1004
 
     redis:
       enabled: true
