@@ -32,8 +32,8 @@ spec:
       valuesKey: AUTHENTIK_POSTGRESQL__PASSWORD
     - targetPath: postgresql.auth.postgresPassword
       kind: Secret
-      name: authentik-postgresql
-      valuesKey: postgresql-postgres-password
+      name: authentik-secret
+      valuesKey: AUTHENTIK_POSTGRESQL_POSTGRES_PASSWORD
   values:
     envFrom:
       - secretRef:
