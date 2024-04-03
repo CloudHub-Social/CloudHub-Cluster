@@ -79,6 +79,8 @@ spec:
           enabled: true
           storageClass: nfs-client
           existingClaim: "data-authentik-postgresql-0-authentik-database"
+        containerSecurityContext:
+          runAsUser: 1004
       volumePermissions:
         enabled: true
 
