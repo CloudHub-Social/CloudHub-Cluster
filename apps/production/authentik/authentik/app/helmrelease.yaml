@@ -64,6 +64,9 @@ spec:
           - hosts:
               - *host
 
+      containerSecurityContext:
+        runAsUser: 1004
+
       metrics:
         serviceMonitor:
           enabled: true
