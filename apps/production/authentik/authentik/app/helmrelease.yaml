@@ -66,6 +66,7 @@ spec:
 
       containerSecurityContext:
         runAsUser: 1004
+        runAsGroup: 1004
 
       metrics:
         serviceMonitor:
