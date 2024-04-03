@@ -96,12 +96,14 @@ spec:
 
     service:
       main:
+        controller: main
         ports:
           http:
             port: 8080
 
     serviceMonitor:
       main:
+        serviceName: main
         enabled: true
         endpoints:
           - port: http
