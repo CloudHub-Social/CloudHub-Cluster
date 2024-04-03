@@ -35,9 +35,10 @@ spec:
       name: authentik-secret
       valuesKey: AUTHENTIK_POSTGRESQL_POSTGRES_PASSWORD
   values:
-    envFrom:
-      - secretRef:
-          name: authentik-secret
+    global:
+      envFrom:
+        - secretRef:
+            name: authentik-secret
     authentik:
       # This sends anonymous usage-data, stack traces on errors and
       # performance data to sentry.beryju.org, and is fully opt-in
