@@ -60,6 +60,7 @@ spec:
                   app.kubernetes.io/name: *app
     service:
       main:
+        controller: main
         type: LoadBalancer
         loadBalancerIP: 10.0.41.61
         ports:
@@ -88,7 +89,7 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  name: main
+                  identifier: main
                   port: http
         tls:
           - hosts:
