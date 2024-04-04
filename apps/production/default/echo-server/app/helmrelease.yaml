@@ -64,6 +64,7 @@ spec:
 
     service:
       main:
+        controller: main
         ports:
           http:
             port: 8080
@@ -81,7 +82,7 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  name: main
+                  identifier: main
                   port: http
         tls:
           - hosts:
