@@ -496,7 +496,13 @@ spec:
       primary:
         extraEnvVars:
           - name: POSTGRES_MAX_CONNECTIONS
-            value: "1000"
+            value: "150"
+          - name: POSTGRES_TCP_KEEPALIVES_INTERVAL
+            value: "5"
+          - name: POSTGRES_TCP_KEEPALIVES_IDLE
+            value: "60"
+          - name: POSTGRES_TCP_KEEPALIVES_COUNT
+            value: "3"
         persistence:
           enabled: true
           storageClass: nfs-client
