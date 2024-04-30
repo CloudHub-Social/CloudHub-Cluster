@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: ./charts/lemmy
-      version: 0.5.1
+      version: 0.5.6
       sourceRef:
         kind: GitRepository
         name: lemmy
@@ -160,6 +160,94 @@ spec:
       #   requests:
       #     cpu: 200m
       #     memory: 200Mi
+
+      nodeSelector: {}
+
+      tolerations: []
+
+      affinity: {}
+
+    taskrunner:
+      enabled: true
+
+      image:
+        _keep: true
+        # repository: dessalines/lemmy
+        # pullPolicy: IfNotPresent
+        # tag:
+
+      env:
+        # RUST_BACKTRACE: 1
+
+      envFrom:
+        # - secretRef:
+        #    name: my-extra-secrets
+
+      podAnnotations: {}
+
+      podSecurityContext:
+        fsGroup: 1004
+
+      securityContext:
+        # capabilities:
+        #   drop:
+        #   - ALL
+        # readOnlyRootFilesystem: true
+        # runAsNonRoot: true
+        runAsUser: 1004
+
+      resources:
+        {}
+        # limits:
+        #   cpu: 100m
+        #   memory: 128Mi
+        # requests:
+        #   cpu: 100m
+        #   memory: 128Mi
+
+      nodeSelector: {}
+
+      tolerations: []
+
+      affinity: {}
+
+    federationsender:
+      enabled: false
+
+      image:
+        _keep: true
+        # repository: dessalines/lemmy
+        # pullPolicy: IfNotPresent
+        # tag:
+
+      env:
+        # RUST_BACKTRACE: 1
+
+      envFrom:
+        # - secretRef:
+        #    name: my-extra-secrets
+
+      podAnnotations: {}
+
+      podSecurityContext:
+        {}
+        # fsGroup: 2000
+
+      securityContext: {}
+      # capabilities:
+      #   drop:
+      #   - ALL
+      # readOnlyRootFilesystem: true
+      # runAsNonRoot: true
+      # runAsUser: 1000
+
+      resources: {}
+      # limits:
+      #   cpu: 100m
+      #   memory: 128Mi
+      # requests:
+      #   cpu: 100m
+      #   memory: 128Mi
 
       nodeSelector: {}
 
