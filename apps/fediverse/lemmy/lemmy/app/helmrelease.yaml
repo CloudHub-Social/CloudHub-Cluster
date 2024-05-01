@@ -496,7 +496,7 @@ spec:
       primary:
         extraEnvVars:
           - name: POSTGRES_MAX_CONNECTIONS
-            value: "150"
+            value: "200"
           - name: POSTGRES_TCP_KEEPALIVES_INTERVAL
             value: "5"
           - name: POSTGRES_TCP_KEEPALIVES_IDLE
