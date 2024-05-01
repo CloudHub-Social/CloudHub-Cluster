@@ -44,7 +44,7 @@ spec:
       kind: Secret
       name: lemmy-secret
       valuesKey: postgresql_password
-    - targetPath: psotgresql.auth.postgresPasword
+    - targetPath: postgresql.auth.postgresPasword
       kind: Secret
       name: lemmy-secret
       valuesKey: postgresql_postgres_user_password
@@ -110,7 +110,7 @@ spec:
         # - secretRef:
         #    name: my-extra-secrets
 
-      replicaCount: 1
+      replicaCount: 2
 
       strategy:
         type: RollingUpdate
@@ -261,7 +261,7 @@ spec:
         pullPolicy: IfNotPresent
         tag: 0.19.3
 
-      replicaCount: 1
+      replicaCount: 2
 
       strategy:
         type: RollingUpdate
@@ -429,7 +429,7 @@ spec:
 
     proxy:
       enabled: true
-      replicaCount: 1
+      replicaCount: 2
 
       strategy:
         type: RollingUpdate
