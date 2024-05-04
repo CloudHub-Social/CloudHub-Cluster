@@ -8,10 +8,10 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: weave-gitops
+      chart: ./charts/gitops-server
       version: 4.0.36
       sourceRef:
-        kind: HelmRepository
+        kind: GitRepository
         name: weave-gitops
         namespace: flux-system
   maxHistory: 2

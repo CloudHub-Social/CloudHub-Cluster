@@ -5,3 +5,4 @@ resources:
   - lemmy.yaml
   - local-path-provisioner.yaml
   - mastodon.yaml
+  - weave-gitops.yaml
