@@ -6,4 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 2h
-  url: https://github.com/weaveworks/weave-gitops/tree/main/charts
+  url: https://github.com/weaveworks/weave-gitops
+  ref:
+    branch: main
+    
