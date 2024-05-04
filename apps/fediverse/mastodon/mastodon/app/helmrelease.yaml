@@ -74,6 +74,26 @@ spec:
         openssl_verify_mode: "none"
         server: "smtp.sendgrid.net"
         existingSecret: "mastodon-secret-smtp"
+      sidekiq:
+        - name: default
+          concurrency: 25
+          replicas: 2
+          queues:
+            - default,8
+            - push,6
+            - ingress,4
+            - mailers,2
+            - pull
+        - name: scheduler
+          concurrency: 25
+          replicas: 1
+          queues:
+            - scheduler
+      streaming:
+        workers: 2
+        replicas: 2
+      web:
+        replicas: 2
     ingress:
       annotations:
         external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
@@ -119,6 +139,7 @@ spec:
           enabled: true
           storageClass: nfs-client
       replica:
+        replicaCount: 2
         persistence:
           enabled: true
           storageClass: nfs-client
