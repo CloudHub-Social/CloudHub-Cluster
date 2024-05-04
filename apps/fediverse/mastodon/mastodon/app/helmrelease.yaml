@@ -75,22 +75,23 @@ spec:
         server: "smtp.sendgrid.net"
         existingSecret: "mastodon-secret-smtp"
       sidekiq:
-        - name: default
-          concurrency: 25
-          replicas: 2
-          queues:
-            - default,8
-            - push,6
-            - ingress,4
-            - mailers,2
-            - pull
-        - name: scheduler
-          concurrency: 25
-          replicas: 1
-          queues:
-            - scheduler
+        workers:
+          - name: default
+            concurrency: 25
+            replicas: 2
+            queues:
+              - default,8
+              - push,6
+              - ingress,4
+              - mailers,2
+              - pull
+          - name: scheduler
+            concurrency: 25
+            replicas: 1
+            queues:
+              - scheduler
       streaming:
-        workers: 2
+        workers: 1
         replicas: 2
       web:
         replicas: 2
