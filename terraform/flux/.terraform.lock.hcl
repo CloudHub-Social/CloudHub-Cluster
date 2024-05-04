@@ -12,6 +12,13 @@ provider "registry.terraform.io/carlpett/sops" {
     "h1:eyhWU7mN5Q++hYu7j/w8aACehkiaFcdYp84pEF1n7XM=",
     "h1:tnN2Mgl0NUF3cg7a0HtGmtOhHcG+tkaT6ncOPRuA9l8=",
     "h1:xkTdN4nYt3PM5Sx09j/g+vnFWU2njQCO6CXza034R1I=",
+    "zh:064e63ea800cd1a8e575064097bc7de6fd5faa8ad50dbb3f2f9d8a3ebc9d7b97",
+    "zh:0663900085949d2faf24c170c7cdfbf76e545797915cc331da8304144c02bf27",
+    "zh:2ff26c7e5ee356c30791a12dd8e114c6237bd873d09e52805cb30dd5d758ed23",
+    "zh:44211fa474112ad0c9fcdae03f13ec7c75cdefd3ab29979b99cb834208055593",
+    "zh:6c3ab441c12b9679ad1dcac580d1ee7782f0d94efe6da6e983435ed39335cd3f",
+    "zh:8924cc939b52382ef042dc38bde93cdf438ff0aeab5e1801fbd198f05b80cd47",
+    "zh:ebc189ce22c23b903399f71e33d465001a79d7de7f7bf115c7763fcf794f4b58",
   ]
 }
 
@@ -54,6 +61,7 @@ provider "registry.terraform.io/gavinbunney/kubectl" {
   version     = "1.14.0"
   constraints = ">= 1.10.0"
   hashes = [
+    "h1:ItrWfCZMzM2JmvDncihBMalNLutsAk7kyyxVRaipftY=",
     "h1:gLFn+RvP37sVzp9qnFCwngRjjFV649r6apjxvJ1E/SE=",
     "zh:0350f3122ff711984bbc36f6093c1fe19043173fad5a904bce27f86afe3cc858",
     "zh:07ca36c7aa7533e8325b38232c77c04d6ef1081cb0bac9d56e8ccd51f12f2030",
@@ -101,6 +109,7 @@ provider "registry.terraform.io/hashicorp/null" {
   version = "3.2.1"
   hashes = [
     "h1:FbGfc+muBsC17Ohy5g806iuI1hQc4SIexpYCrQHQd8w=",
+    "h1:ydA0/SNRVB1o95btfshvYsmxA+jZFRZcvKzZSB+4S1M=",
     "zh:58ed64389620cc7b82f01332e27723856422820cfd302e304b5f6c3436fb9840",
     "zh:62a5cc82c3b2ddef7ef3a6f2fedb7b9b3deff4ab7b414938b08e51d6e8be87cb",
     "zh:63cff4de03af983175a7e37e52d4bd89d990be256b16b5c7f919aff5ad485aa5",
@@ -120,6 +129,7 @@ provider "registry.terraform.io/hashicorp/tfe" {
   version = "0.45.0"
   hashes = [
     "h1:3/Yal4GcTluDS859uKLONrnpMNeNssyyaR5Eied7ZaM=",
+    "h1:kqJWrqVrP+iK/M9UMy4Qdbomqt/3axrOwrduwVO4e2E=",
     "zh:1900c32b6b690fd192dd99754ee17caf80ddfedea275c63eb32a1124c802b243",
     "zh:1efa077356dbc5f6c3b03f985d49b611e48b7c383b2e360dbc07bbe3ce3e7d56",
     "zh:2507b0bcf04efcdc92b7cc5409c58eb02b20a8245dec6ebdeaf230847fdec576",
