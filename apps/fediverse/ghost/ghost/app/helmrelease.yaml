@@ -54,7 +54,7 @@ spec:
       valuesKey: smtpPassword
     - targetPath: mysql.auth.rootPassword
       kind: Secret
-      name: ghost-secret
+      name: ghost-mysql
       valuesKey: mysql-root-password
     - targetPath: mysql.auth.password
       kind: Secret
