@@ -55,11 +55,11 @@ spec:
     - targetPath: mysql.auth.rootPassword
       kind: Secret
       name: ghost-secret
-      valuesKey: mysqlrootPassword
+      valuesKey: mysql-root-password
     - targetPath: mysql.auth.password
       kind: Secret
-      name: ghost-secret
-      valuesKey: mysqluserPassword
+      name: ghost-mysql
+      valuesKey: mysql-password
   values:
     global:
       storageClass: "nfs-client"
@@ -636,11 +636,11 @@ spec:
       ##      https://github.com/bitnami/containers/tree/main/bitnami/mysql/#creating-a-database-on-first-run
       ##      https://github.com/bitnami/containers/tree/main/bitnami/mysql/#creating-a-database-user-on-first-run
       auth:
-        rootPassword: ""
+        # rootPassword: ""
         database: bitnami_ghost
         username: bn_ghost
-        password: ""
-        existingSecret: ""
+        # password: ""
+        existingSecret: "ghost-mysql"
       ## MySQL Primary configuration
       ##
       primary:
