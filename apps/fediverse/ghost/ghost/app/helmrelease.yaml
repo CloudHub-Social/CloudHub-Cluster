@@ -74,6 +74,7 @@ spec:
       digest: ""
       pullPolicy: IfNotPresent
       pullSecrets: []
+      debug: true
 
     # ghostUsername: user
     # ghostPassword: ""
