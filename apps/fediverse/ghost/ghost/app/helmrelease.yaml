@@ -91,7 +91,7 @@ spec:
     smtpPort: "587"
     smtpUser: "apikey"
     # smtpService: ""
-    smtpProtocol: "tls"
+    smtpProtocol: "starttls"
     ## @param allowEmptyPassword Allow the container to be started with blank passwords
     ##
     allowEmptyPassword: false
