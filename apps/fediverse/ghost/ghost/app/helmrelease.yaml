@@ -85,7 +85,7 @@ spec:
 
     ghostPath: /
 
-    ghostEnableHttps: false
+    ghostEnableHttps: true
 
     smtpHost: "smtp.sendgrid.net"
     smtpPort: "587"
