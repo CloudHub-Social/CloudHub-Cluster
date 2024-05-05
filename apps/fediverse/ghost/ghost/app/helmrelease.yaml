@@ -90,8 +90,8 @@ spec:
     smtpHost: "smtp.sendgrid.net"
     smtpPort: "587"
     smtpUser: "apikey"
-    # smtpService: ""
-    smtpProtocol: "starttls"
+    smtpService: "Sendgrid"
+    smtpProtocol: "tls"
     ## @param allowEmptyPassword Allow the container to be started with blank passwords
     ##
     allowEmptyPassword: false
@@ -110,7 +110,11 @@ spec:
     ##   - name: FOO
     ##     value: "bar"
     ##
-    extraEnvVars: []
+    extraEnvVars:
+      - name: mail__transport
+        value: "SMTP"
+      - name: mail__from
+        value: "'Blog' <blog@${SECRET_DOMAIN}"
     ## @param extraEnvVarsCM Name of existing ConfigMap containing extra env vars
     ##
     extraEnvVarsCM: ""
