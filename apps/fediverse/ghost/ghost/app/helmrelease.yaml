@@ -449,6 +449,7 @@ spec:
       annotations:
         external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
         hajimari.io/icon: simple-icons:ghost
+        cert-manager.io/cluster-issuer: letsencrypt-production
       ## @param ingress.tls Enable TLS configuration for the host defined at `ingress.hostname` parameter
       ## TLS certificates will be retrieved from a TLS secret with name: `{{- printf "%s-tls" .Values.ingress.hostname }}`
       ## You can:
@@ -470,7 +471,9 @@ spec:
       ##   - name: ghost.local
       ##     path: /
       ##
-      extraHosts: []
+      extraHosts:
+        - name: "blog.${SECRET_DOMAIN}"
+          path: /
       ## @param ingress.extraPaths An array with additional arbitrary paths that may need to be added to the ingress under the main host
       ## e.g:
       ## extraPaths:
@@ -488,7 +491,10 @@ spec:
       ##     - ghost.local
       ##   secretName: ghost.local-tls
       ##
-      extraTls: []
+      extraTls:
+        - hosts:
+            - "blog.${SECRET_DOMAIN}"
+          secretName: "blog.${SECRET_DOMAIN}"
       ## @param ingress.secrets Custom TLS certificates as secrets
       ## NOTE: 'key' and 'certificate' are expected in PEM format
       ## NOTE: 'name' should line up with a 'secretName' set further up
