@@ -116,6 +116,10 @@ spec:
         value: "SMTP"
       - name: mail__from
         value: "'Blog' <blog@${SECRET_DOMAIN}"
+      - name: mail__options__secure
+        value: "false"
+      - name: mail__options__ecureConnection
+        value: "false"
     ## @param extraEnvVarsCM Name of existing ConfigMap containing extra env vars
     ##
     extraEnvVarsCM: ""
