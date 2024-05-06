@@ -118,7 +118,7 @@ spec:
         value: "'Blog' <blog@${SECRET_DOMAIN}"
       - name: mail__options__secure
         value: "false"
-      - name: mail__options__ecureConnection
+      - name: mail__options__secureConnection
         value: "false"
     ## @param extraEnvVarsCM Name of existing ConfigMap containing extra env vars
     ##
