@@ -114,6 +114,15 @@ spec:
       auth:
         existingSecret: "mastodon-secret-postgres"
       primary:
+        extraEnvVars:
+          - name: POSTGRESQL_MAX_CONNECTIONS
+            value: "250"
+          - name: POSTGRESQL_TCP_KEEPALIVES_INTERVAL
+            value: "5"
+          - name: POSTGRESQL_TCP_KEEPALIVES_IDLE
+            value: "60"
+          - name: POSTGRESQL_TCP_KEEPALIVES_COUNT
+            value: "3"
         persistence:
           enabled: true
           storageClass: nfs-client

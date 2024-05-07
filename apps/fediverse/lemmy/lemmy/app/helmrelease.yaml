@@ -495,13 +495,13 @@ spec:
         port: 5432
       primary:
         extraEnvVars:
-          - name: POSTGRES_MAX_CONNECTIONS
-            value: "200"
-          - name: POSTGRES_TCP_KEEPALIVES_INTERVAL
+          - name: POSTGRESQL_MAX_CONNECTIONS
+            value: "250"
+          - name: POSTGRESQL_TCP_KEEPALIVES_INTERVAL
             value: "5"
-          - name: POSTGRES_TCP_KEEPALIVES_IDLE
+          - name: POSTGRESQL_TCP_KEEPALIVES_IDLE
             value: "60"
-          - name: POSTGRES_TCP_KEEPALIVES_COUNT
+          - name: POSTGRESQL_TCP_KEEPALIVES_COUNT
             value: "3"
         persistence:
           enabled: true
