@@ -45,7 +45,7 @@ spec:
       error_reporting:
         enabled: true
       email:
-        from: "Authentik <auth@cloudhub.social>"
+        from: "Authentik <auth@${SECRET_DOMAIN}>"
         host: "smtp.sendgrid.net"
         port: "587"
         use_tls: true
