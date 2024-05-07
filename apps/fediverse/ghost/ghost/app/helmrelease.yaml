@@ -116,7 +116,7 @@ spec:
     ##
     extraEnvVars:
       - name: GHOST_SMTP_FROM_ADDRESS #The Bitnami Ghost Docker container does not seem to properly implement the SMTP_FROM_ADDRESS config (https://github.com/bitnami/containers/issues/20871)
-        value: "'CloudHub.Social Blog' <blog@${SECRET_DOMAIN}>"
+        value: "CloudHub.Social Blog <blog@${SECRET_DOMAIN}>"
       # - name: mail__options__secure
       #   value: "false"
       # - name: mail__options__secureConnection
