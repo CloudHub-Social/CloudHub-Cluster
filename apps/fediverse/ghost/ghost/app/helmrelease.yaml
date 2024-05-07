@@ -69,8 +69,11 @@ spec:
 
     image:
       registry: docker.io
-      repository: bitnami/ghost
-      tag: 5.82.6-debian-12-r0
+      # repository: bitnami/ghost
+      # tag: 5.82.6-debian-12-r0
+      # Attempt to use a patched docker image that should fix SMTP issues?
+      repository: justinsane393/ghost
+      tag: latest
       digest: ""
       pullPolicy: IfNotPresent
       pullSecrets: []
@@ -92,7 +95,7 @@ spec:
     smtpPort: "587"
     smtpUser: "apikey"
     smtpService: "Sendgrid"
-    # smtpProtocol: "tls" The Bitnami Ghost Docker container does not seem to properly implement the configuration for SMTP TLS/SSL - see if removing helms (https://github.com/bitnami/containers/issues/20872)
+    # smtpProtocol: "tls" The Bitnami Ghost Docker container does not seem to properly implement the configuration for SMTP TLS/SSL - see if removing helps (https://github.com/bitnami/containers/issues/20872)
     ## @param allowEmptyPassword Allow the container to be started with blank passwords
     ##
     allowEmptyPassword: false
@@ -112,8 +115,8 @@ spec:
     ##     value: "bar"
     ##
     extraEnvVars:
-      # - name: GHOST_SMTP_FROM_ADDRESS The Bitnami Ghost Docker container does not seem to properly implement the SMTP_FROM_ADDRESS config (https://github.com/bitnami/containers/issues/20871)
-      #   value: "'Blog' <blog@${SECRET_DOMAIN}"
+      - name: GHOST_SMTP_FROM_ADDRESS #The Bitnami Ghost Docker container does not seem to properly implement the SMTP_FROM_ADDRESS config (https://github.com/bitnami/containers/issues/20871)
+        value: "'Blog' <blog@${SECRET_DOMAIN}"
       # - name: mail__options__secure
       #   value: "false"
       # - name: mail__options__secureConnection
