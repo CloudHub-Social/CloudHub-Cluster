@@ -503,8 +503,6 @@ spec:
             value: "30"
           - name: POSTGRESQL_TCP_KEEPALIVES_COUNT
             value: "3"
-          - name: POSTGRESQL_STATEMENT_TIMEOUT
-            value: "120"
           - name: POSTGRESQL_USERNAME_CONNECTION_LIMIT
             value: "200"
           - name: POSTGRESQL_POSTGRES_CONNECTION_LIMIT
