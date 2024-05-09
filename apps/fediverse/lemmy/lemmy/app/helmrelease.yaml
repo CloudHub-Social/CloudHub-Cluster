@@ -500,9 +500,15 @@ spec:
           - name: POSTGRESQL_TCP_KEEPALIVES_INTERVAL
             value: "5"
           - name: POSTGRESQL_TCP_KEEPALIVES_IDLE
-            value: "60"
+            value: "30"
           - name: POSTGRESQL_TCP_KEEPALIVES_COUNT
             value: "3"
+          - name: POSTGRESQL_STATEMENT_TIMEOUT
+            value: "120"
+          - name: POSTGRESQL_USERNAME_CONNECTION_LIMIT
+            value: "200"
+          - name: POSTGRESQL_POSTGRES_CONNECTION_LIMIT
+            value: "5"
         persistence:
           enabled: true
           storageClass: nfs-client
