@@ -6,3 +6,4 @@ resources:
   - ./ghost-mysql.yaml
   - ./ghost-secret.yaml
   - ./helmrelease.yaml
+  - ./storage.yaml

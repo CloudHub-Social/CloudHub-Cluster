@@ -566,7 +566,7 @@ spec:
       size: 10Gi
       ## @param persistence.existingClaim The name of an existing PVC to use for persistence
       ##
-      existingClaim: ""
+      existingClaim: "ghost-0-ghost-application"
       ## @param persistence.subPath The name of a volume's sub path to mount for persistence
       ##
       subPath: ""
@@ -670,6 +670,7 @@ spec:
         persistence:
           enabled: true
           storageClass: "nfs-client"
+          existingClaim: "ghost-mysql-0-ghost-database"
           accessModes:
             - ReadWriteOnce
           size: 10Gi
