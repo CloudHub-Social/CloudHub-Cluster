@@ -52,7 +52,7 @@ resource "cloudflare_zone_settings_override" "cloudflare_settings" {
     browser_check            = "on"
     challenge_ttl            = 1800
     privacy_pass             = "on"
-    security_level           = "medium"
+    security_level           = "high"
     brotli                   = "on"
     minify {
       css  = "on"
@@ -60,26 +60,26 @@ resource "cloudflare_zone_settings_override" "cloudflare_settings" {
       html = "on"
     }
     rocket_loader       = "on"
-    always_online       = "off"
+    always_online       = "on"
     development_mode    = "off"
     http3               = "on"
     zero_rtt            = "on"
     ipv6                = "on"
     websockets          = "on"
     opportunistic_onion = "on"
-    pseudo_ipv4         = "off"
+    pseudo_ipv4         = "add_header"
     ip_geolocation      = "on"
     email_obfuscation   = "on"
     server_side_exclude = "on"
     hotlink_protection  = "off"
     security_header {
-      enabled = false
+      enabled = true
     }
   }
 }
 
 data "http" "ipv4" {
-  url = "http://ipv4.icanhazip.com"
+  url = "https://ipv4.icanhazip.com"
 }
 
 resource "cloudflare_record" "ipv4" {
