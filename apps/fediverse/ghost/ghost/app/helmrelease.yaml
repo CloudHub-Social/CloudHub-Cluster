@@ -476,9 +476,7 @@ spec:
       ##   - name: ghost.local
       ##     path: /
       ##
-      extraHosts:
-        - name: "blog.${SECRET_DOMAIN}"
-          path: /
+      extraHosts: []
       ## @param ingress.extraPaths An array with additional arbitrary paths that may need to be added to the ingress under the main host
       ## e.g:
       ## extraPaths:
@@ -496,10 +494,7 @@ spec:
       ##     - ghost.local
       ##   secretName: ghost.local-tls
       ##
-      extraTls:
-        - hosts:
-            - "blog.${SECRET_DOMAIN}"
-          secretName: "blog.${SECRET_DOMAIN}"
+      extraTls: []
       ## @param ingress.secrets Custom TLS certificates as secrets
       ## NOTE: 'key' and 'certificate' are expected in PEM format
       ## NOTE: 'name' should line up with a 'secretName' set further up
