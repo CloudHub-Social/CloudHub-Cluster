@@ -1,7 +1,8 @@
 machine:
   network:
     interfaces:
-    - interface: eth0
-      dhcp: true
-      vip:
-        ip: 10.0.41.10
+      - deviceSelector:
+          physical: true
+        dhcp: true
+        vip:
+          ip: 10.0.41.10

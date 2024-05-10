@@ -5,9 +5,9 @@ machine:
   kubelet:
     extraArgs:
       rotate-server-certificates: true
-      # https://github.com/siderolabs/talos/issues/7216
-      feature-gates:
-        "NewVolumeManagerReconstruction=false"
+      # # https://github.com/siderolabs/talos/issues/7216
+      # feature-gates:
+      #   "NewVolumeManagerReconstruction=false"
     extraMounts:
       - destination: /var/local-path/storage
         type: bind
@@ -17,6 +17,7 @@ machine:
           - rshared
           - rw
   install:
+    image: "factory.talos.dev/installer/87edef3e4227c6046c17a4d7c7d25e56907bfaf57195d2ccdd66a9f1a934c378:v1.7.1"
     extraKernelArgs:
       - talos.logging.kernel=udp://10.0.41.61:6050/
   logging:

@@ -67,7 +67,7 @@ spec:
     metrics:
       enabled: true
     rbac:
-      create: true
+      create: false
       # impersonationResourceNames: ["admin", "wego-admin", "wego-readonly"]
       # impersonationResources: ["groups"]
       # impersonationResourceNames: ["admin", "wego-admin", "wego-readonly"]
@@ -80,4 +80,3 @@ spec:
       name: weave-gitops-secret
       valuesKey: adminPassword
       targetPath: adminUser.passwordHash
-
