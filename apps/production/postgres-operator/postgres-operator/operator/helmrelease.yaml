@@ -35,8 +35,5 @@ spec:
       configLoadBalancer:
         db_hosted_zone: "db.${SECRET_DOMAIN}"
 
-    configTeamsApi:
-      enable_teams_api: true
-
     securityContext:
       runAsUser: 1004
