@@ -1,0 +1,15 @@
+apiVersion: postgres-operator.crunchydata.com/v1beta1
+kind: PGAdmin
+metadata:
+  name: rhino
+spec:
+  dataVolumeClaimSpec:
+    storageClassName: nfs-client
+    accessModes:
+      - "ReadWriteOnce"
+    resources:
+      requests:
+        storage: 1Gi
+  serverGroups: # 2
+    - name: operator-instances
+      postgresClusterSelector: {}

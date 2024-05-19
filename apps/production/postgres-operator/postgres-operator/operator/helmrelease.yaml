@@ -8,10 +8,10 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: postgres-operator
+      chart: pgo
       version: 1.11.0
       sourceRef:
-        kind: HelmRepository
+        kind: OciRepository
         name: postgres-operator
         namespace: flux-system
   maxHistory: 3
@@ -38,7 +38,7 @@ spec:
       enable_cross_namespace_secret: true
       configLoadBalancer:
         db_hosted_zone: "db.${SECRET_DOMAIN}"
-      spilo_runasuser: 1004
-      spilo_runasgroup: 1004
-      # spilo_fsgroup: 1004
+      # spilo_runasuser: 1004
+      # spilo_runasgroup: 1004
+      spilo_fsgroup: 1004
       spilo_privileged: true

@@ -1,41 +1,54 @@
----
-kind: "postgresql"
-apiVersion: "acid.zalan.do/v1"
-
+apiVersion: postgres-operator.crunchydata.com/v1beta1
+kind: PostgresCluster
 metadata:
-  name: "lemmy-postgres"
-  namespace: "lemmy"
-  labels:
-    team: acid
-
+  name: lemmy-postgres
 spec:
-  teamId: "acid"
-  postgresql:
-    version: "16"
-  patroni:
-    synchronous_mode: true
-  numberOfInstances: 3
-  enableMasterLoadBalancer: true
-  enableReplicaLoadBalancer: true
-  enableConnectionPooler: true
-  enableReplicaConnectionPooler: true
-  enableMasterPoolerLoadBalancer: true
-  enableReplicaPoolerLoadBalancer: true
-  volume:
-    size: "15Gi"
-    storageClass: "nfs-client"
-  users:
-    lemmy: [SUPERUSER]
-  databases:
-    lemmy: lemmy
-  preparedDatabases:
-    lemmy:
-      defaultUsers: true
-
-  resources:
-    requests:
-      cpu: 100m
-      memory: 100Mi
-    limits:
-      cpu: 500m
-      memory: 500Mi
+  image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-16.3-0
+  postgresVersion: 16
+  instances:
+    - name: pgha1
+      replicas: 2
+      dataVolumeClaimSpec:
+        stroageClassName: nfs-client
+        accessModes:
+          - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: 1Gi
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 1
+              podAffinityTerm:
+                topologyKey: kubernetes.io/hostname
+                labelSelector:
+                  matchLabels:
+                    postgres-operator.crunchydata.com/cluster: lemmy-postgres
+                    postgres-operator.crunchydata.com/instance-set: pgha1
+  backups:
+    pgbackrest:
+      image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.51-0
+      repos:
+        - name: repo1
+          volume:
+            volumeClaimSpec:
+              storageClassName: nfs-client
+              accessModes:
+                - "ReadWriteOnce"
+              resources:
+                requests:
+                  storage: 1Gi
+  proxy:
+    pgBouncer:
+      image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbouncer:ubi8-1.22-0
+      replicas: 2
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 1
+              podAffinityTerm:
+                topologyKey: kubernetes.io/hostname
+                labelSelector:
+                  matchLabels:
+                    postgres-operator.crunchydata.com/cluster: lemmy-postgres
+                    postgres-operator.crunchydata.com/role: pgbouncer

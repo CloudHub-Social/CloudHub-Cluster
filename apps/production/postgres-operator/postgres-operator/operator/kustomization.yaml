@@ -4,7 +4,6 @@ kind: Kustomization
 namespace: postgres-operator
 resources:
   - ./helmrelease.yaml
-  - ./helmrelease-ui.yaml
 labels:
   - pairs:
       app.kubernetes.io/name: postgres-operator
