@@ -9,5 +9,6 @@ resources:
   - monitoring
   - networking
   - nfs-provisioner
+  - postgres-operator
   - rook-ceph
   # - system-upgrade
