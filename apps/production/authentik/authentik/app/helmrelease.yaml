@@ -85,12 +85,20 @@ spec:
           enabled: true
 
     redis:
-      enabled: true
       master:
         persistence:
           enabled: true
           storageClass: nfs-client
-        containerSecurtiyContext:
+        containerSecurityContext:
+          runAsUser: 1004
+        podSecurityContext:
+          fsGroup: 1004
+      replica:
+        replicaCount: 2
+        persistence:
+          enabled: true
+          storageClass: nfs-client
+        containerSecurityContext:
           runAsUser: 1004
         podSecurityContext:
           fsGroup: 1004
