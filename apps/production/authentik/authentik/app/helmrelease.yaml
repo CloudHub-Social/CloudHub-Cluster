@@ -81,8 +81,6 @@ spec:
           existingClaim: "data-authentik-postgresql-0-authentik-database"
         containerSecurityContext:
           runAsUser: 1004
-        podSecurityContext:
-          fsGroup: 1004
       volumePermissions:
         enabled: true
 
@@ -100,3 +98,7 @@ spec:
     prometheus:
       rules:
         enabled: true
+    podSecurityContext:
+      runAsUser: 1004
+      runAsGroup: 1004
+      fsGroup: 1004
