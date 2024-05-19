@@ -1,0 +1,41 @@
+---
+kind: "postgresql"
+apiVersion: "acid.zalan.do/v1"
+
+metadata:
+  name: "lemmy-postgres"
+  namespace: "lemmy"
+  labels:
+    team: acid
+
+spec:
+  teamId: "acid"
+  postgresql:
+    version: "16"
+  patroni:
+    synchronous_mode: true
+  numberOfInstances: 3
+  enableMasterLoadBalancer: true
+  enableReplicaLoadBalancer: true
+  enableConnectionPooler: true
+  enableReplicaConnectionPooler: true
+  enableMasterPoolerLoadBalancer: true
+  enableReplicaPoolerLoadBalancer: true
+  volume:
+    size: "15Gi"
+    storageClass: "nfs-client"
+  users:
+    lemmy: [SUPERUSER]
+  databases:
+    lemmy: lemmy
+  preparedDatabases:
+    lemmy:
+      defaultUsers: true
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 100Mi
+    limits:
+      cpu: 500m
+      memory: 500Mi
