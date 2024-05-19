@@ -9,7 +9,7 @@ spec:
     - name: pgha1
       replicas: 2
       dataVolumeClaimSpec:
-        stroageClassName: nfs-client
+        storageClassName: nfs-client
         accessModes:
           - "ReadWriteOnce"
         resources:
