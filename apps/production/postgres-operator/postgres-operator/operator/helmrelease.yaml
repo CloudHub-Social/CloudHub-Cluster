@@ -32,12 +32,13 @@ spec:
       cluster_domain: cluster.local
       cluster_name_label: talos-proxmox-cluster
       enable_readiness_probe: true
+      enable_pod_antiaffinity: true
       additional_pod_capabilities:
         - "SYS_NICE"
       enable_cross_namespace_secret: true
       configLoadBalancer:
         db_hosted_zone: "db.${SECRET_DOMAIN}"
-      # spilo_runasuser: 1004
-      # spilo_runasgroup: 1004
+      spilo_runasuser: 1004
+      spilo_runasgroup: 1004
       spilo_fsgroup: 1004
-      spilo_privileged: true
+      spilo_privileged: false
