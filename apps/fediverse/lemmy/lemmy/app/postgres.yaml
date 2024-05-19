@@ -14,7 +14,7 @@ spec:
           - "ReadWriteOnce"
         resources:
           requests:
-            storage: 1Gi
+            storage: 10Gi
       securityContext:
         runAsGroup: 1004
         runAsUser: 1004
@@ -40,7 +40,10 @@ spec:
                 - "ReadWriteOnce"
               resources:
                 requests:
-                  storage: 1Gi
+                  storage: 10Gi
+            securityContext:
+              runAsGroup: 1004
+              runAsUser: 1004
   proxy:
     pgBouncer:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbouncer:ubi8-1.22-0
