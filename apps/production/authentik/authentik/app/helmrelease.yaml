@@ -82,7 +82,7 @@ spec:
         containerSecurityContext:
           runAsUser: 1004
       volumePermissions:
-        enabled: true
+        enabled: false
 
     redis:
       enabled: true
