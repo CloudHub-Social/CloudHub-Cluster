@@ -15,9 +15,6 @@ spec:
         resources:
           requests:
             storage: 10Gi
-      securityContext:
-        runAsGroup: 1004
-        runAsUser: 1004
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -41,9 +38,6 @@ spec:
               resources:
                 requests:
                   storage: 10Gi
-            securityContext:
-              runAsGroup: 1004
-              runAsUser: 1004
   proxy:
     pgBouncer:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbouncer:ubi8-1.22-0
