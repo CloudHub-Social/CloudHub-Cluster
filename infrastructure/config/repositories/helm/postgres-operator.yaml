@@ -1,0 +1,10 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: postgres-operator
+  namespace: flux-system
+spec:
+  interval: 10m
+  type: oci
+  url:: oci://registry.developers.crunchydata.com/crunchydata/pgo

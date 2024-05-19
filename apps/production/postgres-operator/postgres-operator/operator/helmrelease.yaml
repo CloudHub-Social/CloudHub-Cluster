@@ -11,7 +11,7 @@ spec:
       chart: pgo
       version: 1.11.0
       sourceRef:
-        kind: OciRepository
+        kind: HelmRepository
         name: postgres-operator
         namespace: flux-system
   maxHistory: 3

@@ -15,6 +15,7 @@ resources:
   - kubernetes-dashboard.yaml
   - metallb.yaml
   # - metrics-server.yaml
+  - postgres-operator.yaml
   - prometheus-community.yaml
   - rook-ceph.yaml
   - stakater.yaml
