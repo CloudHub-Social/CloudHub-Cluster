@@ -302,8 +302,8 @@ spec:
     containerSecurityContext:
       enabled: true
       seLinuxOptions: {}
-      runAsUser: 1004
-      runAsGroup: 1004
+      # runAsUser: 1004
+      # runAsGroup: 1004
       runAsNonRoot: true
       privileged: false
       readOnlyRootFilesystem: true
@@ -572,7 +572,7 @@ spec:
     volumePermissions:
       ## @param volumePermissions.enabled Enable init container that changes the owner/group of the PV mount point to `runAsUser:fsGroup`
       ##
-      enabled: false
+      enabled: true
       ## OS Shell + Utility image
       ## ref: https://hub.docker.com/r/bitnami/os-shell/tags/
       ## @param volumePermissions.image.registry [default: REGISTRY_NAME] OS Shell + Utility image registry
@@ -623,7 +623,7 @@ spec:
       ##
       securityContext:
         seLinuxOptions: null
-        runAsUser: auto
+        runAsUser: 1004
     ## @section Database Parameters
 
     ## MySQL chart configuration
@@ -671,8 +671,7 @@ spec:
           size: 10Gi
         containerSecurityContext:
           runAsUser: 1004
-        podSecurityContext:
-          fsGroup: 1004
+          runAsGroup: 1004
         ## MySQL primary container's resource requests and limits
         ## ref: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
         ## We usually recommend not to specify default resources and to leave this as a conscious
