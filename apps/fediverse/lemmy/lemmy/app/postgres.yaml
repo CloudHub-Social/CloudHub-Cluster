@@ -15,6 +15,9 @@ spec:
         resources:
           requests:
             storage: 1Gi
+      securityContext:
+        runAsGroup: 1004
+        runAsUser: 1004
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
