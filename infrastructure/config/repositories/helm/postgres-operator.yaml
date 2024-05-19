@@ -7,6 +7,6 @@ metadata:
 spec:
   interval: 10m
   type: oci
-  url: oci://registry.developers.crunchydata.com/crunchydata/pgo
+  url: oci://registry.developers.crunchydata.com/crunchydata
   reg:
     tag: 5.5.2
