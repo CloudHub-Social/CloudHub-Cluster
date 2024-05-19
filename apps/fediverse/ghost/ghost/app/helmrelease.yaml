@@ -302,8 +302,8 @@ spec:
     containerSecurityContext:
       enabled: true
       seLinuxOptions: {}
-      runAsUser: 1004
-      runAsGroup: 1004
+      # runAsUser: 1004
+      # runAsGroup: 1004
       runAsNonRoot: true
       privileged: false
       readOnlyRootFilesystem: true
@@ -623,7 +623,7 @@ spec:
       ##
       securityContext:
         seLinuxOptions: null
-        runAsUser: auto
+        runAsUser: 1004
     ## @section Database Parameters
 
     ## MySQL chart configuration
