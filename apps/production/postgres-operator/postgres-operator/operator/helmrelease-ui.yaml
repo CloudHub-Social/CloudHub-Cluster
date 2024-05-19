@@ -12,7 +12,7 @@ spec:
       version: 1.11.0
       sourceRef:
         kind: HelmRepository
-        name: postgres-operator
+        name: postgres-operator-ui
         namespace: flux-system
   maxHistory: 3
   install:
