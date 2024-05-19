@@ -623,7 +623,7 @@ spec:
       ##
       securityContext:
         seLinuxOptions: null
-        runAsUser: 1004
+        runAsUser: auto
     ## @section Database Parameters
 
     ## MySQL chart configuration
