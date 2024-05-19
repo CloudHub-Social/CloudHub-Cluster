@@ -79,10 +79,10 @@ spec:
           enabled: true
           storageClass: nfs-client
           existingClaim: "data-authentik-postgresql-0-authentik-database"
-        containerSecurityContext:
-          runAsUser: 1004
-        podSecurityContext:
-          fsGroup: 1004
+        # containerSecurityContext:
+        #   runAsUser: 1004
+        # podSecurityContext:
+        #   fsGroup: 1004
       volumePermissions:
         enabled: true
 
