@@ -81,8 +81,8 @@ spec:
           existingClaim: "data-authentik-postgresql-0-authentik-database"
         containerSecurityContext:
           runAsUser: 1004
-      volumePermissions:
-        enabled: false
+        volumePermissions:
+          enabled: true
 
     redis:
       enabled: true
