@@ -1,7 +1,8 @@
 apiVersion: postgres-operator.crunchydata.com/v1beta1
 kind: PGAdmin
 metadata:
-  name: rhino
+  name: lemmy
+  namespace: lemmy
 spec:
   dataVolumeClaimSpec:
     storageClassName: nfs-client
@@ -11,5 +12,5 @@ spec:
       requests:
         storage: 1Gi
   serverGroups: # 2
-    - name: operator-instances
+    - name: lemmy-postgres
       postgresClusterSelector: {}
