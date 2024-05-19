@@ -34,6 +34,6 @@ spec:
       enable_readiness_probe: true
       configLoadBalancer:
         db_hosted_zone: "db.${SECRET_DOMAIN}"
-
-    securityContext:
-      runAsUser: 1004
+      spilo_runasuser: 1004
+      spilo_runasgroup: 1004
+      spilo_fsgroup: 1004
