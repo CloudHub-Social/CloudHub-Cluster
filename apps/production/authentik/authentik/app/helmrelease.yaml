@@ -90,6 +90,10 @@ spec:
         persistence:
           enabled: true
           storageClass: nfs-client
+        containerSecurityContext:
+          runAsUser: 1004
+        podSecurityContext:
+          fsGroup: 1004
 
     prometheus:
       rules:
