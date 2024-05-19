@@ -52,8 +52,3 @@ spec:
                   matchLabels:
                     postgres-operator.crunchydata.com/cluster: lemmy-postgres
                     postgres-operator.crunchydata.com/role: pgbouncer
-
-  podSecurityContext:
-    runAsUser: 1004
-    runAsGroup: 1004
-    fsGroup: 1004
