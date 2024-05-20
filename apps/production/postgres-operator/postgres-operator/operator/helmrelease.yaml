@@ -70,4 +70,13 @@ spec:
       retries: 10
   uninstall:
     keepHistory: false
-  values: {}
+  values:
+    alertmanager:
+      pvc:
+        storageClassName: nfs-client
+    grafana:
+      pvc:
+        storageClassName: nfs-client
+    prometheus:
+      pvc:
+        storageClassName: nfs-client
