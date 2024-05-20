@@ -44,10 +44,10 @@ spec:
       kind: Secret
       name: lemmy-pguser-lemmy
       valuesKey: user
-    - targetPath: postgresql.auth.password
-      kind: Secret
-      name: lemmy-pguser-lemmy
-      valuesKey: password
+    # - targetPath: postgresql.auth.password
+    #   kind: Secret
+    #   name: lemmy-pguser-lemmy
+    #   valuesKey: password
     - targetPath: postgresql.host
       kind: Secret
       name: lemmy-pguser-lemmy
