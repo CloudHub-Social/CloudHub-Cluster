@@ -1,8 +1,8 @@
 apiVersion: postgres-operator.crunchydata.com/v1beta1
 kind: PGAdmin
 metadata:
-  name: lemmy
-  namespace: postgres-operator
+  name: pgadmin
+namespace: postgres
 spec:
   dataVolumeClaimSpec:
     storageClassName: nfs-client

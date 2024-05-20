@@ -1,11 +1,13 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: postgres-operator
+namespace: flux-system
 resources:
   - ./pgadmin.yaml
+  - ./namespace.yaml
+  - ./postgres-lemmy.yaml
 labels:
   - pairs:
-      app.kubernetes.io/name: postgres-operator
-      app.kubernetes.io/instance: postgres-operator
+      app.kubernetes.io/name: postgres
+      app.kubernetes.io/instance: postgres
       app.kubernetes.io/part-of: postgres-operator
