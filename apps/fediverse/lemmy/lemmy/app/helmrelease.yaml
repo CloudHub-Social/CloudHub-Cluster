@@ -492,6 +492,7 @@ spec:
       sslmode: require
       auth:
         database: lemmy
+        existingSecret: "lemmy-pguser-lemmy"
       # enabled: true
       # # host:
       # image:
