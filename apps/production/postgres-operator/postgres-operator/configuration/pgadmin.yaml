@@ -27,8 +27,9 @@ spec:
           OAUTH2_API_BASE_URL: "https://auth.${SECRET_DOMAIN}/application/o/"
           OAUTH2_SERVER_METADATA_URL: "https://auth.${SECRET_DOMAIN}/application/o/pgadmin/.well-known/openid-configuration"
           OAUTH2_SCOPE: "openid email profile"
-          OAUTH2_USERINFO_ENDPOINT: "userinfo"
+          OAUTH2_USERINFO_ENDPOINT: "https://auth.${SECRET_DOMAIN}/application/o/userinfo/"
+          OAUTH2_USERNAME_CLAIM: "preferred_username"
           OAUTH2_SSL_CERT_VERIFICATION: "False" # for testing purposes
           OAUTH2_BUTTON_COLOR: "red"
-      OAUTH2_AUTO_CREATE_USER: "True"
+          OAUTH2_AUTO_CREATE_USER: "True"
       DEBUG: true
