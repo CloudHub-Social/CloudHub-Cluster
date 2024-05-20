@@ -40,6 +40,10 @@ spec:
       kind: Secret
       name: lemmy-secret
       valuesKey: pictrs_api_key
+    - targetPath: postgresql.auth.username
+      kind: Secret
+      name: lemmy-pguser-lemmy
+      valuesKey: user
     - targetPath: postgresql.auth.password
       kind: Secret
       name: lemmy-pguser-lemmy
@@ -486,7 +490,7 @@ spec:
       enabled: false
       # host:
       auth:
-        username: lemmy
+        # username: lemmy
         database: lemmy
         # password:
       # enabled: true
