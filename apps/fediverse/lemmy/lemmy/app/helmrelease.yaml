@@ -493,6 +493,8 @@ spec:
       auth:
         database: lemmy
         existingSecret: "lemmy-pguser-lemmy"
+        secretKeys:
+          userPasswordKey: "password"
       # enabled: true
       # # host:
       # image:
