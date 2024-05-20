@@ -10,6 +10,7 @@ spec:
     - name: lemmy
       databases:
         - lemmy
+      password: "AlphaNumeric"
     - name: postgres
   instances:
     - name: pgha1
