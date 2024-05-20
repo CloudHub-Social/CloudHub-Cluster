@@ -82,6 +82,10 @@ spec:
                   matchLabels:
                     postgres-operator.crunchydata.com/cluster: postgres-lemmy
                     postgres-operator.crunchydata.com/role: pgbouncer
+  monitoring:
+    pgmonitor:
+      exporter:
+        image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres-exporter:ubi8-0.15.0-6
 
 ---
 apiVersion: postgres-operator.crunchydata.com/v1beta1
