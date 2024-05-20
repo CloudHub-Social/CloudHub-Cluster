@@ -98,7 +98,7 @@ spec:
           OAUTH2_AUTO_CREATE_USER: "True"
       DEBUG: true
       MASTER_PASSWORD: "True"
-      DEFAULT_SERVER: "0.0.0.0"
+      # DEFAULT_SERVER: "0.0.0.0"
 ---
 apiVersion: v1
 kind: Service
