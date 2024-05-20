@@ -1,10 +1,9 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: flux-system
+namespace: postgres
 resources:
   - ./pgadmin.yaml
-  - ./namespace.yaml
   - ./postgres-lemmy.yaml
 labels:
   - pairs:

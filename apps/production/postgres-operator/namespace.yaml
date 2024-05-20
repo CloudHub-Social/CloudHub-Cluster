@@ -5,3 +5,10 @@ metadata:
   name: postgres-operator
   labels:
     kustomize.toolkit.fluxcd.io/prune: disabled
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: postgres
+  labels:
+    kustomize.toolkit.fluxcd.io/prune: disabled
