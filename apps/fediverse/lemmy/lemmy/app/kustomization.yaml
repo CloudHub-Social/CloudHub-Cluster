@@ -6,4 +6,5 @@ resources:
   - ./helmrelease.yaml
   - ./lemmy-secret.yaml
   - ./postgres.yaml
+  - ./s3-secret.yaml
   - ./storage.yaml

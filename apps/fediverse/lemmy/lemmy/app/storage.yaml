@@ -34,39 +34,3 @@ spec:
   volumeName: pv-lemmy-data-pictrs-storage-0
   storageClassName: nfs-client
   volumeMode: Filesystem
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: pv-lemmy-data-postgres-storage-0
-  finalizers:
-    - kubernetes.io/pv-protection
-spec:
-  capacity:
-    storage: 50Gi
-  nfs:
-    server: 10.0.20.50
-    path: >-
-      /mnt/Storage/CloudHub-NFS/lemmy-data-postgres-storage-0
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: nfs-client
-  volumeMode: Filesystem
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: lemmy-data-postgres-storage-0
-  namespace: lemmy
-  finalizers:
-    - kubernetes.io/pvc-protection
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 50Gi
-  volumeName: pv-lemmy-data-postgres-storage-0
-  storageClassName: nfs-client
-  volumeMode: Filesystem

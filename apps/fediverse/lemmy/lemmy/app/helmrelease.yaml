@@ -495,58 +495,6 @@ spec:
         existingSecret: "lemmy-pguser-lemmy"
         secretKeys:
           userPasswordKey: "password"
-      # enabled: true
-      # # host:
-      # image:
-      #   debug: true
-      # auth:
-      #   username: lemmy
-      #   database: lemmy
-      #   # password:
-      # service:
-      #   port: 5432
-      # primary:
-      #   extraEnvVars:
-      #     - name: POSTGRESQL_MAX_CONNECTIONS
-      #       value: "500"
-      #     - name: POSTGRESQL_TCP_KEEPALIVES_INTERVAL
-      #       value: "5"
-      #     - name: POSTGRESQL_TCP_KEEPALIVES_IDLE
-      #       value: "30"
-      #     - name: POSTGRESQL_TCP_KEEPALIVES_COUNT
-      #       value: "3"
-      #     - name: POSTGRESQL_USERNAME_CONNECTION_LIMIT
-      #       value: "450"
-      #     - name: POSTGRESQL_POSTGRES_CONNECTION_LIMIT
-      #       value: "25"
-      #   persistence:
-      #     enabled: true
-      #     storageClass: nfs-client
-      #     existingClaim: "lemmy-data-postgres-storage-0"
-      #   volumePermissions:
-      #     enabled: true
-      #   containerSecurityContext:
-      #     runAsUser: 1004
-      #   livenessProbe:
-      #     initialDelaySeconds: 60
-      #   readinessProbe:
-      #     initialDelaySeconds: 60
-      #   # resources:
-      #   #   limits:
-      #   #     cpu: 1200m
-      #   #     memory: 4Gi
-      #   #   requests:
-      #   #     cpu: 600m
-      #   #     memory: 2Gi
-      # metrics:
-      #   containerSecurityContext:
-      #     enabled: true
-      #     runAsUser: 1004
-      #   enabled: true
-      #   serviceMonitor:
-      #     enabled: true
-      #   prometheusRule:
-      #     enabled: true
 
     ingress:
       enabled: true

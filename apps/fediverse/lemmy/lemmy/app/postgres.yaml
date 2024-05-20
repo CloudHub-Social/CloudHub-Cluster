@@ -36,6 +36,11 @@ spec:
   backups:
     pgbackrest:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.51-0
+      configuration:
+        - secret:
+            name: pgo-lemmy-repo2-creds
+      global:
+        repo2-s3-uri-style: path
       repos:
         - name: repo1
           volume:
@@ -45,7 +50,13 @@ spec:
                 - "ReadWriteOnce"
               resources:
                 requests:
-                  storage: 10Gi
+                  storage: 50Gi
+        - name: repo2
+          s3:
+            bucket: "pgo-lemmy-repo2"
+            endpoint: "http://10.0.20.50:9000"
+            region: "ca-east-1"
+
   proxy:
     pgBouncer:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbouncer:ubi8-1.22-0
