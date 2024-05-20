@@ -5,6 +5,12 @@ metadata:
 spec:
   image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-16.3-0
   postgresVersion: 16
+  users:
+    - name: lemmy
+      databases:
+        - lemmy
+      options: "SUPERUSER"
+    - name: postgres
   instances:
     - name: pgha1
       replicas: 2
