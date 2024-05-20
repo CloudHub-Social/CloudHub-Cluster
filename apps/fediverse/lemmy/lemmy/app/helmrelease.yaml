@@ -488,11 +488,9 @@ spec:
 
     postgresql:
       enabled: false
-      # host:
+      sslmode: require
       auth:
-        # username: lemmy
         database: lemmy
-        # password:
       # enabled: true
       # # host:
       # image:
