@@ -42,3 +42,32 @@ spec:
     #   # spilo_runasgroup: 1004
     #   spilo_fsgroup: 1004
     #   spilo_privileged: true
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: postgres-monitoring
+  namespace: postgres-operator
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: crunchy-monitoring
+      sourceRef:
+        kind: HelmRepository
+        name: postgres-operator
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    createNamespace: true
+    timeout: 30m
+    remediation:
+      retries: 10
+  upgrade:
+    cleanupOnFail: true
+    timeout: 30m
+    remediation:
+      retries: 10
+  uninstall:
+    keepHistory: false
+  values: {}
