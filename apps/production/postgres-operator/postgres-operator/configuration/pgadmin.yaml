@@ -33,3 +33,4 @@ spec:
           OAUTH2_BUTTON_COLOR: "red"
           OAUTH2_AUTO_CREATE_USER: "True"
       DEBUG: true
+      MASTER_PASSWORD: "True"
