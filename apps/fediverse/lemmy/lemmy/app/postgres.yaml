@@ -132,9 +132,12 @@ spec:
       http:
         paths:
           - path: /
+            pathType: Prefix
             backend:
-              serviceName: pgadmin
-              servicePort: 5050
+              service:
+                name: pgadmin
+                port:
+                  number: 5050
   tls:
     - hosts:
         - "pgalemmy.${SECRET_DOMAIN}"
