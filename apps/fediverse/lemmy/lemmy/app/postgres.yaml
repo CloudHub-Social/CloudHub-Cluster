@@ -1,0 +1,140 @@
+apiVersion: postgres-operator.crunchydata.com/v1beta1
+kind: PostgresCluster
+metadata:
+  name: lemmy
+  namespace: lemmy
+spec:
+  image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-16.3-0
+  postgresVersion: 16
+  users:
+    - name: lemmy
+      databases:
+        - lemmy
+    - name: postgres
+  instances:
+    - name: pgha1
+      replicas: 2
+      dataVolumeClaimSpec:
+        storageClassName: nfs-client
+        accessModes:
+          - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: 10Gi
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 1
+              podAffinityTerm:
+                topologyKey: kubernetes.io/hostname
+                labelSelector:
+                  matchLabels:
+                    postgres-operator.crunchydata.com/cluster: postgres-lemmy
+                    postgres-operator.crunchydata.com/instance-set: pgha1
+  backups:
+    pgbackrest:
+      image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.51-0
+      repos:
+        - name: repo1
+          volume:
+            volumeClaimSpec:
+              storageClassName: nfs-client
+              accessModes:
+                - "ReadWriteOnce"
+              resources:
+                requests:
+                  storage: 10Gi
+  proxy:
+    pgBouncer:
+      image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbouncer:ubi8-1.22-0
+      replicas: 2
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 1
+              podAffinityTerm:
+                topologyKey: kubernetes.io/hostname
+                labelSelector:
+                  matchLabels:
+                    postgres-operator.crunchydata.com/cluster: postgres-lemmy
+                    postgres-operator.crunchydata.com/role: pgbouncer
+
+---
+apiVersion: postgres-operator.crunchydata.com/v1beta1
+kind: PGAdmin
+metadata:
+  name: pgadmin
+  namespace: lemmy
+  labels:
+    app: pgadmin
+spec:
+  dataVolumeClaimSpec:
+    storageClassName: nfs-client
+    accessModes:
+      - "ReadWriteOnce"
+    resources:
+      requests:
+        storage: 1Gi
+  serverGroups: # 2
+    - name: lemmy-postgres
+      postgresClusterSelector: {}
+  config:
+    settings:
+      AUTHENTICATION_SOURCES: ["oauth2", "internal"]
+      OAUTH2_CONFIG:
+        - OAUTH2_NAME: "authentik"
+          OAUTH2_DISPLAY_NAME: "Authentik"
+          OAUTH2_CLIENT_ID: "${PGADMIN_PGO_OIDC_CLIENT_ID}"
+          OAUTH2_CLIENT_SECRET: "${PGADMIN_POG_OIDC_CLIENT_SECRET}"
+          OAUTH2_TOKEN_URL: "https://auth.${SECRET_DOMAIN}/application/o/token/"
+          OAUTH2_AUTHORIZATION_URL: "https://auth.${SECRET_DOMAIN}/application/o/authorize/"
+          OAUTH2_API_BASE_URL: "https://auth.${SECRET_DOMAIN}/application/o/"
+          OAUTH2_SERVER_METADATA_URL: "https://auth.${SECRET_DOMAIN}/application/o/pgadmin/.well-known/openid-configuration"
+          OAUTH2_SCOPE: "openid email profile"
+          OAUTH2_USERINFO_ENDPOINT: "https://auth.${SECRET_DOMAIN}/application/o/userinfo/"
+          OAUTH2_USERNAME_CLAIM: "preferred_username"
+          # OAUTH2_SSL_CERT_VERIFICATION: "False" # for testing purposes
+          OAUTH2_BUTTON_COLOR: "red"
+          OAUTH2_AUTO_CREATE_USER: "True"
+      DEBUG: true
+      MASTER_PASSWORD: "True"
+      DEFAULT_SERVER: "0.0.0.0"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: pgadmin
+  name: pgadmin
+  namespace: lemmy
+spec:
+  ports:
+    - name: pgadmin
+      port: 5050
+      protocol: TCP
+      targetPort: pgadmin
+  selector:
+    postgres-operator.crunchydata.com/pgadmin: my-pgadmin
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: pgadmin-lemmy
+  namespace: lemmy
+spec:
+  ingressClassName: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/whitelist-source-range: |
+      10.0.0.0/8,172.0.0.0/12,192.168.0.0/16
+  rules:
+    - host: "pgalemmy.${SECRET_DOMAIN}"
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: pgadmin
+              servicePort: 5050
+  tls:
+    - hosts:
+        - "pgalemmy.${SECRET_DOMAIN}"
