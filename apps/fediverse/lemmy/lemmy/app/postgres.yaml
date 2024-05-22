@@ -15,7 +15,7 @@ spec:
     - name: postgres
   instances:
     - name: pgha1
-      replicas: 2
+      replicas: 1
       dataVolumeClaimSpec:
         storageClassName: nfs-client
         accessModes:
@@ -34,7 +34,7 @@ spec:
                     postgres-operator.crunchydata.com/cluster: postgres-lemmy
                     postgres-operator.crunchydata.com/instance-set: pgha1
     - name: pgha2
-      replicas: 2
+      replicas: 1
       dataVolumeClaimSpec:
         storageClassName: nfs-client
         accessModes:
