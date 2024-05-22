@@ -33,6 +33,26 @@ spec:
                   matchLabels:
                     postgres-operator.crunchydata.com/cluster: postgres-lemmy
                     postgres-operator.crunchydata.com/instance-set: pgha1
+    - name: pgha2
+      replicas: 2
+      dataVolumeClaimSpec:
+        storageClassName: nfs-client
+        accessModes:
+          - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: 10Gi
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 1
+              podAffinityTerm:
+                topologyKey: kubernetes.io/hostname
+                labelSelector:
+                  matchLabels:
+                    postgres-operator.crunchydata.com/cluster: postgres-lemmy
+                    postgres-operator.crunchydata.com/instance-set: pgha2
+
   backups:
     pgbackrest:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.51-0
