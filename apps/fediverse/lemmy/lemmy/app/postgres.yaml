@@ -15,7 +15,7 @@ spec:
     - name: postgres
   instances:
     - name: pgha1
-      replicas: 1
+      replicas: 2
       dataVolumeClaimSpec:
         storageClassName: nfs-client
         accessModes:
@@ -44,10 +44,10 @@ spec:
         log-level-console: "info"
         repo1-retention-full: "4"
         repo1-retention-diff: "31"
-        repo2-retention-full: "4"
-        repo2-retention-diff: "31"
-        repo2-storage-verify-tls: "n"
-        repo2-s3-uri-style: "path"
+        # repo2-retention-full: "4"
+        # repo2-retention-diff: "31"
+        # repo2-storage-verify-tls: "n"
+        # repo2-s3-uri-style: "path"
 
       repos:
         - name: repo1
@@ -62,14 +62,14 @@ spec:
           schedules:
             full: "0 1 * * 0"
             differential: "0 1 * * 1-6"
-        - name: repo2
-          s3:
-            bucket: "pgo-lemmy-repo2"
-            endpoint: "10.0.20.50:9000"
-            region: "ca-east-1"
-          schedules:
-            full: "0 1 * * 0"
-            differential: "0 1 * * 1-6"
+        # - name: repo2
+        #   s3:
+        #     bucket: "pgo-lemmy-repo2"
+        #     endpoint: "10.0.20.50:9000"
+        #     region: "ca-east-1"
+        #   schedules:
+        #     full: "0 1 * * 0"
+        #     differential: "0 1 * * 1-6"
 
   proxy:
     pgBouncer:
