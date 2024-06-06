@@ -5,6 +5,7 @@ metadata:
   labels:
     app: nfs-client-provisioner
   name: nfs-client-provisioner
+  namespace: nfs-provisioner
 spec:
   template:
     spec:
