@@ -14,9 +14,9 @@ spec:
             - name: NFS_SERVER
               value: 10.0.20.50
             - name: NFS_PATH
-              value: /mnt/Storage/CloudHub-NFS
+              value: /mnt/STGNew/CloudHub-NFS
       volumes:
         - name: nfs-client-root
           nfs:
             server: 10.0.20.50
-            path: /mnt/Storage/CloudHub-NFS
+            path: /mnt/STGNew/CloudHub-NFS
