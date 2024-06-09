@@ -104,7 +104,7 @@ spec:
         _keep: true
         repository: dessalines/lemmy
         pullPolicy: IfNotPresent
-        tag: 0.19.3
+        tag: 0.19.4
 
       env:
         RUST_BACKTRACE: "full"
@@ -264,7 +264,7 @@ spec:
       image:
         repository: dessalines/lemmy-ui
         pullPolicy: IfNotPresent
-        tag: 0.19.3
+        tag: 0.19.4
 
       replicaCount: 2
 
