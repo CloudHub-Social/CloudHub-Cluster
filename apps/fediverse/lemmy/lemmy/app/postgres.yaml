@@ -60,16 +60,16 @@ spec:
                 requests:
                   storage: 50Gi
           schedules:
-            full: "35 0 * * *"
-            differential: "0/15 * * * *"
+            full: "0 0 * * *"
+            differential: "15 */4 * * *"
         - name: repo2
           s3:
             bucket: "pgo-lemmy-repo2"
             endpoint: "10.0.20.50:9000"
             region: "ca-east-1"
           schedules:
-            full: "0 0 * * *"
-            differential: "0/5 * * * *"
+            full: "0 12 * * *"
+            differential: "45 */4 * * *"
 
   proxy:
     pgBouncer:
