@@ -108,7 +108,7 @@ spec:
 
       env:
         RUST_BACKTRACE: "full"
-        RUST_LOG: "verbose,lemmy_server=verbose,lemmy_api=verbose,lemmy_api_common=verbose,lemmy_api_crud=verbose,lemmy_apub=verbose,lemmy_db_schema=verbose,lemmy_db_views=verbose,lemmy_db_views_actor=verbose,lemmy_db_views_moderator=verbose,lemmy_routes=verbose,lemmy_utils=verbose,lemmy_websocket=verbose"
+        RUST_LOG: "verbose,lemmy_server=debug,lemmy_api=debug,lemmy_api_common=debug,lemmy_api_crud=debug,lemmy_apub=debug,lemmy_db_schema=debug,lemmy_db_views=debug,lemmy_db_views_actor=debug,lemmy_db_views_moderator=debug,lemmy_routes=debug,lemmy_utils=debug,lemmy_websocket=debug"
 
       envFrom:
         # - secretRef:
@@ -182,7 +182,7 @@ spec:
 
       env:
         RUST_BACKTRACE: "full"
-        RUST_LOG: "verbose,lemmy_server=verbose,lemmy_api=verbose,lemmy_api_common=verbose,lemmy_api_crud=verbose,lemmy_apub=verbose,lemmy_db_schema=verbose,lemmy_db_views=verbose,lemmy_db_views_actor=verbose,lemmy_db_views_moderator=verbose,lemmy_routes=verbose,lemmy_utils=verbose,lemmy_websocket=verbose"
+        RUST_LOG: "verbose,lemmy_server=debug,lemmy_api=debug,lemmy_api_common=debug,lemmy_api_crud=debug,lemmy_apub=debug,lemmy_db_schema=debug,lemmy_db_views=debug,lemmy_db_views_actor=debug,lemmy_db_views_moderator=debug,lemmy_routes=debug,lemmy_utils=debug,lemmy_websocket=debug"
 
       envFrom:
         # - secretRef:
@@ -227,7 +227,7 @@ spec:
 
       env:
         RUST_BACKTRACE: "full"
-        RUST_LOG: "verbose,lemmy_server=verbose,lemmy_api=verbose,lemmy_api_common=verbose,lemmy_api_crud=verbose,lemmy_apub=verbose,lemmy_db_schema=verbose,lemmy_db_views=verbose,lemmy_db_views_actor=verbose,lemmy_db_views_moderator=verbose,lemmy_routes=verbose,lemmy_utils=verbose,lemmy_websocket=verbose"
+        RUST_LOG: "verbose,lemmy_server=debug,lemmy_api=debug,lemmy_api_common=debug,lemmy_api_crud=debug,lemmy_apub=debug,lemmy_db_schema=debug,lemmy_db_views=debug,lemmy_db_views_actor=debug,lemmy_db_views_moderator=debug,lemmy_routes=debug,lemmy_utils=debug,lemmy_websocket=debug"
         #RUST_LOG: "warn,lemmy_server=info,lemmy_api=info,lemmy_api_common=info,lemmy_api_crud=info,lemmy_apub=info,lemmy_db_schema=info,lemmy_db_views=info,lemmy_db_views_actor=info,lemmy_db_views_moderator=info,lemmy_routes=info,lemmy_utils=info,lemmy_websocket=info"
 
       envFrom:
@@ -296,7 +296,7 @@ spec:
       env:
         LEMMY_UI_DEBUG: false
         # RUST_BACKTRACE: "1"
-        RUST_LOG: "verbose,lemmy_server=verbose,lemmy_api=verbose,lemmy_api_common=verbose,lemmy_api_crud=verbose,lemmy_apub=verbose,lemmy_db_schema=verbose,lemmy_db_views=verbose,lemmy_db_views_actor=verbose,lemmy_db_views_moderator=verbose,lemmy_routes=verbose,lemmy_utils=verbose,lemmy_websocket=verbose"
+        RUST_LOG: "verbose,lemmy_server=debug,lemmy_api=debug,lemmy_api_common=debug,lemmy_api_crud=debug,lemmy_apub=debug,lemmy_db_schema=debug,lemmy_db_views=debug,lemmy_db_views_actor=debug,lemmy_db_views_moderator=debug,lemmy_routes=debug,lemmy_utils=debug,lemmy_websocket=debug"
         RUST_BACKTRACE: "full"
 
       envFrom:
