@@ -51,7 +51,8 @@ spec:
     - targetPath: postgresql.host
       kind: Secret
       name: lemmy-pguser-lemmy
-      valuesKey: pgbouncer-host
+      # valuesKey: pgbouncer-host
+      valuesKey: host
     - targetPath: config.siteName
       kind: Secret
       name: lemmy-secret
