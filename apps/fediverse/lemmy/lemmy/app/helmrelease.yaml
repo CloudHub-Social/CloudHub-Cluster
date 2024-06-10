@@ -51,8 +51,7 @@ spec:
     - targetPath: postgresql.host
       kind: Secret
       name: lemmy-pguser-lemmy
-      # valuesKey: pgbouncer-host
-      valuesKey: host
+      valuesKey: pgbouncer-host
     - targetPath: config.siteName
       kind: Secret
       name: lemmy-secret
@@ -115,7 +114,7 @@ spec:
         # - secretRef:
         #    name: my-extra-secrets
 
-      replicaCount: 1
+      replicaCount: 2
 
       strategy:
         type: RollingUpdate
@@ -173,7 +172,7 @@ spec:
       affinity: {}
 
     taskrunner:
-      enabled: false
+      enabled: true
 
       image:
         _keep: true
@@ -218,7 +217,7 @@ spec:
       affinity: {}
 
     federationsender:
-      enabled: false
+      enabled: true
 
       image:
         _keep: true
@@ -268,7 +267,7 @@ spec:
         pullPolicy: IfNotPresent
         # tag: 0.19.4
 
-      replicaCount: 1
+      replicaCount: 2
 
       strategy:
         type: RollingUpdate
@@ -436,7 +435,7 @@ spec:
 
     proxy:
       enabled: true
-      replicaCount: 1
+      replicaCount: 2
 
       strategy:
         type: RollingUpdate
