@@ -264,7 +264,7 @@ spec:
     frontend:
       image:
         _keep: true
-        repository: dessalines/lemmy
+        repository: dessalines/lemmy-ui
         pullPolicy: IfNotPresent
         tag: 0.19.3
 
