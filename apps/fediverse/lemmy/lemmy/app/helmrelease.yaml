@@ -104,7 +104,7 @@ spec:
         _keep: true
         repository: dessalines/lemmy
         pullPolicy: IfNotPresent
-        tag: 0.19.4
+        # tag: 0.19.4
 
       env:
         RUST_BACKTRACE: "full"
@@ -265,7 +265,7 @@ spec:
       image:
         repository: dessalines/lemmy-ui
         pullPolicy: IfNotPresent
-        tag: 0.19.4
+        # tag: 0.19.4
 
       replicaCount: 2
 
@@ -377,7 +377,7 @@ spec:
       image:
         repository: asonix/pictrs
         pullPolicy: IfNotPresent
-        tag: 0.4.0-beta.19
+        # tag: 0.4.0-beta.19
 
       ## Used by both the sled database and also media itself if using the filesystem storage method
       persistence:
@@ -443,7 +443,7 @@ spec:
       image:
         repository: nginx
         pullPolicy: Always
-        tag: 1-alpine
+        # tag: 1-alpine
 
       livenessProbe:
         httpGet:
