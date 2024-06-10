@@ -114,7 +114,7 @@ spec:
         # - secretRef:
         #    name: my-extra-secrets
 
-      replicaCount: 2
+      replicaCount: 1
 
       strategy:
         type: RollingUpdate
@@ -172,7 +172,7 @@ spec:
       affinity: {}
 
     taskrunner:
-      enabled: true
+      enabled: false
 
       image:
         _keep: true
@@ -217,7 +217,7 @@ spec:
       affinity: {}
 
     federationsender:
-      enabled: true
+      enabled: false
 
       image:
         _keep: true
@@ -267,7 +267,7 @@ spec:
         pullPolicy: IfNotPresent
         # tag: 0.19.4
 
-      replicaCount: 2
+      replicaCount: 1
 
       strategy:
         type: RollingUpdate
@@ -435,7 +435,7 @@ spec:
 
     proxy:
       enabled: true
-      replicaCount: 2
+      replicaCount: 1
 
       strategy:
         type: RollingUpdate
