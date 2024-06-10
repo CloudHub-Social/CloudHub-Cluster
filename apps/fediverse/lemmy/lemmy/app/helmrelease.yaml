@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: ./charts/lemmy
-      version: 0.5.7
+      version: 0.5.6
       sourceRef:
         kind: GitRepository
         name: lemmy
@@ -104,7 +104,7 @@ spec:
         _keep: true
         repository: dessalines/lemmy
         pullPolicy: IfNotPresent
-        tag: 0.19.4
+        tag: 0.19.3
 
       env:
         RUST_BACKTRACE: "full"
@@ -178,7 +178,7 @@ spec:
         _keep: true
         repository: dessalines/lemmy
         pullPolicy: IfNotPresent
-        tag: 0.19.4
+        tag: 0.19.3
 
       env:
         RUST_BACKTRACE: "full"
@@ -223,7 +223,7 @@ spec:
         _keep: true
         repository: dessalines/lemmy
         pullPolicy: IfNotPresent
-        tag: 0.19.4
+        tag: 0.19.3
 
       env:
         RUST_BACKTRACE: "full"
@@ -266,7 +266,7 @@ spec:
         _keep: true
         repository: dessalines/lemmy
         pullPolicy: IfNotPresent
-        tag: 0.19.4
+        tag: 0.19.3
 
       replicaCount: 2
 
