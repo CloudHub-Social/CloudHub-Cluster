@@ -490,7 +490,7 @@ spec:
 
     postgresql:
       enabled: false
-      sslmode: prefer
+      sslmode: require
       auth:
         database: lemmy
         existingSecret: "lemmy-pguser-lemmy"
