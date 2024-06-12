@@ -23,11 +23,15 @@ spec:
             - secret:
                 name: pgo-lemmy-repo2-creds
           repo:
-            name: repo2
-            s3:
-              bucket: "pgo-lemmy-repo2"
-              endpoint: "10.0.20.50:9000"
-              region: "ca-east-1"
+            name: repo1
+            volume:
+              volumeClaimSpec:
+                storageClassName: nfs-client
+                accessModes:
+                  - "ReadWriteOnce"
+                resources:
+                  requests:
+                    storage: 50Gi
       dataVolumeClaimSpec:
         storageClassName: nfs-client
         accessModes:
