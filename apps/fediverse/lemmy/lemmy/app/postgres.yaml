@@ -16,6 +16,18 @@ spec:
   instances:
     - name: pgha1
       replicas: 2
+      dataSource:
+        pgbackrest:
+          stanza: db
+          configuration:
+            - secret:
+                name: pgo-lemmy-repo2-creds
+          repo:
+            name: repo2
+            s3:
+              bucket: "pgo-lemmy-repo2"
+              endpoint: "10.0.20.50:9000"
+              region: "ca-east-1"
       dataVolumeClaimSpec:
         storageClassName: nfs-client
         accessModes:
@@ -48,11 +60,6 @@ spec:
         repo2-retention-diff: "31"
         repo2-storage-verify-tls: "n"
         repo2-s3-uri-style: "path"
-
-      manual:
-        repoName: repo2
-        options:
-          - --type=full
 
       repos:
         - name: repo1
