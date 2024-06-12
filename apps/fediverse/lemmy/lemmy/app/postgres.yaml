@@ -49,6 +49,11 @@ spec:
         repo2-storage-verify-tls: "n"
         repo2-s3-uri-style: "path"
 
+      manual:
+        repoName: repo2
+        options:
+          - --type=full
+
       repos:
         - name: repo1
           volume:
