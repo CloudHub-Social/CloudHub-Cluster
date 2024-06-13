@@ -33,8 +33,8 @@ metadata:
   namespace: mastodon
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    kubernetes.io/ingress.class: "nginx"
 spec:
-  ingressClassName: nginx
   rules:
     - host: "${SECRET_DOMAIN}"
       http:
