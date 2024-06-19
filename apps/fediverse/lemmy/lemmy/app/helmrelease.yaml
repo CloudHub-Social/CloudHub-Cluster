@@ -104,7 +104,7 @@ spec:
         _keep: true
         repository: dessalines/lemmy
         pullPolicy: IfNotPresent
-        tag: 0.19.4
+        tag: 0.19.5
 
       env:
         RUST_BACKTRACE: "full"
@@ -178,7 +178,7 @@ spec:
         _keep: true
         repository: dessalines/lemmy
         pullPolicy: IfNotPresent
-        tag: 0.19.4
+        tag: 0.19.5
 
       env:
         RUST_BACKTRACE: "full"
@@ -223,7 +223,7 @@ spec:
         _keep: true
         repository: dessalines/lemmy
         pullPolicy: IfNotPresent
-        tag: 0.19.4
+        tag: 0.19.5
 
       env:
         RUST_BACKTRACE: "full"
