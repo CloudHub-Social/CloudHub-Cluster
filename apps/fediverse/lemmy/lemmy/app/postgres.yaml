@@ -57,10 +57,10 @@ spec:
             name: pgo-lemmy-repo2-creds
       global:
         log-level-console: "info"
-        repo1-retention-full: "4"
-        repo1-retention-diff: "31"
-        repo2-retention-full: "4"
-        repo2-retention-diff: "31"
+        repo1-retention-full: "2"
+        repo1-retention-diff: "10"
+        repo2-retention-full: "2"
+        repo2-retention-diff: "10"
         repo2-storage-verify-tls: "n"
         repo2-s3-uri-style: "path"
 
