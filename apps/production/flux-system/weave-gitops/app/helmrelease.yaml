@@ -27,8 +27,8 @@ spec:
     keepHistory: false
   values:
     envVars:
-      # - name: WEAVE_GITOPS_FEATURE_OIDC_BUTTON_LABEL
-      #   value: "Login with Authentik"
+      - name: WEAVE_GITOPS_FEATURE_OIDC_BUTTON_LABEL
+        value: "Login with Authentik"
       - name: WEAVE_GITOPS_AUTH_ENABLED
         value: "true"
     logLevel: debug
