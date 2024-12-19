@@ -31,7 +31,7 @@ spec:
         value: "Login with Authentik"
       # - name: WEAVE_GITOPS_AUTH_ENABLED
       #   value: "true"
-    logLevel: "debug"
+    logLevel: debug
     adminUser:
       create: true
       username: admin
