@@ -12,7 +12,7 @@ collections:
     version: 5.0.0
 roles:
   - name: githubixx.cilium_cli
-    version: 2.8.1+0.16.19
+    version: 2.8.2+0.16.23
   - name: xanmanning.k3s
     src: https://github.com/PyratLabs/ansible-role-k3s.git
     version: static-pods
