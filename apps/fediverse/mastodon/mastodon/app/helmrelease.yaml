@@ -39,7 +39,7 @@ spec:
   values:
     image:
       repository: ghcr.io/mastodon/mastodon
-      tag: v4.3.3
+      tag: v4.3.4
       pullPolicy: Always
     mastodon:
       createAdmin:
