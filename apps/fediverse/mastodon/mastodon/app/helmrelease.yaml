@@ -51,6 +51,10 @@ spec:
       local_domain: "${SECRET_DOMAIN}"
       trusted_proxy_ip: 127.0.0.1/8,::1/128,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,fc00::/7,::ffff:0:0/96
       authorizedFetch: false
+      securityContext:
+        runAsUser: 1004
+      podSecurityContext:
+        fsGroup: 1004
       persistence:
         assets:
           storageClassName: nfs-client
@@ -80,10 +84,6 @@ spec:
         server: "smtp.sendgrid.net"
         existingSecret: "mastodon-secret-smtp"
       sidekiq:
-        securityContext:
-          runAsUser: 1004
-        podSecurityContext:
-          fsGroup: 1004
         workers:
           - name: default
             concurrency: 25
@@ -100,10 +100,6 @@ spec:
             queues:
               - scheduler
       streaming:
-        securityContext:
-          runAsUser: 1004
-        podSecurityContext:
-          fsGroup: 1004
         workers: 1
         replicas: 2
       web:
@@ -198,9 +194,3 @@ spec:
         end_session_endpoint: "https://auth.${SECRET_DOMAIN}/application/o/mastodon/end-session/"
       oauth_global:
         omniauth_only: true
-    securityContext:
-      runAsUser: 1004
-    podSecurityContext:
-      runAsUser: 1004
-      runAsGroup: 1004
-      fsGroup: 1004
