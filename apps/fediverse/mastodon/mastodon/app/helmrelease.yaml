@@ -80,7 +80,7 @@ spec:
         server: "smtp.sendgrid.net"
         existingSecret: "mastodon-secret-smtp"
       sidekiq:
-        securityContext:
+        containerSecurityContext:
           runAsUser: 1004
         podSecurityContext:
           fsGroup: 1004
@@ -100,7 +100,7 @@ spec:
             queues:
               - scheduler
       streaming:
-        securityContext:
+        containerSecurityContext:
           runAsUser: 1004
         podSecurityContext:
           fsGroup: 1004
@@ -197,7 +197,7 @@ spec:
         end_session_endpoint: "https://auth.${SECRET_DOMAIN}/application/o/mastodon/end-session/"
       oauth_global:
         omniauth_only: true
-    securityContext:
+    containerSecurityContext:
       runAsUser: 1004
     podSecurityContext:
       runAsUser: 1004
