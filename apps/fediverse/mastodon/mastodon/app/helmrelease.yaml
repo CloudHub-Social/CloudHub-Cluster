@@ -100,6 +100,8 @@ spec:
         replicas: 2
       web:
         replicas: 2
+      extraEnvVars:
+        TRUSTED_PROXY_IP: "127.0.0.1/8,::1/128,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,fc00::/7,::ffff:0:0/96"
     ingress:
       annotations:
         external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
