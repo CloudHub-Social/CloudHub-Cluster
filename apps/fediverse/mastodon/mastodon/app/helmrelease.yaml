@@ -80,10 +80,6 @@ spec:
         server: "smtp.sendgrid.net"
         existingSecret: "mastodon-secret-smtp"
       sidekiq:
-        containerSecurityContext:
-          runAsUser: 1004
-        podSecurityContext:
-          fsGroup: 1004
         workers:
           - name: default
             concurrency: 25
@@ -142,8 +138,6 @@ spec:
           existingClaim: "mastodon-postgres"
         volumePermissions:
           enabled: true
-        containerSecurityContext:
-          runAsUser: 1004
         livenessProbe:
           initialDelaySeconds: 60
         readinessProbe:
@@ -161,19 +155,11 @@ spec:
         persistence:
           enabled: true
           storageClass: nfs-client
-        containerSecurityContext:
-          runAsUser: 1004
-        podSecurityContext:
-          fsGroup: 1004
       replica:
         replicaCount: 2
         persistence:
           enabled: true
           storageClass: nfs-client
-        containerSecurityContext:
-          runAsUser: 1004
-        podSecurityContext:
-          fsGroup: 1004
     externalAuth:
       oidc:
         enabled: true
