@@ -49,7 +49,7 @@ spec:
         dbMigrate:
           enabled: true
       local_domain: "${SECRET_DOMAIN}"
-      trusted_proxy_ip: "127.0.0.1/8,::1/128,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,fc00::/7,::ffff:0:0/96"
+      trusted_proxy_ip: 127.0.0.1/8,::1/128,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,fc00::/7,::ffff:0:0/96
       authorizedFetch: false
       persistence:
         assets:
@@ -109,8 +109,8 @@ spec:
       web:
         replicas: 2
       extraEnvVars:
-        - name: TRUSTED_PROXY_IP
-          value: "127.0.0.1/8,::1/128,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,fc00::/7,::ffff:0:0/96"
+        TRUSTED_PROXY_IP: 127.0.0.1/8,::1/128,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,fc00::/7,::ffff:0:0/96
+        LOCAL_DOMAIN: "${SECRET_DOMAIN}"
     ingress:
       annotations:
         external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
