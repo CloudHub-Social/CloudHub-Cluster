@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: ./
-      version: 4.0.1
+      version: 5.5.3
       sourceRef:
         kind: GitRepository
         name: mastodon
@@ -80,10 +80,6 @@ spec:
         server: "smtp.sendgrid.net"
         existingSecret: "mastodon-secret-smtp"
       sidekiq:
-        containerSecurityContext:
-          runAsUser: 1004
-        podSecurityContext:
-          fsGroup: 1004
         workers:
           - name: default
             concurrency: 25
@@ -100,16 +96,12 @@ spec:
             queues:
               - scheduler
       streaming:
-        containerSecurityContext:
-          runAsUser: 1004
-        podSecurityContext:
-          fsGroup: 1004
         workers: 1
         replicas: 2
       web:
         replicas: 2
       extraEnvVars:
-        TRUSTED_PROXY_IP: 127.0.0.1/8,::1/128,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,fc00::/7,::ffff:0:0/96
+        TRUSTED_PROXY_IP: "127.0.0.1/8,::1/128,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,fc00::/7,::ffff:0:0/96"
         LOCAL_DOMAIN: "${SECRET_DOMAIN}"
     ingress:
       annotations:
@@ -197,8 +189,6 @@ spec:
         end_session_endpoint: "https://auth.${SECRET_DOMAIN}/application/o/mastodon/end-session/"
       oauth_global:
         omniauth_only: true
-    containerSecurityContext:
-      runAsUser: 1004
     podSecurityContext:
       runAsUser: 1004
       runAsGroup: 1004
