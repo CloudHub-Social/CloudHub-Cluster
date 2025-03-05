@@ -80,6 +80,10 @@ spec:
         server: "smtp.sendgrid.net"
         existingSecret: "mastodon-secret-smtp"
       sidekiq:
+        securityContext:
+          runAsUser: 1004
+        podSecurityContext:
+          fsGroup: 1004
         workers:
           - name: default
             concurrency: 25
@@ -96,6 +100,10 @@ spec:
             queues:
               - scheduler
       streaming:
+        securityContext:
+          runAsUser: 1004
+        podSecurityContext:
+          fsGroup: 1004
         workers: 1
         replicas: 2
       web:
@@ -145,6 +153,8 @@ spec:
         readinessProbe:
           initialDelaySeconds: 60
       metrics:
+        collectors:
+          wal: false
         enabled: true
         serviceMonitor:
           enabled: true
