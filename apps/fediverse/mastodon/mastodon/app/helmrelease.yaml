@@ -115,6 +115,8 @@ spec:
     postgresql:
       auth:
         existingSecret: "mastodon-secret-postgres"
+      image:
+        tag: 14
       primary:
         extraEnvVars:
           - name: POSTGRESQL_MAX_CONNECTIONS
