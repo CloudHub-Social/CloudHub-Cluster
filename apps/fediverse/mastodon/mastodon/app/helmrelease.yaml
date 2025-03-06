@@ -99,9 +99,9 @@ spec:
             replicas: 1
             queues:
               - scheduler
-      # streaming:
-      #   workers: 1
-      #   replicas: 2
+      streaming:
+        workers: 1
+        replicas: 2
       web:
         replicas: 2
     ingress:
