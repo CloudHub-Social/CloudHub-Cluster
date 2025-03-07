@@ -44,7 +44,7 @@ provider "kubectl" {
 provider "talos" {}
 
 resource "talos_machine_secrets" "machine_secrets" {
-  talos_version = "v1.7.1"
+  talos_version = "v1.9.4"
 }
 
 data "talos_machine_configuration" "machineconfig_cp" {
@@ -114,7 +114,7 @@ resource "talos_machine_bootstrap" "bootstrap" {
   node                 = [for k, v in var.node_data.controlplanes : k][0]
 }
 
-data "talos_cluster_kubeconfig" "kubeconfig" {
+resource "talos_cluster_kubeconfig" "kubeconfig" {
   depends_on = [
     talos_machine_bootstrap.bootstrap
   ]
@@ -127,7 +127,7 @@ resource "null_resource" "config_output" {
   depends_on = [
     talos_machine_secrets.machine_secrets,
     talos_machine_bootstrap.bootstrap,
-    data.talos_cluster_kubeconfig.kubeconfig
+    resource.talos_cluster_kubeconfig.kubeconfig
   ]
   provisioner "local-exec" {
     command = "terraform output --raw kubeconfig > ../../kubeconfig && terraform output --raw talosconfig > ../../talosconfig"

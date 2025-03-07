@@ -50,7 +50,7 @@ resource "proxmox_vm_qemu" "talos-control-plane" {
   cores   = 8
   sockets = 2
   cpu     = "host"
-  memory  = 16384
+  memory  = 12288
   scsihw  = "virtio-scsi-pci"
   qemu_os = "other"
   #bootdisk = "scsi0"
@@ -109,7 +109,7 @@ resource "proxmox_vm_qemu" "talos-worker" {
   cores   = 8
   sockets = 2
   cpu     = "host"
-  memory  = 16384
+  memory  = 12288
   scsihw  = "virtio-scsi-pci"
   qemu_os = "other"
   #bootdisk = "scsi0"
