@@ -17,9 +17,13 @@ machine:
           - rshared
           - rw
   install:
-    image: "factory.talos.dev/installer/c482e5a56fb6065057102b9a801aa6e069ffc62528fd98a7c629bd081b768775:v1.9.4"
+    image: "factory.talos.dev/installer/87edef3e4227c6046c17a4d7c7d25e56907bfaf57195d2ccdd66a9f1a934c378:v1.9.4"
     extraKernelArgs:
       - talos.logging.kernel=udp://10.0.41.61:6050/
+    systemExtensions:
+      officialExtensions:
+        - siderolabs/iscsi-tools
+        - siderolabs/qemu-guest-agent
   logging:
     destinations:
       - endpoint: "udp://10.0.41.61:6051/"
