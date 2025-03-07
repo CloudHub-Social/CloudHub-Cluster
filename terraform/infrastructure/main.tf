@@ -11,14 +11,17 @@ terraform {
     sops = {
       source  = "lokkersp/sops"
       version = "0.6.10"
-      age = {
-        key = "~/.config/sops/age/keys.txt"
-      }
     }
     proxmox = {
       source  = "telmate/proxmox"
       version = "2.9.14"
     }
+  }
+}
+
+provider "sops" {
+  age = {
+    key = "~/.config/sops/age/keys.txt"
   }
 }
 
