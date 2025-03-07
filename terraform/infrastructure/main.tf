@@ -9,8 +9,11 @@ terraform {
 
   required_providers {
     sops = {
-      source  = "carlpett/sops"
-      version = "1.1.1"
+      source  = "lokkersp/sops"
+      version = "0.6.10"
+      age = {
+        key = "~/.config/sops/age/keys.txt"
+      }
     }
     proxmox = {
       source  = "telmate/proxmox"
