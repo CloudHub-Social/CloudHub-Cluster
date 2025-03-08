@@ -52,7 +52,7 @@ spec:
   backups:
     pgbackrest:
       restore:
-        enabled: true
+        enabled: false
         repoName: repo2
         options:
           - --type=time
