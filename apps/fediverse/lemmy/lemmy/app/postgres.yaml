@@ -56,7 +56,7 @@ spec:
         repoName: repo1
         options:
           - --type=time
-          - --target="2025-03-07 14:15:11-04"
+          - --target="2025-03-07 16:15:00-04"
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.51-0
       configuration:
         - secret:
