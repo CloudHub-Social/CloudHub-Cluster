@@ -5,8 +5,8 @@ metadata:
   name: cluster-apps-cloudflared
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: cluster-apps-external-dns
+  # dependsOn:
+  #   - name: cluster-apps-external-dns
   path: ./apps/production/networking/cloudflared/app
   prune: true
   sourceRef:
