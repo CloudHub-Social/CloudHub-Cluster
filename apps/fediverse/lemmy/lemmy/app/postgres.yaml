@@ -53,10 +53,10 @@ spec:
     pgbackrest:
       restore:
         enabled: true
-        repoName: repo1
+        repoName: repo2
         options:
           - --type=time
-          - --target="2025-03-07 16:15:00-04"
+          - --target="2025-03-07 16:45:00-05"
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.51-0
       configuration:
         - secret:
