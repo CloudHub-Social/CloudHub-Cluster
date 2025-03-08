@@ -123,13 +123,13 @@ resource "talos_cluster_kubeconfig" "kubeconfig" {
   node                 = [for k, v in var.node_data.controlplanes : k][0]
 }
 
-resource "null_resource" "config_output" {
-  depends_on = [
-    talos_machine_secrets.machine_secrets,
-    talos_machine_bootstrap.bootstrap,
-    resource.talos_cluster_kubeconfig.kubeconfig
-  ]
-  provisioner "local-exec" {
-    command = "terraform output --raw kubeconfig > ../../kubeconfig && terraform output --raw talosconfig > ../../talosconfig"
-  }
-}
+# resource "null_resource" "config_output" {
+#   depends_on = [
+#     talos_machine_secrets.machine_secrets,
+#     talos_machine_bootstrap.bootstrap,
+#     resource.talos_cluster_kubeconfig.kubeconfig
+#   ]
+#   provisioner "local-exec" {
+#     command = "terraform output --raw kubeconfig > ../../kubeconfig && terraform output --raw talosconfig > ../../talosconfig"
+#   }
+# }

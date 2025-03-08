@@ -27,15 +27,7 @@ terraform {
       source  = "hashicorp/tls"
       version = "4.0.6"
     }
-    sops = {
-      source  = "carlpett/sops"
-      version = ">= 0.7.2"
-    }
   }
-}
-
-data "sops_file" "secrets" {
-  source_file = "secret.sops.yaml"
 }
 
 data "tfe_outputs" "kubeconfig" {
@@ -71,8 +63,8 @@ resource "kubernetes_namespace" "flux_system" {
 }
 
 provider "github" {
-  owner = data.sops_file.secrets.data["gh_owner"]
-  token = data.sops_file.secrets.data["gh_token"]
+  owner = var.gh_owner
+  token = var.gh_token
 }
 
 variable "repository_name" {
@@ -101,7 +93,7 @@ provider "flux" {
     client_key             = base64decode(yamldecode(data.tfe_outputs.kubeconfig.values.kubeconfig)["users"][0]["user"]["client-key-data"])
   }
   git = {
-    url = "ssh://git@github.com/${data.sops_file.secrets.data["gh_owner"]}/${var.repository_name}.git"
+    url = "ssh://git@github.com/${var.gh_owner}/${var.repository_name}.git"
     ssh = {
       username    = "git"
       private_key = tls_private_key.flux.private_key_pem
@@ -115,11 +107,11 @@ resource "flux_bootstrap_git" "this" {
   path = "cluster/production"
 }
 
-resource "null_resource" "sops_secret" {
-  depends_on = [
-    flux_bootstrap_git.this
-  ]
-  provisioner "local-exec" {
-    command = "cat ~/.config/sops/age/age.agekey | kubectl create secret generic sops-age --namespace=flux-system --from-file=age.agekey=/dev/stdin"
-  }
-}
+# resource "null_resource" "sops_secret" {
+#   depends_on = [
+#     flux_bootstrap_git.this
+#   ]
+#   provisioner "local-exec" {
+#     command = "cat ~/.config/sops/age/age.agekey | kubectl create secret generic sops-age --namespace=flux-system --from-file=age.agekey=/dev/stdin"
+#   }
+# }

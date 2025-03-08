@@ -9,10 +9,6 @@ terraform {
       source  = "hashicorp/http"
       version = "3.4.5"
     }
-    sops = {
-      source  = "carlpett/sops"
-      version = "1.1.1"
-    }
   }
 
   cloud {
@@ -24,18 +20,14 @@ terraform {
   }
 }
 
-data "sops_file" "cloudflare_secrets" {
-  source_file = "secret.sops.yaml"
-}
-
 provider "cloudflare" {
-  email   = data.sops_file.cloudflare_secrets.data["cloudflare_email"]
-  api_key = data.sops_file.cloudflare_secrets.data["cloudflare_apikey"]
+  email   = var.cf_email
+  api_key = var.cf_apikey
 }
 
 data "cloudflare_zones" "domain" {
   filter {
-    name = data.sops_file.cloudflare_secrets.data["cloudflare_domain"]
+    name = var.cf_domain
   }
 }
 
@@ -92,7 +84,7 @@ resource "cloudflare_record" "ipv4" {
 }
 
 resource "cloudflare_record" "root" {
-  name    = data.sops_file.cloudflare_secrets.data["cloudflare_domain"]
+  name    = var.cf_domain
   zone_id = lookup(data.cloudflare_zones.domain.zones[0], "id")
   content = "ingress.${data.sops_file.cloudflare_secrets.data["cloudflare_domain"]}"
   proxied = true
