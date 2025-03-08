@@ -52,7 +52,7 @@ spec:
   backups:
     pgbackrest:
       restore:
-        enabled: true
+        enabled: false
         repoName: repo2
         options:
           - --type=time
@@ -63,10 +63,10 @@ spec:
             name: pgo-lemmy-repo2-creds
       global:
         log-level-console: "info"
-        repo1-retention-full: "2"
-        repo1-retention-diff: "10"
-        repo2-retention-full: "2"
-        repo2-retention-diff: "10"
+        repo1-retention-full: "4"
+        repo1-retention-diff: "24"
+        repo2-retention-full: "4"
+        repo2-retention-diff: "24"
         repo2-storage-verify-tls: "n"
         repo2-s3-uri-style: "path"
 
@@ -89,7 +89,7 @@ spec:
             endpoint: "10.0.20.50:9000"
             region: "ca-east-1"
           schedules:
-            full: "0 12 * * *"
+            full: "25 */6 * * *"
             differential: "45 */4 * * *"
 
   proxy:
