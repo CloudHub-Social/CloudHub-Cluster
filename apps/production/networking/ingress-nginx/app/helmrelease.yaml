@@ -51,6 +51,7 @@ spec:
         keep-alive-requests: 10000
         proxy-body-size: "100M"
         ssl-protocols: "TLSv1.3 TLSv1.2"
+        annotations-risk-level: "Critical" #https://github.com/kubernetes/ingress-nginx/issues/12656 / https://github.com/kubernetes/ingress-nginx/issues/12648
         # error-log-level: debug
       metrics:
         enabled: true
