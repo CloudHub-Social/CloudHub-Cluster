@@ -266,7 +266,7 @@ spec:
         _keep: true
         repository: dessalines/lemmy-ui
         pullPolicy: IfNotPresent
-        tag: 0.19.9
+        tag: 0.19.10
 
       replicaCount: 2
 
