@@ -34,6 +34,10 @@ spec:
       kind: Secret
       name: authentik-secret
       valuesKey: AUTHENTIK_POSTGRESQL_POSTGRES_PASSWORD
+    - targetPath: authentik.email.password
+      kind: Secret
+      Nname: authentik-secret
+      valuesKey: AUTHENTIK_SENDGRID_API_KEY
   values:
     global:
       envFrom:
