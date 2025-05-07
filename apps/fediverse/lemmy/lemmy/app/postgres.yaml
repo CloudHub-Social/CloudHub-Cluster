@@ -30,7 +30,7 @@ spec:
   #         region: "ca-east-1"
   instances:
     - name: pgha1
-      replicas: 1
+      replicas: 2
       dataVolumeClaimSpec:
         storageClassName: nfs-client
         accessModes:
