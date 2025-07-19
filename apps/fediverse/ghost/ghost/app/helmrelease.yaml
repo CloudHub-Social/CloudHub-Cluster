@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: ghost
-      version: 23.0.28
+      version: 23.0.29
       sourceRef:
         kind: HelmRepository
         name: bitnami
