@@ -7,7 +7,7 @@ resources:
   - https://github.com/rancher/system-upgrade-controller?ref=v0.16.3
 images:
   - name: rancher/system-upgrade-controller
-    newTag: v0.16.2
+    newTag: v0.16.3
 commonLabels:
   app.kubernetes.io/name: system-upgrade-controller
   app.kubernetes.io/instance: system-upgrade-controller
