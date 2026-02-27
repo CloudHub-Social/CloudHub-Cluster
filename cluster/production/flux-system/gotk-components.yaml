@@ -1806,7 +1806,7 @@ spec:
             resourceFieldRef:
               containerName: manager
               resource: limits.memory
-        image: ghcr.io/fluxcd/helm-controller:v1.5.0
+        image: ghcr.io/fluxcd/helm-controller:v1.5.1
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -2626,7 +2626,7 @@ spec:
             resourceFieldRef:
               containerName: manager
               resource: limits.memory
-        image: ghcr.io/fluxcd/kustomize-controller:v1.8.0
+        image: ghcr.io/fluxcd/kustomize-controller:v1.8.1
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -4063,7 +4063,7 @@ spec:
             resourceFieldRef:
               containerName: manager
               resource: limits.memory
-        image: ghcr.io/fluxcd/notification-controller:v1.8.0
+        image: ghcr.io/fluxcd/notification-controller:v1.8.1
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
